@@ -1,0 +1,50 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.2.14)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    addressable (2.3.5)
+    attr_required (0.0.5)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    fast-stemmer (1.0.2)
+    fb_graph (2.7.8)
+      httpclient (>= 2.2.0.2)
+      multi_json (>= 1.3)
+      rack-oauth2 (>= 0.14.4)
+      tzinfo
+    httpclient (2.3.4.1)
+    i18n (0.6.5)
+    koala (1.6.0)
+      addressable (~> 2.2)
+      faraday (~> 0.8)
+      multi_json (~> 1.3)
+    lingua (0.6.2)
+    multi_json (1.7.9)
+    multipart-post (1.2.0)
+    n_gram (0.0.1)
+    rack (1.5.2)
+    rack-oauth2 (1.0.5)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.2.0.2)
+      multi_json (>= 1.3.6)
+      rack (>= 1.1)
+    sequel (4.2.0)
+    sqlite3 (1.3.8)
+    tilt (1.4.1)
+    tzinfo (1.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fast-stemmer
+  fb_graph
+  koala
+  lingua
+  n_gram
+  sequel
+  sqlite3
+  tilt

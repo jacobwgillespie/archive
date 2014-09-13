@@ -1,0 +1,17 @@
+source :rubygems
+
+# Facebook stuff
+gem 'koala'
+gem 'fb_graph'
+
+# Database stuff
+gem 'sqlite3'
+gem 'sequel'
+
+# Analysis stuff
+gem 'lingua'
+gem 'n_gram'
+gem 'fast-stemmer', :require => 'fast_stemmer'
+
+# Templating stuff
+gem 'tilt'

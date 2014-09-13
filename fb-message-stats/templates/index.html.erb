@@ -1,0 +1,28 @@
+<section id="messages">
+  <div class="page-title">
+    <h1>All Messages</h1>
+  </div>
+
+  <p><strong>Last Updated:</strong> <%= Time.now %></p>
+
+  <table class="table table-bordered">
+    <caption>Chat Messages</caption>
+    <tbody>
+      <% @days.each do |day, data| %>
+      <tr>
+        <th colspan="2"><%= day.strftime("%b %e") %></th>
+      </tr>
+      <tr>
+        <th>From</th>
+        <th>Message</th>
+      </tr>
+        <% data[:messages].each do |message| %>
+        <tr id="message-<%= message[:id] %>">
+          <td><%= message[:from] %></td>
+          <td><%= message[:message].gsub(/\n/, '<br>') %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+require 'shrink'
+require 'trollop'
+
+opts = Trollop::options do
+  version "shrink #{Shrink::VERSION} (c) 2012 Jacob Gillespie"
+  banner <<-EOS
+Shrink shrinks (minifies) your web assets.  Shrink currently supports JavaScript
+via the Google Closure Compiler.
+
+Usage:
+      shrink [options] <input file>
+      shrink [options] <input file(s)> <output file>
+
+where [options] are:
+EOS
+
+  opt :dry, 'Dry run'
+  opt :force, 'Force override if the output file exists'
+end
+
+Trollop::die "need at least one filename" if ARGV.empty?
+
+input, output = ARGV.length == 1 ? [ARGV, ARGV.first.sub(/\.js$/, '.min.js')] : [ARGV[0..-2], ARGV.last]
+
+missing = []
+input.each do |file|
+  missing << file unless File.exists? file
+end
+
+unless missing.empty?
+  puts "ERROR: some of the input files do not exist:\n  #{missing.join("  \n")}"
+  exit 1
+end
+
+if File.exists?(output) && !opts[:force]
+  puts "ERROR: Output file #{output} already exists; did you want to --force?"
+  exit 1
+end
+
+if opts[:dry]
+  puts "#{input.inspect} => #{output}"
+else
+  compressor = Shrink::Compressor.new
+  File.open(output, 'w') do |f|
+    f.write(compressor.compress(input))
+  end
+end

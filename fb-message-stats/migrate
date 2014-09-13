@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sequel -m migrations sqlite://messages.db

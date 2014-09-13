@@ -1,0 +1,381 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "bundler/setup"
+#Bundler.require(:default)
+
+require 'sequel'
+require 'tilt'
+require 'lingua'
+require 'yaml'
+
+settings = YAML.load_file('settings.yml')
+
+puts 'Processing messages...'
+
+DB = Sequel.connect('sqlite://messages.db')
+messages = DB[:messages].order(:created_time).all
+
+=begin
+#{}`say building full text search`
+DB['DROP TABLE IF EXISTS search'].all
+DB['CREATE VIRTUAL TABLE search USING fts3(id, text, poster, tokenize=porter)'].all
+messages.each do |message|
+  DB[:search].insert(:id => message[:id], :text => message[:message], :poster => message[:from])
+end
+=end
+
+days = {}
+
+first = messages.first[:created_time].to_date
+last = messages.last[:created_time].to_date
+
+day = first
+while day <= Date.today
+  days[day] = {
+    :messages => [],
+    :jmessages => [],
+    :kmessages => [],
+    :stats => {},
+    :ttr => {
+      settings['user1']['full_name'] => {:time => 0, :count => 0, :mean => 0},
+      settings['user2']['full_name'] => {:time => 0, :count => 0, :mean => 0}
+    }
+  }
+  day = day.next
+end
+
+messages.each do |m|
+  day = m[:created_time].to_date
+  days[day][:messages] << m
+end
+
+puts 'Analyzing messages...'
+
+jmessages = messages.select { |m| m[:from] == settings['user1']['full_name'] }
+kmessages = messages.select { |m| m[:from] == settings['user2']['full_name'] }
+
+days.each do |key, value|
+
+  value[:jmessages] = value[:messages].select { |m| m[:from] == settings['user1']['full_name'] }
+  value[:kmessages] = value[:messages].select { |m| m[:from] == settings['user2']['full_name'] }
+
+  value[:jm] = value[:jmessages].map {|m| m[:message]}.join '. '
+  value[:km] = value[:kmessages].map {|m| m[:message]}.join '. '
+
+  value[:jreport] = Lingua::EN::Readability.new(value[:jm])
+  value[:kreport] = Lingua::EN::Readability.new(value[:km])
+
+  value[:jreadability] = value[:jreport].kincaid.nan? ? 0 : value[:jreport].kincaid
+  value[:kreadability] = value[:kreport].kincaid.nan? ? 0 : value[:kreport].kincaid
+
+  value[:jquality] = value[:jreadability] * value[:jreport].num_words
+  value[:kquality] = value[:kreadability] * value[:kreport].num_words
+
+  value[:jquality_total] = value[:jquality] + (days[key.prev_day].nil? ? 0 : days[key.prev_day][:jquality_total])
+  value[:kquality_total] = value[:kquality] + (days[key.prev_day].nil? ? 0 : days[key.prev_day][:kquality_total])
+
+  value[:jwc_total] = value[:jreport].num_words + (days[key.prev_day].nil? ? 0 : days[key.prev_day][:jwc_total])
+  value[:kwc_total] = value[:kreport].num_words + (days[key.prev_day].nil? ? 0 : days[key.prev_day][:kwc_total])
+end
+
+prev_message = messages.first
+
+messages[1..-1].each do |next_message|
+  if prev_message[:from] != next_message[:from]
+    ttr = (next_message[:created_time] - prev_message[:created_time]) / 60
+
+    current_mean = days[next_message[:created_time].to_date][:ttr][next_message[:from]][:mean]
+    current_count = days[next_message[:created_time].to_date][:ttr][next_message[:from]][:count]
+
+    days[next_message[:created_time].to_date][:ttr][next_message[:from]][:mean] = ((current_mean * current_count) + ttr) / (current_count + 1)
+    days[next_message[:created_time].to_date][:ttr][next_message[:from]][:count] += 1
+
+    prev_message = next_message
+  end
+end
+
+count = 0
+days.each do |key, value|
+  time = value[:ttr][settings['user1']['full_name']][:time]
+  mean = value[:ttr][settings['user1']['full_name']][:mean]
+
+  if days[key.prev_day]
+    prev_time = days[key.prev_day][:ttr][settings['user1']['full_name']][:time]
+  else
+    prev_time = 0
+  end
+
+  value[:ttr][settings['user1']['full_name']][:time] = ((prev_time * count) + mean) / (count + 1)
+
+  count += 1
+end
+
+count = 0
+days.each do |key, value|
+  time = value[:ttr][settings['user2']['full_name']][:time]
+  mean = value[:ttr][settings['user2']['full_name']][:mean]
+
+  if days[key.prev_day]
+    prev_time = days[key.prev_day][:ttr][settings['user2']['full_name']][:time]
+  else
+    prev_time = 0
+  end
+
+  value[:ttr][settings['user2']['full_name']][:time] = ((prev_time * count) + mean) / (count + 1)
+
+  count += 1
+end
+
+@messages = messages
+@jmessages = jmessages
+@kmessages = kmessages
+@days = days
+
+@settings = settings
+
+=begin
+
+Killing n-grams for now
+
+@stop_words = %q(a's able about above according accordingly across actually after afterwards again against ain't all allow allows almost alone along already also although always am among amongst an and another any anybody anyhow anyone anything anyway anyways anywhere apart appear appreciate appropriate are aren't around as aside ask asking associated at available away awfully be became because become becomes becoming been before beforehand behind being believe below beside besides best better between beyond both brief but by c'mon c's came can can't cannot cant cause causes certain certainly changes clearly co com come comes concerning consequently consider considering contain containing contains corresponding could couldn't course currently definitely described despite did didn't different do does doesn't doing don't done down downwards during each edu eg eight either else elsewhere enough entirely especially et etc even ever every everybody everyone everything everywhere ex exactly example except far few fifth first five followed following follows for former formerly forth four from further furthermore get gets getting given gives go goes going gone got gotten greetings had hadn't happens hardly has hasn't have haven't having he he's hello help hence her here here's hereafter hereby herein hereupon hers herself hi him himself his hither hopefully how howbeit however i'd i'll i'm i've ie if ignored immediate in inasmuch inc indeed indicate indicated indicates inner insofar instead into inward is isn't it it'd it'll it's its itself just keep keeps kept know known knows last lately later latter latterly least less lest let let's like liked likely little look looking looks ltd mainly many may maybe me mean meanwhile merely might more moreover most mostly much must my myself name namely nd near nearly necessary need needs neither never nevertheless new next nine no nobody non none noone nor normally not nothing novel now nowhere obviously of off often oh ok okay old on once one ones only onto or other others otherwise ought our ours ourselves out outside over overall own particular particularly per perhaps placed please plus possible presumably probably provides que quite qv rather rd re really reasonably regarding regardless regards relatively respectively right said same saw say saying says second secondly see seeing seem seemed seeming seems seen self selves sensible sent serious seriously seven several shall she should shouldn't since six so some somebody somehow someone something sometime sometimes somewhat somewhere soon sorry specified specify specifying still sub such sup sure t's take taken tell tends th than thank thanks thanx that that's thats the their theirs them themselves then thence there there's thereafter thereby therefore therein theres thereupon these they they'd they'll they're they've think third this thorough thoroughly those though three through throughout thru thus to together too took toward towards tried tries truly try trying twice two un under unfortunately unless unlikely until unto up upon us use used useful uses using usually value various very via viz vs want wants was wasn't way we we'd we'll we're we've welcome well went were weren't what what's whatever when whence whenever where where's whereafter whereas whereby wherein whereupon wherever whether which while whither who who's whoever whole whom whose why will willing wish with within without won't wonder would wouldn't yes yet you you'd you'll you're you've your yours yourself yourselves zero)
+
+def top(ngrams, search=false, from=nil)
+  array = ngrams.to_a
+  array = array.reject {|w| @stop_words.include? w.first.downcase}
+  array = array.sort {|a, b| b.last <=> a.last}
+  if search
+    array[0...100].each_index do |idx|
+      ngram = array[idx]
+      begin
+        if from.nil?
+          array[idx][2] = DB["SELECT id, poster, snippet(search) FROM search WHERE text MATCH \"#{ngram.first}\""].all
+        else
+          array[idx][2] = DB["SELECT id, poster, snippet(search) FROM search WHERE text MATCH \"#{ngram.first}\" AND poster = \"#{from}\""].all
+        end
+        #puts "Search for #{ngram.first}"
+      rescue Sequel::DatabaseError
+        puts "failed"
+      end
+    end
+  end
+  array[0...100]
+end
+
+#{}`say building n-grams`
+
+text = messages.map {|m| m[:message] }.join(' ').gsub(/[^a-zA-Z']/, ' ').downcase
+ngrams = NGram.new([text], n: [1, 2, 3, 4]).ngrams_of_all_data
+
+@topngrams = {
+  '1' => top(ngrams[1], true),
+  '2' => top(ngrams[2]),
+  '3' => top(ngrams[3]),
+  '4' => top(ngrams[4])
+}
+
+text = jmessages.map {|m| m[:message] }.join(' ').gsub(/[^a-zA-Z']/, ' ').downcase
+jngrams = NGram.new([text], n: [1, 2, 3, 4]).ngrams_of_all_data
+
+@jtopngrams = {
+  '1' => top(jngrams[1], true, settings['user1']['full_name']),
+  '2' => top(jngrams[2]),
+  '3' => top(jngrams[3]),
+  '4' => top(jngrams[4]),
+}
+
+text = kmessages.map {|m| m[:message] }.join(' ').gsub(/[^a-zA-Z']/, ' ').downcase
+kngrams = NGram.new([text], n: [1, 2, 3, 4]).ngrams_of_all_data
+
+@ktopngrams = {
+  '1' => top(kngrams[1], true, settings['user2']['full_name']),
+  '2' => top(kngrams[2]),
+  '3' => top(kngrams[3]),
+  '4' => top(kngrams[4])
+}
+
+=end
+
+class Calendar
+  def calendar(options = {}, &block)
+    raise(ArgumentError, "No year given")  unless options.has_key?(:year)
+    raise(ArgumentError, "No month given") unless options.has_key?(:month)
+
+    block                        ||= Proc.new {|d| nil}
+
+    month_names = (!defined?(I18n) || I18n.t("date.month_names").include?("missing")) ? Date::MONTHNAMES.dup : I18n.t("date.month_names")
+
+    defaults = {
+      :table_id            => "calendar-#{options[:year]}-#{"%02d" % options[:month]}",
+      :table_class         => 'calendar',
+      :month_name_class    => 'monthName',
+      :other_month_class   => 'otherMonth',
+      :day_name_class      => 'dayName',
+      :day_class           => 'day',
+      :abbrev              => true,
+      :first_day_of_week   => 0,
+      :accessible          => false,
+      :show_today          => true,
+      :previous_month_text => nil,
+      :next_month_text     => nil,
+      :month_header        => true,
+      :calendar_title      => month_names[options[:month]],
+      :summary             => "Calendar for #{month_names[options[:month]]} #{options[:year]}"
+    }
+    options = defaults.merge options
+
+    first = Date.civil(options[:year], options[:month], 1)
+    last = Date.civil(options[:year], options[:month], -1)
+
+    first_weekday = first_day_of_week(options[:first_day_of_week])
+    last_weekday = last_day_of_week(options[:first_day_of_week])
+
+    day_names = (!defined?(I18n) || I18n.t("date.day_names").include?("missing")) ? Date::DAYNAMES : I18n.t("date.day_names")
+    abbr_day_names = (!defined?(I18n) || I18n.t("date.abbr_day_names").include?("missing")) ? Date::ABBR_DAYNAMES : I18n.t("date.abbr_day_names")
+    week_days = (0..6).to_a
+    first_weekday.times do
+      week_days.push(week_days.shift)
+    end
+
+    # TODO Use some kind of builder instead of straight HTML
+    cal = %(<table id="#{options[:table_id]}" class="#{options[:table_class]}" border="0" cellspacing="0" cellpadding="0" summary="#{options[:summary]}">)
+    cal << %(<thead>)
+
+    if (options[:month_header])
+      cal << %(<tr>)
+      if options[:previous_month_text] or options[:next_month_text]
+        cal << %(<th colspan="2">#{options[:previous_month_text]}</th>)
+        colspan=3
+      else
+        colspan=7
+      end
+      cal << %(<th colspan="#{colspan}" class="#{options[:month_name_class]}">#{options[:calendar_title]}</th>)
+      cal << %(<th colspan="2">#{options[:next_month_text]}</th>) if options[:next_month_text]
+      cal << %(</tr>)
+    end
+
+    cal << %(<tr class="#{options[:day_name_class]}">)
+
+    week_days.each do |wday|
+      cal << %(<th id="#{th_id(Date::DAYNAMES[wday], options[:table_id])}" scope='col'>)
+      cal << (options[:abbrev] ? %(<abbr title='#{day_names[wday]}'>#{abbr_day_names[wday]}</abbr>) : day_names[wday])
+      cal << %(</th>)
+    end
+
+    cal << "</tr></thead><tbody><tr>"
+
+    # previous month
+    beginning_of_week(first, first_weekday).upto(first - 1) do |d|
+      cal << generate_other_month_cell(d, options)
+    end unless first.wday == first_weekday
+
+    first.upto(last) do |cur|
+      cell_text, cell_attrs = block.call(cur)
+      cell_text  ||= cur.mday
+      cell_attrs ||= {}
+      cell_attrs[:headers] = th_id(cur, options[:table_id])
+      cell_attrs[:class] ||= options[:day_class]
+      cell_attrs[:class] += " weekendDay" if [0, 6].include?(cur.wday)
+      today = (Time.respond_to?(:zone) && !(zone = Time.zone).nil? ? zone.now.to_date : Date.today)
+      cell_attrs[:class] += " today" if (cur == today) and options[:show_today]
+
+      cal << generate_cell(cell_text, cell_attrs)
+      cal << "</tr><tr>" if cur.wday == last_weekday
+    end
+
+    # next month
+    (last + 1).upto(beginning_of_week(last + 7, first_weekday) - 1)  do |d|
+      cal << generate_other_month_cell(d, options)
+    end unless last.wday == last_weekday
+
+    cal << "</tr></tbody></table>"
+    cal.respond_to?(:html_safe) ? cal.html_safe : cal
+  end
+
+  private
+
+  def first_day_of_week(day)
+    day
+  end
+
+  def last_day_of_week(day)
+    if day > 0
+      day - 1
+    else
+      6
+    end
+  end
+
+  def days_between(first, second)
+    if first > second
+      second + (7 - first)
+    else
+      second - first
+    end
+  end
+
+  def beginning_of_week(date, start = 1)
+    days_to_beg = days_between(start, date.wday)
+    date - days_to_beg
+  end
+
+  def generate_cell(cell_text, cell_attrs)
+    cell_attrs = cell_attrs.map {|k, v| %(#{k}="#{v}") }.join(" ")
+    "<td #{cell_attrs}>#{cell_text}</td>"
+  end
+
+  def generate_other_month_cell(date, options)
+    cell_attrs = {}
+    cell_attrs[:headers] = th_id(date, options[:table_id])
+    cell_attrs[:class] = options[:other_month_class]
+    cell_attrs[:class] += " weekendDay" if weekend?(date)
+
+    cell_text = date.day
+    if options[:accessible]
+      cell_text += %(<span class="hidden"> #{month_names[date.month]}</span>)
+    end
+
+    generate_cell(date.day, cell_attrs)
+  end
+
+  # Calculates id for th element.
+  #   derived from calendar_id and dow.
+  #
+  # Params:
+  #   `day` can be either Date or DOW('Sunday', 'Monday')
+  def th_id(day, calendar_id)
+    return th_id(Date::DAYNAMES[day.wday], calendar_id) if day.is_a?(Date)
+    "#{calendar_id}-#{day[0..2].downcase}"
+  end
+
+  def weekend?(date)
+    [0, 6].include?(date.wday)
+  end
+end
+
+@calendar = Calendar.new
+
+#DB['DROP TABLE search'].all
+
+puts 'Rendering...'
+
+layout = Tilt.new('templates/layout.html.erb')
+
+template = Tilt.new('templates/index.html.erb')
+File.open('build/public/index.html', 'w') {|f| f.write(layout.render(self) { template.render(self) }) }
+
+template = Tilt.new('templates/graphs.html.erb')
+File.open('build/public/graphs.html', 'w') {|f| f.write(layout.render(self) { template.render(self) }) }
+
+template = Tilt.new('templates/calendar.html.erb')
+File.open('build/public/calendar.html', 'w') {|f| f.write(layout.render(self) { template.render(self) }) }
+
+# Killing n-grams for now
+#template = Tilt.new('templates/ngrams.html.erb')
+#File.open('build/public/ngrams.html', 'w') {|f| f.write(layout.render(self) { template.render(self) }) }
+
+template = Tilt.new('templates/stats.html.erb')
+File.open('build/public/stats.html', 'w') {|f| f.write(layout.render(self) { template.render(self) }) }
+
+
+puts 'Done.'

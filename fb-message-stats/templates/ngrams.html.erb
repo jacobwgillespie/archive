@@ -1,0 +1,146 @@
+<section id="ngrams">
+  <div class="page-header">
+    <h1>N-grams</h1>
+  </div>
+
+  <h2>Top N-grams</h2>
+  <div class="row-fluid">
+    <div class="span3">
+      <h3>Uni-grams</h3>
+      <ul>
+        <% @topngrams['1'].each do |ngram| %>
+        <li>
+          <a data-toggle="collapse" data-target="#top-<%= ngram.first %>"><%= ngram.first %> (<%= ngram[1] %> uses)</a>
+          <% unless ngram[2].nil? %>
+          <div class="collapse" id="top-<%= ngram.first %>">
+            <ul>
+              <% ngram.last.each do |message| %>
+              <li><strong><%= message[:poster] %>:</strong> <%= message[:'snippet(search)'] %> <a href="/#message-<%= message[:id] %>">&darr;</a></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Bi-grams</h3>
+      <ul>
+        <% @topngrams['2'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Tri-grams</h3>
+      <ul>
+        <% @topngrams['3'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Quad-grams</h3>
+      <ul>
+        <% @topngrams['4'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <h2><%= @settings['user1']['first_name'] %>'s N-grams</h2>
+  <div class="row-fluid">
+    <div class="span3">
+      <h3>Uni-grams</h3>
+      <ul>
+        <% @jtopngrams['1'].each do |ngram| %>
+        <li>
+          <a data-toggle="collapse" data-target="#jtop-<%= ngram.first %>"><%= ngram.first %> (<%= ngram[1] %> uses)</a>
+          <% unless ngram[2].nil? %>
+          <div class="collapse" id="jtop-<%= ngram.first %>">
+            <ul>
+              <% ngram.last.each do |message| %>
+              <li><strong><%= message[:poster] %>:</strong> <%= message[:'snippet(search)'] %> <a href="/#message-<%= message[:id] %>">&darr;</a></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Bi-grams</h3>
+      <ul>
+        <% @jtopngrams['2'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Tri-grams</h3>
+      <ul>
+        <% @jtopngrams['3'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Quad-grams</h3>
+      <ul>
+        <% @jtopngrams['4'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <h2><%= @settings['user2']['first_name'] %>'s N-grams</h2>
+  <div class="row-fluid">
+    <div class="span3">
+      <h3>Uni-grams</h3>
+      <ul>
+        <% @ktopngrams['1'].each do |ngram| %>
+        <li>
+          <a data-toggle="collapse" data-target="#ktop-<%= ngram.first %>"><%= ngram.first %> (<%= ngram[1] %> uses)</a>
+          <% unless ngram[2].nil? %>
+          <div class="collapse" id="ktop-<%= ngram.first %>">
+            <ul>
+              <% ngram.last.each do |message| %>
+              <li><strong><%= message[:poster] %>:</strong> <%= message[:'snippet(search)'] %> <a href="/#message-<%= message[:id] %>">&darr;</a></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Bi-grams</h3>
+      <ul>
+        <% @ktopngrams['2'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Tri-grams</h3>
+      <ul>
+        <% @ktopngrams['3'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>Quad-grams</h3>
+      <ul>
+        <% @ktopngrams['4'].each do |ngram| %>
+        <li><%= ngram.first %> (<%= ngram[1] %> uses)</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</section>

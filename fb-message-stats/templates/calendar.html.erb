@@ -1,0 +1,132 @@
+<section id="calendars">
+  <div class="page-header">
+    <h1>Calendars</h1>
+  </div>
+
+  <%= @calendar.calendar(:year => 2012, :month => 8, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2012, :month => 9, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2012, :month => 10, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2012, :month => 11, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2012, :month => 12, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2013, :month => 1, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2013, :month => 2, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2013, :month => 3, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+  <%= @calendar.calendar(:year => 2013, :month => 4, :table_class => 'table table-bordered') do |day|
+    if @days[day].nil?
+      [day.mday, {:class => "normalDay"}]
+    else
+      if @days[day][:jmessages].size > 0 and @days[day][:kmessages].size > 0
+        [day.mday, {:class => "success"}]
+      elsif @days[day][:jmessages].size > 0 or @days[day][:kmessages].size > 0
+        [day.mday, {:class => "info"}]
+      else
+        [day.mday, {:class => "error"}]
+      end
+    end
+  end
+  %>
+</section>

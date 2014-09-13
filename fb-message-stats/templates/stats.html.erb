@@ -1,0 +1,74 @@
+<section id="byday">
+  <div class="page-header">
+    <h1>By Day</h1>
+  </div>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>Day</th>
+      <th>Messages Count (<%= @settings['user1']['first_name'] %>)</th>
+      <th>Messages Count (<%= @settings['user2']['first_name'] %>)</th>
+      <th>Word Count (<%= @settings['user1']['first_name'] %>)</th>
+      <th>Word Count (<%= @settings['user2']['first_name'] %>)</th>
+      <th>Paragraphs (<%= @settings['user1']['first_name'] %>)</th>
+      <th>Paragraphs (<%= @settings['user2']['first_name'] %>)</th>
+      <th>Readability (<%= @settings['user1']['first_name'] %>)</th>
+      <th>Readability (<%= @settings['user2']['first_name'] %>)</th>
+      <th>Total Word Count (<%= @settings['user1']['first_name'] %>)</th>
+      <th>Total Word Count (<%= @settings['user2']['first_name'] %>)</th>
+      <th>Total Word Count</th>
+    </tr>
+    <% @days.each do |day, data| %>
+    <%
+      row_class = if data[:jmessages].size > 0 and data[:kmessages].size >0
+        'success'
+      elsif data[:jmessages].size > 0 || data[:kmessages].size > 0
+        'info'
+      else
+        'error'
+      end
+    %>
+    <tr class="<%= row_class %>">
+      <th rowspan="2"><%= day.strftime("%b %e") %></th>
+      <td><%= data[:jmessages].size %></td>
+      <td><%= data[:kmessages].size %></td>
+      <td><%= data[:jreport].num_words %></td>
+      <td><%= data[:kreport].num_words %></td>
+      <td><%= data[:jreport].num_paragraphs %></td>
+      <td><%= data[:kreport].num_paragraphs %></td>
+      <td><%= "%.2f" % data[:jreadability] %></td>
+      <td><%= "%.2f" % data[:kreadability] %></td>
+      <td><%= data[:jwc_total] %></td>
+      <td><%= data[:kwc_total] %></td>
+      <td><%= data[:jwc_total] + data[:kwc_total] %></td>
+    </tr>
+    <tr class="<%= row_class %>">
+      <td colspan="13">
+        <button type="button" class="btn" data-toggle="collapse" data-target="#messages<%= day %>">
+          Show Messages
+        </button>
+
+        <div class="collapse" id="messages<%= day %>">
+          <table class="table table-bordered">
+            <caption>Chat Messages</caption>
+            <thead>
+              <tr>
+                <th>From</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% data[:messages].each do |message| %>
+              <tr>
+                <td><%= message[:from] %></td>
+                <td><%= message[:message].gsub(/\n/, '<br>') %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</section>

@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
+
+require 'yaml'
+settings = YAML.load_file('settings.yml')
+
+
+thread_id = settings['thread_id']
+access_token = settings['access_token']
+
+DB = Sequel.connect('sqlite://messages.db')
+
+messages = DB[:messages]
+
+g = Koala::Facebook::API.new(access_token)
+
+puts 'Fetching message count...'
+
+fql = "SELECT message_count FROM thread WHERE thread_id=#{thread_id}"
+message_count = FbGraph::Query.new(fql).fetch(access_token).first['message_count']
+
+puts "Seeing #{message_count} messages..."
+
+(1...message_count).each do |i|
+
+  next unless messages.where(:local_id => i).first.nil?
+
+  puts "Fetching message #{i}"
+
+  message = g.get_object("#{thread_id}_#{i}")
+
+  if message['message'].nil?
+    next
+  end
+
+  messages.insert({
+    :facebook_id => message['id'],
+    :local_id => i,
+    :from => message['from']['name'],
+    :message => message['message'],
+    :created_time => DateTime.parse(message['created_time'])
+  })
+
+end

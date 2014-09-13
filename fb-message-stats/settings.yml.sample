@@ -1,0 +1,8 @@
+access_token: TOKEN
+thread_id: ID
+user1:
+  first_name: 'First'
+  full_name: 'First User'
+user2:
+  first_name: 'Second'
+  full_name: 'Second User'
