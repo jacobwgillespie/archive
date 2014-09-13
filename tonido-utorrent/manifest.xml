@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TonidoManifest>
+	<Meta>
+		<Name>Torrents</Name>
+		<BaseURL></BaseURL>
+		<HomePageURL>http://projects.jacobwg.com/torrents</HomePageURL>
+		<Version>1.0.0</Version>
+		<CompatibleVersion>\d+\.\d+\.\d+\.\d+</CompatibleVersion>
+		<OS>Windows NT</OS>
+		<OSVersion></OSVersion>
+		<Arch>IA32</Arch>
+		<Vendor>Jacob Gillespie</Vendor>
+		<Description>Allows for remote addition and management of torrent downloads.</Description>
+		<Critical>false</Critical>
+		<AppURL>dyn/torrent/index.php</AppURL>
+		<Authentication>AUTH_ROLE_OWNER</Authentication>
+	</Meta>
+	<Files>
+	</Files>
+	<SharedLibraries />
+</TonidoManifest>

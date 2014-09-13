@@ -1,0 +1,32 @@
+<% completion_for(dare, current_user) do |completion, completed| %>
+  <% if completed %>
+    <div class="completion">
+      <% if dare.last? %>
+        <% if dare.day == 40 %>
+        <p>You have completed all the dares!</p>
+        <% else %>
+        <p>Check back soon - Jacob's still working on the next dares... :)</p>
+        <% end %>
+      <% else %>
+        <%= form_for(current_user) do |f| %>
+          <%= f.hidden_field :dare_id, :value => dare.next_dare.id %>
+          <%= f.submit :value => 'Go to Next Dare', :class => 'btn' %>
+        <% end %>
+      <% end %>
+      <p>Completed on <%= completion.created_at.strftime('%B %e, %Y') %></p>
+    </div>
+  <% end %>
+
+  <h2>Day <%= dare.day %>: <%= dare.title %></h2>
+
+  <p><%= dare.devotion_formatted %></p>
+
+  <% if not completed %>
+    <%= form_for(completion) do |f| %>
+      <%= f.hidden_field :dare_id %>
+      <%= f.hidden_field :user_id %>
+      <%= f.submit :value => 'Mark as completed', :class => 'btn' %>
+    <% end %>
+  <% end %>
+
+<% end %>

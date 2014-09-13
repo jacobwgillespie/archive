@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TonidoManifest>
+	<Meta>
+		<Name>Remote Desktop</Name>
+		<BaseURL></BaseURL>
+		<HomePageURL>http://rd.vncjs.com</HomePageURL>
+		<Version>1.0.0</Version>
+		<CompatibleVersion>\d+\.\d+\.\d+\.\d+</CompatibleVersion>
+		<OS>Windows NT</OS>
+		<OSVersion></OSVersion>
+		<Arch>IA32</Arch>
+		<Vendor>Jacob Gillespie</Vendor>
+		<Description>Allows for full remote control of the Tonido desktop computer.</Description>
+		<Critical>false</Critical>
+		<AppURL>dyn/remotedesktop/index.php</AppURL>
+		<Authentication>AUTH_ROLE_OWNER</Authentication>
+	</Meta>
+	<Files>
+	</Files>
+	<SharedLibraries />
+</TonidoManifest>

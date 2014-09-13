@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: 1
+  devotion: MyText
+  dare: MyText
+
+two:
+  day: 1
+  devotion: MyText
+  dare: MyText

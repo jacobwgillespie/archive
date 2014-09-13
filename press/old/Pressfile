@@ -1,0 +1,3 @@
+wordpress '3.4'
+
+plugin 'nextgen-gallery'

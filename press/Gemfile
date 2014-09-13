@@ -1,0 +1,10 @@
+source :rubygems
+
+gem 'faraday'
+gem 'php-serialize', :require => 'php_serialize'
+gem 'php-serialization', :require => 'php_serialization'
+
+gem 'curb'
+gem 'libxml-ruby'
+gem 'nokogiri'
+gem 'patron'

@@ -1,0 +1,31 @@
+div.row(ng-show="user.loggedIn")
+
+  div.large-8.columns
+    h1.header Your Maps
+
+    table
+      thead
+        tr
+          th(width="200") Name
+          th(width="300") Description
+          th(width="200") Actions
+      tbody(ng-repeat="(id, map) in maps")
+        tr
+          td
+            a(href="#/map/{{ id }}") {{ map.name }}
+          td {{ map.description }}
+          td
+            button(ng-click="removeMap(id)") Delete
+
+  div.large-4.columns
+    form(ng-submit="addMap()")
+      fieldset
+        legend New Map
+        .row
+          .large-12.columns
+            label Name
+            input(type="text", ng-model="mapName", placeholder="Name")
+        .row
+          .large-12.columns
+            textarea(ng-model="mapDescription", placeholder="Description")
+        input.button.success(type="submit", value="Create")

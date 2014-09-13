@@ -1,0 +1,9 @@
+<h2>All Dares</h2>
+
+<ul>
+<% dares.each do |dare| %>
+  <li<% if current_user.completion_for(dare).persisted? %> class="completed"<% end %>>
+    <%= link_to "##{dare.day} - #{dare.title}", dare %>
+  </li>
+<% end %>
+</ul>

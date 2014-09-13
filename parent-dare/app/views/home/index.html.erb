@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+
+  <% if @user.participating? %>
+    <%= render @dare %>
+  <% else %>
+    <p>You're not yet participating</p>
+  <% end %>
+
+<% else %>
+<p>You need to be signed in and stuff...</p>
+<% end %>

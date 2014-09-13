@@ -1,0 +1,13 @@
+<h2>Administration</h2>
+
+<ul>
+<% @dares.each do |dare| %>
+  <li>
+    <%= link_to "##{dare.day} - #{dare.title}", dare %> (<%= link_to 'Edit', edit_dare_path(dare) %> | <%= link_to 'Delete', dare, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Move Up', move_path(dare, :up) %> | <%= link_to 'Move Down', move_path(dare, :down) %>)
+  </li>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dare', new_dare_path, :class => 'btn' %>

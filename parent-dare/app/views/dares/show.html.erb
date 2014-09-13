@@ -1,0 +1,22 @@
+<%= render @dare %>
+
+
+<h2>Completed Dares</h2>
+
+<% if current_user.completed_dares.empty? %>
+
+<ul>
+  <li>None yet...</li>
+</ul>
+
+<% else %>
+
+<ul>
+<% current_user.completed_dares.each do |dare| %>
+  <li<% if current_user.completion_for(dare).persisted? %> class="completed"<% end %>>
+    <%= link_to "##{dare.day} - #{dare.title}", dare %>
+  </li>
+<% end %>
+</ul>
+
+<% end %>

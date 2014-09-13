@@ -1,0 +1,1 @@
+supervisor -e "node|js|coffee" run.js

@@ -1,0 +1,96 @@
+/*
+ *= require normalize
+ *= require_self
+ */
+
+html {
+  font-family: 'Crimson Text', serif;
+  background: #f9f2e8 url(/assets/background-web.jpg) no-repeat center top fixed;
+}
+
+p, blockquote {
+  text-align: justify;
+}
+
+a {
+  text-decoration: none;
+  color: #9f7b57;
+  //&:visited {
+  //  color: #9f7b57;
+  //}
+}
+
+ul { list-style: none; }
+ul li.completed:after { content: "\2713"; }
+
+
+h1 a, h1 a:visited {
+  color: #000;
+}
+
+blockquote {
+  border-left: 3px solid #000;
+  margin-left: 0;
+  padding-left: 2em;
+}
+
+nav ul a {
+  color: #000;
+}
+
+header h1 {
+  background: transparent url(/assets/divider.png) no-repeat center bottom;
+  padding-bottom: 28px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Parisienne';
+  text-align: center;
+}
+
+section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav {
+  color: #222;
+  font-size: 75%;
+  text-align: right;
+  a {
+    color: #222;
+  }
+}
+
+.completion, .completion p {
+  text-align: center;
+  font-family: 'Parisienne', sans-serif;
+}
+.btn {
+  -moz-box-shadow:inset 0px 1px 0px 0px #e8c1ba;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #e8c1ba;
+  box-shadow:inset 0px 1px 0px 0px #e8c1ba;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8c1ba), color-stop(1, #cf9895) );
+  background:-moz-linear-gradient( center top, #e8c1ba 5%, #cf9895 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8c1ba', endColorstr='#cf9895');
+  background-color:#e8c1ba;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #cf9895;
+  display:inline-block;
+  color:#000;
+  font-family: 'Parisienne';
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:1px 1px 0px #cf9895;
+}.btn:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cf9895), color-stop(1, #e8c1ba) );
+  background:-moz-linear-gradient( center top, #cf9895 5%, #e8c1ba 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf9895', endColorstr='#e8c1ba');
+  background-color:#cf9895;
+}.btn:active {
+  position:relative;
+  top:1px;
+}

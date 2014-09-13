@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+$:.unshift File.dirname(__FILE__)
+require 'presser'
+require 'presser/cli'
+require 'presser/friendly_errors'
+Presser.with_friendly_errors { Presser::CLI.start }

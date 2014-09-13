@@ -1,0 +1,9 @@
+source :rubygems
+
+gem "sinatra"
+gem "aws-s3", :require => "aws/s3"
+gem "stalker"
+gem "rmagick", :require => "RMagick"
+gem "activesupport", :require => "active_support/core_ext"
+gem "haml"
+gem "i18n"

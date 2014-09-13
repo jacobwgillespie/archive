@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
+
+require 'json'
+require 'open-uri'
+
+class WP
+
+  BASE_URL = 'http://plugins.svn.wordpress.org/'
+
+  def http
+    if @session.nil?
+      @session = Patron::Session.new
+      @session.timeout = 10
+      @session.base_url = BASE_URL
+    end
+    @session
+  end
+
+  def get(url)
+    begin
+      yield(http.get(url))
+    rescue Patron::ConnectionFailed
+      get(url) do |resp|
+        yield(resp)
+      end
+    end
+  end
+
+  def plugin_exists?(slug)
+    get("/#{slug}/") do |resp|
+      resp.status == 200
+    end
+  end
+
+  def plugin_version_exists?(slug, version)
+    get("/#{slug}/tags/#{version}/") do |resp|
+      resp.status == 200
+    end
+  end
+
+  def latest_version(slug)
+    get("/#{slug}/tags/") do |resp|
+      if resp.status < 400
+        doc = Nokogiri::HTML(resp.body)
+        version = doc.css('body > ul > li').last.text.chomp('/')
+        version = false if version == '..'
+      end
+    end
+  end
+
+end
+
+plugins = WP.new
+
+puts plugins.plugin_exists?('akismet')
+puts plugins.plugin_exists?('akismetss')
+
+puts plugins.plugin_version_exists?('wp-plus-one', '1.9')
+puts plugins.plugin_version_exists?('wp-plus-one', '1.9.10')
+
+
+puts plugins.latest_version('akismet')
+
+
+=begin
+
+puts 'Welcome!'
+
+wp_api = Faraday.new(:url => 'http://api.wordpress.org/') do |faraday|
+  faraday.request  :url_encoded             # form-encode POST params
+  faraday.response :logger                  # log requests to STDOUT
+  faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+end
+
+query = {
+  'action' => 'plugin_information',
+  'request' => PhpSerialization.dump('slug' => 'jetpack').gsub(/^a/, 'O:8:"stdClass"')
+}
+
+response = wp_api.post '/plugins/info/1.0/', query
+body = response.body
+
+decoded = ''
+Open3.popen2('php decode.php') do |input, output|
+  input.print body
+  input.close
+  decoded = output.gets
+end
+
+puts JSON.parse(decoded)
+=end
