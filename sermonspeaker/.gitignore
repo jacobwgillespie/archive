@@ -1,0 +1,11 @@
+.DS_Store
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+config/application.yml
+public/uploads
+*.log
+solr
+log/sunspot*

@@ -1,0 +1,12 @@
+%h3 Search for Sermons
+= form_tag({:controller => :sermons, :action => :search}, :method => :get) do |f|
+  .control-group
+    .controls
+      = text_field_tag :q, params[:q], :placeholder => 'Search by name...', :class => 'span2'
+      = submit_tag 'Search', :class => 'btn primary'
+= form_tag({:controller => :sermons, :action => :search}, :method => :get) do |f|
+  .control-group
+    .controls
+      = text_field_tag :date, params[:date], :placeholder => 'Search by date...', :class => 'span2'
+      = submit_tag 'Search', :class => 'btn primary'
+

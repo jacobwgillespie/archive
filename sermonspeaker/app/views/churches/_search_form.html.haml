@@ -1,0 +1,12 @@
+.row
+  .span5
+    %h4 Search by Church Location
+    = form_tag church_geosearch_path, :method => :get, :class => 'form-search well' do |f|
+      = text_field_tag :l, params[:l], :placeholder => 'Address or Zip code, etc...', :class => 'span3 search-query'
+      = submit_tag 'Search', :class => 'btn primary'
+.row
+  .span5
+    %h4 Search by Church Name
+    = form_tag church_search_path, :method => :get, :class => 'form-search well' do |f|
+      = text_field_tag :n, params[:n], :placeholder => 'Church name...', :class => 'span3 search-query'
+      = submit_tag 'Search', :class => 'btn primary'

@@ -1,0 +1,11 @@
+- page_title 'Genres'
+= link_to 'New Genre', new_genre_path, :class => 'btn hide-unless-admin pull-right'
+.page-title
+  %h1 Game Genres
+
+%ul.thumbnails
+  - @genres.each do |genre|
+    %li.thumbnail.span2
+      = link_to genre do
+        %h4= genre.name
+        = image_tag genre.games.first.poster_url(:list) unless genre.games.empty?

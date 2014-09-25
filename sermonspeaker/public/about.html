@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>About Sermon Speaker - Sermon Speaker</title>
+    <link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/bootstrap-responsive.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/plupload.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/jquery.plupload.queue.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/ui.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/mediaelement_rails/mediaelementplayer.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/mediaelement_rails/index.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/mediaelement_rails/mejs-skins.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/humane.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery-ui.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.validate.js?body=1" type="text/javascript"></script>
+    <script src="/assets/mediaelement_rails/mediaelement.js?body=1" type="text/javascript"></script>
+    <script src="/assets/mediaelement_rails/rails.js?body=1" type="text/javascript"></script>
+    <script src="/assets/mediaelement_rails/mediaelementplayer.js?body=1" type="text/javascript"></script>
+    <script src="/assets/mediaelement_rails/index.js?body=1" type="text/javascript"></script>
+    <script src="/assets/plupload.js?body=1" type="text/javascript"></script>
+    <script src="/assets/plupload.settings.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.plupload.queue.js?body=1" type="text/javascript"></script>
+    <script src="/assets/plupload.flash.js?body=1" type="text/javascript"></script>
+    <script src="/assets/plupload.silverlight.js?body=1" type="text/javascript"></script>
+    <script src="/assets/plupload.html4.js?body=1" type="text/javascript"></script>
+    <script src="/assets/plupload.html5.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.purr.js?body=1" type="text/javascript"></script>
+    <script src="/assets/best_in_place.js?body=1" type="text/javascript"></script>
+    <script src="/assets/bootstrap.js?body=1" type="text/javascript"></script>
+    <script src="/assets/modernizr.js?body=1" type="text/javascript"></script>
+    <script src="/assets/flash-alerts.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.cookie.js?body=1" type="text/javascript"></script>
+    <script src="/assets/application.js?body=1" type="text/javascript"></script>
+    <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyBlJ18HMMXcIW7CN9RB6PcApv7y3iWMZSw&amp;sensor=true' type='text/javascript'></script>
+    <meta content="authenticity_token" name="csrf-param" />
+    <meta content="GMBFPs2I1rftwMPPxZydb+FwG+FHEhS7w80OeizLQkw=" name="csrf-token" />
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href='/favicon.ico' rel='shortcut icon'>
+    
+  </head>
+  <body>
+    <div id='fb-root'></div>
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a class='brand' href='/'>Sermon Speaker</a>
+          <div class='nav-collapse'>
+            <ul class='nav pull-left'>
+              <!-- %li= link_to 'Home', :root -->
+              <li><a href="/sermons">Sermons</a></li>
+              <li><a href="/churches">Churches</a></li>
+              <li><a href="/speakers">Speakers</a></li>
+            </ul>
+            <form accept-charset="UTF-8" action="/sermons/search" class="pull-left navbar-search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+                        <input class="search-query" id="q" name="q" placeholder="Search" type="text" />
+            </form>
+            <ul class='nav pull-right'>
+              <li>
+                <a href="/about">About</a>
+              </li>
+              <li class='divider-vertical'></li>
+              <li data-ability-inverse='true' data-ability='signed_in' data-toggle='ability'>
+                <a href="/dashboard">Login / register</a>
+              </li>
+              <li data-ability='create-sermon' data-target='#new-sermon-modal' data-toggle='ability'>
+                <a href="/sermons/new">Add Sermon</a>
+              </li>
+              <li class='dropdown' data-ability='signed_in' data-toggle='ability'>
+                <a href="#" data-toggle="dropdown">Your Account
+                <b class='caret'></b>
+                </a>
+                <ul class='dropdown-menu'>
+                  <li>
+                    <a href="/dashboard">Dashboard</a>
+                  </li>
+                  <li>
+                    <a href="/users/edit">Edit your information</a>
+                  </li>
+                  <li class='divider'></li>
+                  <li>
+                    <a href="/users/sign_out" data-method="delete" rel="nofollow">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='content'>
+        <div class='page-header'>
+          <h1>
+            About Sermon Speaker
+            <small>history, people, etc.</small>
+          </h1>
+        </div>
+        <div class='row'>
+          <div class='span12'>
+            <div class='alert alert-success' id='notice'>
+              <a class='close' data-dismiss='alert' href='#'>&times;</a>
+              <p></p>
+            </div>
+            <div class='alert alert-error' id='error'>
+              <a class='close' data-dismiss='alert' href='#'>&times;</a>
+              <p></p>
+            </div>
+            <p>Engineers at Twitter have historically used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented. With the help of many awesome folks, Bootstrap has grown significantly.</p>
+            <div class='row'>
+              <div class='span5'>
+                <h3>History</h3>
+                <p>Engineers at Twitter have historically used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented. With the help of many awesome folks, Bootstrap has grown significantly.</p>
+              </div>
+              <div class='span5'>
+                <p>Bootstrap is tested and supported in major modern browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
+                <ul>
+                  <li>Latest Safari</li>
+                  <li>Latest Google Chrome</li>
+                  <li>Firefox 4+</li>
+                  <li>Internet Explorer 7+</li>
+                  <li>Opera 11</li>
+                </ul>
+              </div>
+            </div>
+            <div data-ability='create-sermon' data-toggle='ability'>
+              <div class='modal fade' id='new-sermon-modal'>
+                <form accept-charset="UTF-8" action="/sermons" class="form-horizontal" enctype="multipart/form-data" id="new_sermon" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="GMBFPs2I1rftwMPPxZydb+FwG+FHEhS7w80OeizLQkw=" /></div>
+                  <div class='modal-header'>
+                    <a class='close' data-dismiss='modal' href='#'>&times;</a>
+                    <h3>Upload New Sermon</h3>
+                  </div>
+                  <div class='modal-body'>
+                    <div class='row'>
+                      <div class='span9'>
+                        <div class='control-group'>
+                          <label for="sermon_title">Title</label>
+                          <div class='controls'>
+                            <input class="span6" id="sermon_title" name="sermon[title]" placeholder="Sermon title..." size="30" type="text" />
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label>
+                            Speaker
+                          </label>
+                          <div class='controls'>
+                            <select class="span6" id="sermon_speaker_id" name="sermon[speaker_id]"><option value="3">Doug Gillespie - Grace Bible Fellowship Church</option>
+                            <option value="2">Lyndon Shook - Grace Bible Fellowship Church</option></select>
+                            <p class='help-block'>
+                              <a data-target='#new-speaker-modal' data-toggle='modal' href='/speakers/new' onclick="$('#new-sermon-modal').modal('hide'); return false;">Add New Speaker</a>
+                            </p>
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label>Date</label>
+                          <div class='controls'>
+                            <input class="span2" id="sermon_published_at" name="sermon[published_at]" size="30" type="text" value="2012-02-25" /><script type="text/javascript">
+                            //<![CDATA[
+                            jQuery(document).ready(function(){$('#sermon_published_at').datepicker({"changeMonth":true,"changeYear":true,"dateFormat":"M d, yy"})});
+                            //]]>
+                            </script>
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label for="sermon_synopsis">Synopsis</label>
+                          <div class='controls'>
+                            <textarea class="span6" cols="40" id="sermon_synopsis_modal" maxlength="280" name="sermon[synopsis]" rows="6"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='span3'>
+                        <h4>Preview</h4>
+                        <p>In the future, there will be some help-text here as well as (perhaps) a live preview.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='modal-footer'>
+                    <input class="btn primary" name="commit" type="submit" value="Next" />
+                    <a class='btn secondary' href='' onclick="$('#new-sermon-modal').modal('hide'); return false">Cancel</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div data-ability='create-speaker' data-toggle='ability'>
+              <div class='modal fade' id='new-speaker-modal'>
+                <form accept-charset="UTF-8" action="/speakers" class="form-horizontal" enctype="multipart/form-data" id="new_speaker" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="GMBFPs2I1rftwMPPxZydb+FwG+FHEhS7w80OeizLQkw=" /></div>
+                  <div class='modal-header'>
+                    <a class='close' data-dismiss='modal' href='#'>&times;</a>
+                    <h3>Add New Speaker</h3>
+                  </div>
+                  <div class='modal-body'>
+                    <div class='row'>
+                      <div class='span9'>
+                        <div class='control-group'>
+                          <label for="speaker_name">Name</label>
+                          <div class='controls'>
+                            <input class="span2" id="speaker_first_name" name="speaker[first_name]" placeholder="John" size="30" type="text" />
+                            <input class="span2" id="speaker_last_name" name="speaker[last_name]" placeholder="Doe" size="30" type="text" />
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label for="speaker_title">Title</label>
+                          <div class='controls'>
+                            <input class="span4" id="speaker_title" name="speaker[title]" placeholder="Pastor" size="30" type="text" />
+                            <p class='help-block'>e.g. Pastor, Elder, Teacher, etc.</p>
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label for="speaker_bio">Bio</label>
+                          <div class='controls'>
+                            <textarea class="span4" cols="40" id="speaker_bio" name="speaker[bio]" rows="6"></textarea>
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label>
+                            Church
+                          </label>
+                          <div class='controls'>
+                            <select class="span4" id="speaker_church_id" name="speaker[church_id]"><option value="1">Grace Bible Fellowship Church</option></select>
+                          </div>
+                        </div>
+                        <div class='control-group'>
+                          <label>
+                            Upload Photo
+                          </label>
+                          <div class='controls'>
+                            <input id="speaker_photo" name="speaker[photo]" type="file" />
+                            <input id="speaker_photo_cache" name="speaker[photo_cache]" type="hidden" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class='span3'>
+                        <h4>Preview</h4>
+                        <p>In the future, there will be some help-text here as well as (perhaps) a live preview.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='modal-footer'>
+                    <input class="btn primary" name="commit" type="submit" value="Next" />
+                    <a class='btn secondary' href='' onclick="$('#new-speaker-modal').modal('hide'); return false">Cancel</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class='footer'>
+        <p class='pull-right'>
+          <a href='#'>Back to top</a>
+        </p>
+        <p>Website Copyright &copy; 2012 Sermon Speaker</p>
+        <p data-toggle='test'>
+          All Rights Reserved
+          <a href='http://jacobwg.com' target='blank'>Jacob Gillespie</a>
+        </p>
+        <p>
+          All Scripture quotations, unless otherwise indicated,
+          are taken from The Holy Bible, English Standard Version.
+          <br>
+          Copyright &copy; 2001 by Crossway Bibles, a publishing
+          ministry of Good News Publishers. Used by permission.
+          All rights reserved.
+        </p>
+      </footer>
+    </div>
+    <script>
+      //<![CDATA[
+        jQuery(document).ready(function($){
+          (function(d, id) {
+            if (d.getElementById(id)) return;
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.id = id;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })(document, 'google-plusone');
+          (function(d, id) {
+            if (d.getElementById(id)) return;
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.id = id;
+            po.src = 'https://platform.twitter.com/widgets.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })(document, 'twitter-wjs');
+          (function(d, id) {
+            if (d.getElementById(id)) return;
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.id = id;
+            po.src = 'https://connect.facebook.net/en_US/all.js#xfbml=1&appId=120303798014555';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })(document, 'facebook-jssdk');
+        });
+      //]]>
+    </script>
+    <script>
+      //<![CDATA[
+        var _gauges = _gauges || [];
+        (function() {
+          var t   = document.createElement('script');
+          t.type  = 'text/javascript';
+          t.async = true;
+          t.id    = 'gauges-tracker';
+          t.setAttribute('data-site-id', '4f3c27c2613f5d5618000028');
+          t.src = '//secure.gaug.es/track.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(t, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

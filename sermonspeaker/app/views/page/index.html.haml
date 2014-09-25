@@ -1,0 +1,32 @@
+- # page_title is already Sermon Speaker
+
+%header.jumbotron.masthead
+  %h1 Sermon Speaker
+  %p Accessible online sermon broadcasting
+
+%hr.soften
+
+.marketing
+  %h1= link_to (@customized ? 'Sermons Just For You' : 'New Sermons'), sermons_path
+  %p.marketing-byline just a few of the recent sermons
+
+= render @sermons
+//
+//- @sermons.each do |sermon|
+//  .sermon{:'data-data-url' => "#{url_for sermon}/media_files"}
+//    .row
+//      = render sermon
+= paginate @sermons
+
+- content_for :sidebar do
+  - unless user_signed_in? and current_user.church.nil?
+    %p Start uploading your sermons now for only $20/mo!
+    %p= link_to 'Signup', new_church_path
+  - else
+    %p= link_to 'Manage Your Church Account', current_user.church
+  %blockquote
+    %p You should really be using this... it's great!
+    %small A Happy Customer
+  %blockquote
+    %p A no-brainer
+    %small Another Happy Customer

@@ -1,0 +1,44 @@
+- content_for :page_header do
+  %h1
+    Sermon Search
+    %small find what you're looking for
+
+.row
+  .span5
+    %h4 Search by Sermon Title
+    = form_tag({:controller => :sermons, :action => :search}, :method => :get) do |f|
+      .control-group
+        .controls
+          = text_field_tag :q, params[:q], :placeholder => 'Search by name...', :class => 'span4'
+          = submit_tag 'Search', :class => 'btn primary'
+  .span5
+    %h4 Search by Date
+    = form_tag({:controller => :sermons, :action => :search}, :method => :get, :class => 'form-inline') do |f|
+      = text_field_tag :date, params[:date], :placeholder => 'Start date...', :class => 'span2'
+      = text_field_tag :date_end, params[:date_end], :placeholder => '(optional) End date...', :class => 'span2'
+      = submit_tag 'Search', :class => 'btn primary'
+
+%h3 Search Results
+- if @sermons.empty?
+  %p We found no results for that query
+- else
+  - @sermons.each do |sermon|
+    .sermon{:'data-data-url' => "#{url_for sermon}/media_files"}
+      .row
+        = render sermon
+  = paginate @sermons
+
+- content_for :sidebar do
+  - if @search and @show_facets
+    %h4 Filter Your Search Results
+    = link_to 'Clear Filters', sermons_search_path(facet_link_params(false)), :class => 'btn' if @faceted
+    %ul.nav.list
+      %li.nav-header Speakers
+      - @faceted_speakers.each do |id, speaker|
+        %li{:class => (params[:speaker].to_i == speaker[:id].to_i ? 'active' : nil)}
+          = facet_link speaker[:text], speaker[:count], speaker[:id], :speaker
+      %li.nav-header Churches
+      - @faceted_churches.each do |id, church|
+        %li{:class => (params[:church].to_i == church[:id].to_i ? 'active' : nil)}
+          = facet_link church[:text], church[:count], church[:id], :church
+

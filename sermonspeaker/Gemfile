@@ -1,0 +1,172 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.2.14'
+
+# Bundle edge Rails instead:
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+
+gem 'pg'
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.0'
+
+# Use unicorn as the web server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'rspec-rails', :group => [:development, :test]
+
+group :test do
+  # Pretty printed test output
+  gem 'turn', '0.8.2', :require => false
+
+  # Testing frameworks
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+end
+
+# Authentication
+gem 'devise', '>= 2.0.0'
+
+# Permissions and Authorization
+gem 'cancan'
+
+# HAML Template Library
+gem 'haml', '>= 3.0.0'
+gem 'haml-rails'
+
+# YAML-based application settings
+# Using git until ruby-debug19 is removed as a dependency
+# gem 'settingslogic', :git => 'https://github.com/binarylogic/settingslogic.git'
+# Should be fixed now in v2.0.8
+gem 'settingslogic', '>= 2.0.8'
+
+# Cache library - not sure why this is here now...
+# gem 'rack-cache', :require => 'rack/cache'
+
+# LAME MP3 Library (currently unused)
+# gem 'lamer'
+
+# Upload Library
+gem 'carrierwave'
+# No Longer Using Mongoid
+# gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
+# Image Processing Library
+gem 'mini_magick'
+
+# Frontend Uploading
+gem 'plupload-rails'# , :git => 'git@github.com:jacobwg/plupload-rails.git'
+
+# In-Place Editing (using git until author updates for Rails 3.2)
+gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place.git'
+
+# Cloud Storage
+gem 'fog'
+
+# Offsite Transcoding Service
+gem 'zencoder'
+
+# JavaScript UI and Templates (now unused)
+# gem 'ejs'
+# gem 'spine-rails'
+
+# Web Server
+gem 'unicorn'
+gem 'thin'
+
+# Permalinks / slugs for Mongoid models
+# gem 'mongoid_slug'
+# the mongoid_slug gem was replaced by a custom base-36 solution with an auto_inc field
+# gem "mongoid_auto_inc"
+# gem 'mongoid-autoinc', :require => 'autoinc'
+# NO LONGER USING MONGOID
+gem 'friendly_id', '>= 4.0.0'
+
+# Text processing (markdown and sanitization)
+gem 'redcarpet'
+gem 'sanitize'
+gem 'rdiscount'
+
+# Navigational menus
+gem 'simple-navigation'
+
+# Pagination
+gem 'kaminari'
+
+# jQuery date picking for sermons
+gem 'jquery_datepicker'
+
+# Search
+# Using tire - mebla is for Mongoid
+#gem 'tire'
+# gem 'mebla', :git => 'git://github.com/cousine/mebla.git'
+#gem 'texticle', :require => 'texticle/rails'
+gem 'sunspot_rails'
+group :development do
+  gem 'sunspot_solr'
+end
+
+# Payments
+gem 'stripe'
+
+# State machines (church subscription status)
+gem 'aasm'
+
+# Church location geocoding
+gem 'geocoder'
+
+# Bible Verse API
+gem 'esv'
+
+# Asset Includes for MediaElement
+gem 'mediaelement_rails'
+
+# Performance monitor
+gem 'newrelic_rpm'
+
+# Rack cache
+gem 'rack-cache', :require => 'rack/cache'
+
+# Progress bar for solr rake tasks
+gem 'progress_bar', :group => :development
+
+# Cache storage (memcache)
+gem 'dalli'
+
+# PJAX integration
+gem 'pjax_rails'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

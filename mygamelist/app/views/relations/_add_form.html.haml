@@ -1,0 +1,4 @@
+- add_message ||= 'Add to List'
+- remove_message ||= 'Remove from List'
+= link_to add_message, relations_path(:game_id => game_id, :list => list, :remove_message => remove_message, :add_message => add_message), :remote => true, :method => :post, :class => "btn listadd-#{list}-#{game_id}"
+

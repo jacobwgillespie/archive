@@ -1,0 +1,69 @@
+- page_title @church.name
+
+%header.jumbotron.subhead
+  %h1= @church.name
+  %p.lead
+
+%section
+  .page-header
+    %h1 Church Information
+  .row
+    .span12
+      .row
+        .span8
+          .row
+            .span4
+              != @church.info_processed
+              %p The pay token is #{@church.pay_token}
+              %p The customer token is #{@church.customer_token}
+              - if user_signed_in?
+                - if current_user.following? @church
+                  = render 'users/unfollow', :entity => @church
+                - else
+                  = render 'users/follow', :entity => @church
+              - else
+                = link_to 'Follow', '/dashboard', :class => 'btn btn-success'
+              .btn-group
+                = link_to 'Edit', edit_church_path(@church), :class => 'btn'
+                = link_to 'Delete', @church, :confirm => 'Are you sure?', :method => :delete, :class => 'btn'
+            .span4
+              %h3 Speakers
+              %ul.thumbnails
+                - @church.speakers.each do |speaker|
+                  %li
+                    .thumbnail.span2
+                      = link_to speaker do
+                        = image_tag speaker.photo_url(:profile)
+                        %h4= speaker.name
+          .row
+            .span8
+              %h2 Recent Sermons
+              = render @sermons
+              = paginate @sermons
+        .span4
+          %h3 Location
+          != @church.address_html
+          - if @church.latitude
+            #church-map{:style => "width:100%; height:300px"}
+            :javascript
+              jQuery(document).ready(function($){
+                var map_options = {
+                  center: new google.maps.LatLng(#{@church.latitude}, #{@church.longitude}),
+                  zoom: 8,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("church-map"), map_options);
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: new google.maps.LatLng(#{@church.latitude}, #{@church.longitude}),
+                  title: "#{@church.name}"
+                });
+                /*var info = new google.maps.InfoWindow({
+                  content: "#{@church.name}"
+                });
+                info.open(map, marker);*/
+              });
+
+
+
+

@@ -1,0 +1,40 @@
+- page_title 'Games'
+
+= link_to 'New Game', new_game_path, :class => 'pull-right btn btn-primary'
+.page-header
+  %h1 Popular Games
+
+#games
+  %ul.thumbnails.game-index
+    = render(@games)
+
+
+
+:javascript
+  var page = 1,
+        loading = false;
+        window.end = false;
+
+    function nearBottomOfPage() {
+      return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
+    }
+
+    $(window).scroll(function(){
+      if (loading || window.end) {
+        return;
+      }
+
+      if(nearBottomOfPage()) {
+        loading=true;
+        page++;
+        $.ajax({
+          url: '/games?page=' + page,
+          type: 'get',
+          dataType: 'script',
+          success: function() {
+            //$(window).sausage('draw');
+            loading=false;
+          }
+        });
+      }
+    });

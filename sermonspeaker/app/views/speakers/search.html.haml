@@ -1,0 +1,35 @@
+- page_title "#{@query} - Search Results in Speakers"
+
+- content_for :page_header do
+  .row
+    .span10
+      %h1
+        Search Results for #{@query}
+        %small in all the speakers
+    .span2
+      %p
+        - if can? :create, Speaker
+          = link_to 'New', new_speaker_path, :class => 'btn'
+
+
+
+= form_tag speaker_search_path, :method => :get do |f|
+  %h4 Search by Speaker Name
+  .control-group
+    .controls
+      = text_field_tag :n, params[:n], :placeholder => 'John Doe', :class => 'span4'
+      = submit_tag 'Search', :class => 'btn primary'
+
+%table.table
+  %tr
+    %th
+    %th Name
+    %th Church
+
+  - @speakers.each do |speaker|
+    %tr
+      %td= speaker.photo_url ? link_to(image_tag(speaker.photo_url(:thumb)), speaker) : ''
+      %td= link_to speaker.name, speaker
+      %td= link_to speaker.church.name, speaker.church
+- paginate @speakers
+

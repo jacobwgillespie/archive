@@ -1,0 +1,119 @@
+- #js_ability 'signed_in', user_signed_in?
+- #js_ability 'create-sermon', can?(:create, Sermon)
+!!! 5
+%html{:lang => "en"}
+  %head
+    %title= page_title
+    = stylesheet_link_tag "application"
+    - if true || user_signed_in?
+      = javascript_include_tag "application"
+    - else
+      = javascript_include_tag "guest"
+    %script{:type => 'text/javascript', :src => '//maps.googleapis.com/maps/api/js?key=AIzaSyBlJ18HMMXcIW7CN9RB6PcApv7y3iWMZSw&sensor=true'}
+    = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
+    = yield(:head)
+  %body
+    #fb-root
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{:'data-toggle' => 'collapse', :'data-target' => '.nav-collapse'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a{:class => "brand", :href => "/"} Sermon Speaker
+          .nav-collapse
+            - # TODO: add JS active hilighting for menus
+            %ul.nav.pull-left
+              /%li= link_to 'Home', :root
+              %li= link_to 'Sermons', sermons_path
+              %li= link_to 'Churches', churches_path
+              %li= link_to 'Speakers', speakers_path
+            = form_tag '/sermons/search', :method => 'get', :class => 'pull-left navbar-search' do
+              = text_field_tag :q, params[:q], :placeholder => 'Search', :class => 'search-query'
+            %ul.nav.pull-right
+              %li
+                = link_to 'About', '/about'
+              %li.divider-vertical
+              %li{:'data-toggle' => 'ability', :'data-ability' => 'signed_in', :'data-ability-inverse' => 'true'}
+                = link_to 'Login / register', dashboard_path
+              %li{:'data-toggle' => 'modal', :'data-target' => '#new-sermon-modal', :'data-toggle' => 'ability', :'data-ability' => 'create-sermon'}
+                = link_to 'Add Sermon', new_sermon_path
+              %li.dropdown{:'data-toggle' => 'ability', :'data-ability' => 'signed_in'}
+                = link_to '#', :'data-toggle' => 'dropdown' do
+                  Your Account
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to 'Dashboard', dashboard_path
+                  %li
+                    = link_to 'Edit your information', edit_user_registration_path
+                  %li.divider
+                  %li
+                    = link_to 'Logout', destroy_user_session_path, :method => :delete
+    .container
+      = yield :page_header
+      %div{:'data-pjax-container' => 'data-pjax-container'}
+        = yield
+      #notice.alert.alert-success
+        %a{:class => "close", :'data-dismiss' => "alert", :href => "#"} &times;
+        %p
+      #error.alert.alert-error
+        %a{:class => "close", :'data-dismiss' => "alert", :href => "#"} &times;
+        %p
+      %div{:'data-toggle' => 'ability', :'data-ability' => 'create-sermon'}
+        = render 'sermons/modal'
+      %div{:'data-toggle' => 'ability', :'data-ability' => 'create-speaker'}
+        = render 'speakers/modal'
+      %footer.footer
+        %p.pull-right
+          %a{:href => '#'} Back to top
+        %p= Time.now
+        %p!= "Website Copyright &copy; #{Date.today.year} Sermon Speaker"
+        %p
+          All Rights Reserved
+          %a{:href => "http://jacobwg.com", :target => :blank} Jacob Gillespie
+        %p
+          All Scripture quotations, unless otherwise indicated,
+          are taken from The Holy Bible, English Standard Version.
+          %br
+          Copyright &copy; 2001 by Crossway Bibles, a publishing
+          ministry of Good News Publishers. Used by permission.
+          All rights reserved.
+          - # TODO: fix the above styling
+    :javascript
+      jQuery(document).ready(function($){
+        (function(d, id) {
+          if (d.getElementById(id)) return;
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.id = id;
+          po.src = 'https://apis.google.com/js/plusone.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })(document, 'google-plusone');
+        (function(d, id) {
+          if (d.getElementById(id)) return;
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.id = id;
+          po.src = 'https://platform.twitter.com/widgets.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })(document, 'twitter-wjs');
+        (function(d, id) {
+          if (d.getElementById(id)) return;
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.id = id;
+          po.src = 'https://connect.facebook.net/en_US/all.js#xfbml=1&appId=120303798014555';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })(document, 'facebook-jssdk');
+      });
+
+    :javascript
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4f3c27c2613f5d5618000028');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();

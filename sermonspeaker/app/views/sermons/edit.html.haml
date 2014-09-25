@@ -1,0 +1,8 @@
+- page_title "Edit #{@sermon.title}"
+- content_for :page_header do
+  %h1
+    Edit Sermon #{@sermon.title}
+    %small update the info
+
+
+= render 'form'

@@ -1,0 +1,47 @@
+= form_for @speaker, :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  -if @speaker.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@speaker.errors.count, "error")} prohibited this speaker from being saved:"
+      %ul
+        - @speaker.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset
+    .control-group
+      = f.label :first_name
+      .controls
+        = f.text_field :first_name
+    .control-group
+      = f.label :last_name
+      .controls
+        = f.text_field :last_name
+    .control-group
+      = f.label :title
+      .controls
+        = f.text_field :title
+    .control-group
+      = f.label :bio
+      .controls
+        = f.text_area :bio, rows: 6
+    .control-group
+      %label
+        Church
+      .controls
+        = collection_select(:speaker, :church_id, @authorized_churches, :id, :name, {:prompt => false})
+  %fieldset
+    %legend
+      Media Files
+    .control-group
+      %label
+        Speaker Photo
+      .controls
+        = f.file_field :photo
+        = f.hidden_field :photo_cache
+      .controls
+        %label.checkbox
+          = f.check_box :remove_photo
+          Delete the existing uploaded photo
+  .form-actions
+    %button{:type => "reset", :class => "btn"}
+      Cancel
+    = f.submit 'Save', { :class => 'btn primary' }

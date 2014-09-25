@@ -1,0 +1,33 @@
+- page_title @user.name
+- content_for :body_class, 'special-bg'
+
+.row
+  .span3
+    = image_tag @user.avatar_url
+  .span9
+    .pull-right.hide-unless-admin{:class => "hide-unless-#{@user.id}"}
+      = link_to 'Edit Profile', edit_user_path(@user), :class => 'btn btn-inverse'
+    .game-show-header
+      %h1
+        = @user.name
+        %small Member Since #{@user.created_at.strftime('%B %e, %Y')}
+      %dl.game-card
+        %dt
+          %i.icon-user
+        %dd
+          Favorited #{@user.list_link('favorite')}, Played #{@user.list_link('played')}, Wanted #{@user.list_link('wanted')}
+        - unless @user.bio.strip.empty?
+          %dt
+            %i.icon-book
+          %dd= simple_format @user.bio
+    %dl.game-card
+      - relations = @user.listed_games_relations('favorite')
+      - unless relations.empty?
+        %dt
+          %i.icon-heart
+        %dd
+          %ul.thumbnails{:id => "sortable-for-#{@user.id}"}
+            - relations.rank(:list_order).each do |relation|
+              %li.span1{:id => relation.id}= game_description_popover(relation.game)
+
+    = @user.recent_reviews

@@ -1,0 +1,32 @@
+= form_for @sermon, :html => {:multipart => true} do |f|
+  -if @sermon.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@sermon.errors.count, "error")} prohibited this sermon from being saved:"
+      %ul
+        - @sermon.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset
+    %legend
+      General Information
+    .control-group
+      = f.label :title
+      .controls
+        = f.text_field :title
+    .control-group
+      %label
+        Speaker
+      .controls
+        = collection_select(:sermon, :speaker_id, @authorized_speakers, :id, :church_name, {:prompt => false})
+    .control-group
+      = f.label :published_at
+      .controls
+        = f.datepicker :published_at, :changeMonth => true, :changeYear => true, :dateFormat => 'M d, yy'
+    .control-group
+      = f.label :synopsis
+      .controls
+        = f.text_area :synopsis, {:rows => 6}
+  .form-actions
+    %button{:type => "reset", :class => "btn"}
+      Cancel
+    = f.submit 'Save', { :class => 'btn primary' }

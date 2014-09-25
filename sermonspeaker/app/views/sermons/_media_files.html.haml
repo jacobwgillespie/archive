@@ -1,0 +1,28 @@
+- # TODO: handle still being processed files and caching
+%table.table.table-bordered.files
+  %thead
+    %tr
+      %th File
+      %th Type
+  %tbody
+    - sermon.media_files.each do |media_file|
+      %tr
+        %td
+          %h3
+            - if can? :update, media_file
+              %span{:'data-placement' => "above", :rel => 'twipsy', :title => 'Click to Change Name'}
+                = best_in_place media_file, :name
+            - else
+              = media_file.name
+            %small
+              %span.label.success= link_to 'Download', media_file.file_url, :'data-placement' => "above", :rel => 'twipsy', :title => 'Click to Download'
+              - if media_file.is? :audio
+                or listen below
+          - if media_file.is? :audio
+            .player
+              %audio{:controls => "control", :preload => "none", :src => media_file.file_url, :type => "audio/mp3"}
+          %p
+            != "File size &mdash; #{number_to_human_size media_file.file_size}"
+            - if can? :destroy, media_file
+              = link_to 'Delete', media_file, :confirm => 'Are you sure?', :method => :delete, :class => 'label important'
+        %td= image_tag media_file_type_image(media_file)

@@ -1,0 +1,95 @@
+- page_title @sermon.title
+
+- #js_ability :paragraph, false
+- #js_ability 'upload', can?(:update, @sermon)
+
+- content_for :page_header do
+  = cache ['v1', 'header', @sermon] do
+    .row
+      .span2
+        = image_tag(@sermon.speaker.photo_url(:profile), :class => 'profile') if @sermon.speaker.photo_url
+      .span7
+        %h1
+          = @sermon.title
+          %small= @sermon.published_at.strftime '%B %-d, %Y'
+        %p by #{link_to @sermon.speaker.name, @sermon.speaker} at #{link_to @sermon.church.name, @sermon.church}
+        != @sermon.synopsis_processed
+        - if can? :edit, @sermon
+          %p
+            = link_to 'Edit', edit_sermon_path(@sermon), :class => 'label notice'
+            - if can? :destroy, @sermon
+              = link_to 'Delete', @sermon, :confirm => 'Are you sure?', :method => :delete, :class => 'label important'
+      .span3
+        .social.clearfix
+          %div
+            %a{:href => "https://twitter.com/share", :class => "twitter-share-button", :'data-url' => "https://dev.twitter.com/pages/tweet_button", :'data-via' => "jacobwg", :'data-lang' => "en", :'data-related' => "anywhereTheJavascriptAPI", :'data-count' => "vertical"} Tweet
+          %div{:class => "fb-like", :'data-href' => "http://facebook.com", :'data-send' => "false", :'data-layout' => "box_count", :'data-width' => "55", :'data-show-faces' => "false"}
+          %div{:class => "g-plusone", :'data-size' => "tall", :'data-href' => "http://google.com"}
+
+%p I'm not cached...
+%p{:'data-toggle' => 'ability', :'data-ability' => 'paragraph'} I display with the paragraph permission
+
+= cache ['v1', 'body', @sermon] do
+  .row
+    .span5
+      %h3 Media Files
+      #media-files-list
+        %table.table.table-bordered.files
+          %thead
+            %tr
+              %th File
+              %th Type
+          %tbody
+            = render @sermon.media_files
+      %h3 Comment on This Sermon
+      .fb-comments{:'data-href' => url_for(@sermon), :'data-num-posts' => "2", :'data-width' => "400"}
+      %h3 About #{@sermon.speaker.name}
+      %blockquote
+        = image_tag @sermon.speaker.photo_url(:thumb), :class => 'pull-right thumbnail'
+        != @sermon.speaker.bio_processed
+      %h3 About #{@sermon.church.name}
+      = image_tag @sermon.church.photo_url(:thumb), :class => 'pull-right thumbnail' if @sermon.church.photo
+      != @sermon.church.info_processed
+      %h3
+        More Sermons from
+        = link_to @sermon.church.name, @sermon.church
+      - others = @sermon.church.sermons.order('published_at DESC').limit(10).to_a
+      - others.delete(@sermon)
+      - if others.empty?
+        %p There are no more sermons from #{@sermon.church.name} - check back soon!
+      - else
+        %ul
+          - others.each do |sermon|
+            %li
+              = link_to sermon.title, sermon
+              by
+              = sermon.speaker.name
+              on
+              = sermon.published_at.strftime '%B %-d, %Y'
+      %h3
+        More Sermons from
+        = link_to @sermon.speaker.name, @sermon.speaker
+      - others = @sermon.speaker.sermons.order('published_at DESC').limit(10).to_a
+      - others.delete(@sermon)
+      - if others.empty?
+        %p There are no more sermons from #{@sermon.speaker.name} - check back soon!
+      - else
+        %ul
+          - others.each do |sermon|
+            %li
+              = link_to sermon.title, sermon
+              on
+              = sermon.published_at.strftime '%B %-d, %Y'
+
+    .span5
+      %div{:'data-toggle' => 'ability', :'data-ability' => 'upload'}
+        = render partial: 'upload_form'
+      - unless @sermon.verse_mentions.empty?
+        %h3 Relevant Scriptures
+        - @sermon.verse_mentions.each do |mention|
+          %blockquote
+            %p= mention.verse_text
+            %small #{mention.verse_reference} (ESV)
+
+
+

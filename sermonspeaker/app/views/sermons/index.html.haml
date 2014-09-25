@@ -1,0 +1,37 @@
+- page_title 'Sermons'
+
+%header.jumbotron.subhead
+  %h1 Recent Sermons
+  %p.lead Browse sermons by date, speaker, or church.  Add your own!
+
+  .subnav
+    %ul.nav.nav-pills
+      %li= link_to 'By Date', sermons_path
+      %li= link_to 'Search', sermons_path
+      %li= link_to 'Upload Sermon', new_sermon_path
+
+%section
+  .row
+    .span5
+      %h4 Search by Sermon Title
+      = form_tag({:controller => :sermons, :action => :search}, :method => :get) do |f|
+        .control-group
+          .controls
+            = text_field_tag :q, params[:q], :placeholder => 'Search by name...', :class => 'span4'
+            = submit_tag 'Search', :class => 'btn primary'
+    .span5
+      %h4 Search by Date
+      = form_tag({:controller => :sermons, :action => :search}, :method => :get, :class => 'form-inline') do |f|
+        = text_field_tag :date, params[:date], :placeholder => 'Start date...', :class => 'span2'
+        = text_field_tag :date_end, params[:date_end], :placeholder => '(optional) End date...', :class => 'span2'
+        = submit_tag 'Search', :class => 'btn primary'
+
+  = render @sermons
+  = paginate @sermons
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+- page_title "Churches Near #{params[:l]}"
+- content_for :page_header do
+  %h1
+    Churches Near #{params[:l]}
+    %small Churches in our directory
+
+= render 'search_form'
+
+%table.table
+  %tr
+    %th
+      Name
+    %th
+      Distance
+    %th
+      Location
+  - @churches.each do |church|
+    %tr
+      %td
+        = link_to church.name, church
+        - # js_ability, "update-church-#{church.id}", can?(:update, church)
+        = link_to 'Edit', edit_church_path(church), :class => 'label', :'data-toggle' => 'ability', :'data-ability' => "update-church-#{church.id}"
+      %td
+        = "%.2f miles" % church.distance_from(params[:l])
+      %td
+        = church.general_location
+= paginate @churches
+

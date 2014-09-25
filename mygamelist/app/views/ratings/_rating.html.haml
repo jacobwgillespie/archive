@@ -1,0 +1,25 @@
+.rating
+  %div
+    %strong= link_to truncate(rating.game.name), rating.game
+    %i.icon-user
+    = link_to truncate(rating.user.name), rating.user
+    %i.icon-calendar
+    #{rating.created_at.strftime('%B %e, %Y')}
+    .clearfix
+      %strong Quality
+      .pull-left= star_rating rating.value
+      %span.help-inline #{rating.value} out of 5
+    .clearfix
+      %strong Replayability
+      .pull-left= star_rating rating.value
+      %span.help-inline #{rating.value} out of 5
+  = simple_format rating.review
+  .pull-right{:class => "hide-unless-#{rating.user_id} hide-unless-admin"}
+    %p
+      %small
+        = link_to 'Edit', edit_user_rating_path(rating.user, rating)
+        \|
+        = link_to 'Delete', rating, :confirm => 'Are you sure?', :method => :delete
+  = render 'ratings/helpful', :rating => rating, :saved => false
+
+  %hr

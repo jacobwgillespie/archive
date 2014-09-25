@@ -1,0 +1,13 @@
+%span{:class => "helpful-#{rating.id}"}
+  %small #{rating.votes_for} of #{pluralize(rating.votes_for + rating.votes_against, 'user', 'users')} found this review helpful
+  %br
+  %small.hide-if-0
+    Is this review helpful?
+    = link_to 'Yes', rating_vote_path(rating, :vote_for => true), :method => :post, :remote => true
+    \|
+    = link_to 'No', rating_vote_path(rating, :vote_against => false), :method => :post, :remote => true
+    - if user_signed_in? and current_user.voted_on? rating
+      \|
+      = link_to raw('&times;'), rating_vote_path(rating, :reset_vote => true), :method => :post, :remote => true
+    - if saved
+      %strong (Saved!)

@@ -1,0 +1,40 @@
+- if @user.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@user.errors.count, "error")} prohibited this profile from being saved:"
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+
+= form_for @user, :html => {:class => 'form-horizontal'} do |f|
+  .row
+    .span8
+      %fieldset
+        %legend Basic Information
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'expand input-text'
+        .control-group
+          = f.label :bio, :class => 'control-label'
+          .controls
+            = f.text_area :bio_raw, :class => 'input-xlarge'
+        .form-actions
+          = f.submit 'Save Profile', :class => 'btn btn-primary'
+          = link_to 'Cancel', @user, :class => 'btn'
+    .span4
+      %fieldset
+        %legend Avatar
+        .control-group
+          = image_tag @user.avatar_url if @user.avatar
+        .control-group
+          %label.control-label Upload New Avatar
+          .controls
+            = f.file_field :avatar
+        .control-group
+          %label.control-label Avatar URL
+          .controls
+            = f.text_field :remote_avatar_url, :class => 'expand input-text'
+        = f.hidden_field :avatar_cache
+
+
+

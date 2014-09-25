@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  file: MyString
+  zencoder_output_id: MyString
+  processed: false
+  file: MyString
+  type: 
+  file_size: 1
+  content_type: MyString
+
+two:
+  name: MyString
+  description: MyString
+  file: MyString
+  zencoder_output_id: MyString
+  processed: false
+  file: MyString
+  type: 
+  file_size: 1
+  content_type: MyString

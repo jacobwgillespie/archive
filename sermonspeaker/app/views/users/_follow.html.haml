@@ -1,0 +1,5 @@
+= form_for current_user.followings.build(:entity => entity), :remote => true do |f|
+  = f.hidden_field :entity_id
+  = f.hidden_field :entity_type
+  = f.submit 'Follow', :class => 'btn btn-success'
+

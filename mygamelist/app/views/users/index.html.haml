@@ -1,0 +1,10 @@
+.foundation-header
+  %h1 Popular Users
+%ul.thumbnails
+  - @users.each do |user|
+    %li.thumbnail.span3
+      = link_to user do
+        = image_tag user.avatar_url if user.avatar
+        = user.name
+
+

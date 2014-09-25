@@ -1,0 +1,28 @@
+#changelog.modal.fade
+  .modal-header
+    %button.close{:'data-dismiss' => 'modal'} &times;
+    %h3 Changes to #{object.name}
+  .modal-body
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Date
+          %th User
+          %th Changes
+      %tbody
+        - if object.versions.empty?
+          %tr
+            %td{:colspan => 3}
+              %p No changes yet...
+        - object.versions.each do |version|
+          - (version.whodunnit) ? user = User.find(version.whodunnit) : nil
+          %tr
+            %td= version.created_at.to_s
+            %td= user ? link_to(user.name, user) : ''
+            %td
+              %dl
+              - if version.changeset
+                - version.changeset.each do |key, val|
+                  %dt= key
+                  %dd
+                    %pre!= Differ.diff_by_word(val.second.to_s, val.first.to_s)

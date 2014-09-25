@@ -1,0 +1,33 @@
+- page_title @speaker.name
+
+- content_for :page_header do
+  .row
+    .span2
+      = image_tag(@speaker.photo_url(:profile), :class => 'profile') if @speaker.photo_url
+    .span8
+      %h1
+        = @speaker.name
+        - if @speaker.title
+          %small #{@speaker.title} at #{link_to @speaker.church.name, @speaker.church}
+      != @speaker.bio_processed
+      - if user_signed_in?
+        .follow-form
+          - if current_user.following? @speaker
+            = render 'users/unfollow', :entity => @speaker
+          - else
+            = render 'users/follow', :entity => @speaker
+      - else
+        %small.label.notice
+          = link_to 'Follow', '/dashboard'
+    .span2
+      %p
+        = link_to 'Edit', edit_speaker_path(@speaker), :class => 'btn'
+      %p
+        = link_to 'Delete', @speaker, :confirm => 'Are you sure?', :method => :delete, :class => 'btn'
+
+
+%h2 Sermons by #{@speaker.name}
+- @speaker.sermons.each do |sermon|
+  .sermon{:'data-data-url' => "#{url_for sermon}/media_files"}
+    .row
+      = render sermon

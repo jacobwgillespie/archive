@@ -1,0 +1,21 @@
+- page_title 'Churches'
+
+%header.jumbotron.subhead
+  %h1 Churches
+  %p.lead Browse the selection of churches using Sermon Speaker
+
+%section
+  .row
+    .span7
+      %table.table.table-bordered
+        %tr
+          %th
+            Name
+          %th
+            Location
+        - @churches.each do |church|
+          = render church
+      = paginate @churches
+    .span5
+      = render 'search_form'
+

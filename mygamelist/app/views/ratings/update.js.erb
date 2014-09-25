@@ -1,0 +1,2 @@
+$('#ratings').html("<%= escape_javascript(render('games/ratings', :game => @rating.game)) %>");
+$('.ratingWellform').replaceWith("<%= escape_javascript(render('ratings/well_form', :game => @rating.game)) %>");

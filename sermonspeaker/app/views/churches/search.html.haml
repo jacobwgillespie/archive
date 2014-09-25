@@ -1,0 +1,25 @@
+- page_title "#{@query} - Search Results in Churches"
+- content_for :page_header do
+  %h1
+    Search Results for #{@query}
+    %small churches in our directory
+
+= render 'search_form'
+
+%table.table
+  %tr
+    %th
+      Name
+    %th
+      Location
+  - @churches.each do |church|
+    %tr
+      %td
+        = link_to church.name, church
+        - #js_ability, "update-church-#{church.id}", can?(:update, church)
+        = link_to 'Edit', edit_church_path(church), :class => 'label', :'data-toggle' => 'ability', :'data-ability' => "update-church-#{church.id}"
+      %td
+        = church.general_location
+- paginate @churches
+
+

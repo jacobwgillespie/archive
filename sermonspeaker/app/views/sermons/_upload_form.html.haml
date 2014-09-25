@@ -1,0 +1,38 @@
+%h3 Upload Media Files
+#uploader
+  %p Your browser does not seem to support file uploading - please update your browser to a more modern version (Internet Explorer 9+ or Chrome)
+
+
+- session_key_name = Rails.application.config.session_options[:key]
+
+:javascript
+  jQuery(document).ready(function($) {
+    $("#uploader").pluploadQueue({
+      runtimes: 'flash,html5,silverlight,html4',
+      url: '#{media_files_path}',
+      file_data_name: 'media_file[file]',
+      max_file_size: '20mb',
+      multiple_queues: true,
+      flash_swf_url: "/javascripts/plupload/plupload.flash.swf",
+      silverlight_xap_url: "/javascripts/plupload/plupload.silverlight.xap",
+      multipart: true,
+      multipart_params: {
+        '_http_accept': 'application/javascript',
+        '#{request_forgery_protection_token}' : '#{form_authenticity_token}',
+        '#{session_key_name}' : encodeURIComponent('#{u cookies[session_key_name]}'),
+        'media_file[sermon_id]' : '#{@sermon.id}'
+      },
+      filters: [
+        {title: "Audio Files", extensions: "#{Settings.allowed_upload_types.audio.join ','}"},
+        {title: "Documents", extensions: "#{Settings.allowed_upload_types.documents.join ','}"}
+      ],
+      init: {
+        FileUploaded: function(up, file, info) {
+          $('#media-files-list').load('#{media_files_partial_path(@sermon)}', function() {
+            $('audio').mediaelementplayer({audioWidth: 360});
+            $(".best_in_place").best_in_place();
+          });
+        }
+      }
+    });
+  });

@@ -1,0 +1,17 @@
+%h1 Listing followings
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @followings.each do |following|
+    %tr
+      %td= link_to 'Show', following
+      %td= link_to 'Edit', edit_following_path(following)
+      %td= link_to 'Destroy', following, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Following', new_following_path

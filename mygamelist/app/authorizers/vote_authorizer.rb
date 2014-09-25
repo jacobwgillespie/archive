@@ -1,0 +1,3 @@
+class VoteAuthorizer < ApplicationAuthorizer
+
+end

@@ -1,0 +1,22 @@
+= cache ['v1', sermon] do
+  .row.sermon{:'data-data-url' => "#{url_for sermon}/media_files"}
+    .span2
+      = link_to sermon do
+        = image_tag(sermon.speaker.photo_url(:profile), :width => '100') if sermon.speaker.photo_url
+        = #image_tag(@speaker.photo_url(:profile), :class => 'profile') if @speaker.photo_url
+    .span5
+      %h3
+        = link_to sermon.title, sermon
+        %small
+          != "By #{link_to sermon.speaker.name, sermon.speaker}, #{h sermon.speaker.title} at #{link_to sermon.church.name, sermon.church}"
+      %p
+        != sermon.synopsis_processed
+        - if can? :edit, sermon
+          = link_to 'Edit', edit_sermon_path(sermon), :class => 'label notice'
+        - if can? :destroy, sermon
+          = link_to 'Destroy', sermon, :confirm => 'Are you sure?', :method => :delete, :class => 'label important'
+    .span1
+      .date
+        .mon= sermon.published_at.strftime '%b'
+        .day= sermon.published_at.strftime '%-d'
+        .year= sermon.published_at.strftime '%Y'

@@ -1,0 +1,22 @@
+.rating-form
+  - if rating.new_record?
+    %h3 New review for #{rating.game.name}
+  - else
+    %h3 Edit review for #{rating.game.name}
+  = form_for rating do |f|
+    = f.hidden_field :value
+    = f.hidden_field :game_id
+    = f.hidden_field :user_id
+    %fieldset
+      .control-group
+        %label Star Rating
+        .controls
+          .star-input{:'data-target' => '#rating_value'}
+      .control-group
+        %label{:for => 'rating_review_raw'} Review (optional)
+        .controls
+          = f.text_area :review_raw, :rows => '5', :class => 'span4'
+      .form-actions
+        = f.submit :Submit, :class => 'btn btn-success'
+        = link_to 'Cancel', :back, :class => 'btn'
+

@@ -1,0 +1,39 @@
+#new-sermon-modal.modal.fade
+  = form_for Sermon.new, :controller => 'sermons', :action => 'new', :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+    .modal-header
+      %a.close{:href => '#', :'data-dismiss' => 'modal'} &times;
+      %h3 Upload New Sermon
+    .modal-body
+      .row
+        .span9
+          .control-group
+            = f.label :title
+            .controls
+              = f.text_field :title, :class => 'span6', :placeholder => 'Sermon title...'
+          .control-group
+            %label
+              Speaker
+            .controls
+              - @authorized_speakers ||= []
+              - if @authorized_speakers.empty?
+                You have not added any speakers to your church.
+                %br
+                %a{:href => new_speaker_path, :'data-controls-modal' => "new-speaker-modal", :'data-backdrop' => "true", :class => 'label success', :onclick => "$('#new-sermon-modal').modal('hide'); return false;"} Add a Speaker Now
+              - else
+                = collection_select(:sermon, :speaker_id, @authorized_speakers, :id, :church_name, {:prompt => false}, :class => 'span6')
+                %p.help-block
+                  %a{:href => new_speaker_path, :'data-toggle' => "modal", :'data-target' => "#new-speaker-modal", :onclick => "$('#new-sermon-modal').modal('hide'); return false;"} Add New Speaker
+          .control-group
+            %label Date
+            .controls
+              = f.datepicker :published_at, :changeMonth => true, :changeYear => true, :dateFormat => 'M d, yy', :class => 'span2'
+          .control-group
+            = f.label :synopsis
+            .controls
+              = f.text_area :synopsis, :id => 'sermon_synopsis_modal', :rows => 6, :class => 'span6', :maxlength => 280
+        .span3
+          %h4 Preview
+          %p In the future, there will be some help-text here as well as (perhaps) a live preview.
+    .modal-footer
+      = f.submit 'Next', { :class => 'btn primary' }
+      %a{ :href => '', :class => 'btn secondary', :onclick => "$('#new-sermon-modal').modal('hide'); return false" } Cancel

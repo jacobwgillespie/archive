@@ -1,0 +1,56 @@
+- page_title @game.name
+- content_for :body_class, 'special-bg'
+
+
+.row
+  .span3
+    = image_tag @game.poster_url, :class => 'poster' if @game.poster
+    %p= list_toggle_button @game, 'favorite', :add => 'Favorite', :remove => 'Favorite'
+    %p= list_toggle_button @game, 'played', :add => 'Played', :remove => 'Played'
+    %p= list_toggle_button @game, 'wanted', :add => 'Wanted', :remove => 'Wanted'
+    .hide-unless-editor.hide-unless-admin
+      .btn-group
+        = link_to 'Edit', edit_game_path(@game), :class => 'btn btn-inverse'
+        = link_to 'Delete', @game, :confirm => 'Are you sure you want to delete this game?', :method => :delete, :class => 'btn btn-danger'
+        = link_to 'History', '#changelog', :'data-toggle' => 'modal', :class => 'btn btn-inverse'
+  .span9
+    .game-show-header
+      .row
+        .span4
+          %h1
+            = @game.name
+            %small= @game.release_date.strftime('%b %e, %Y') if @game.release_date
+        .span5
+          .clearfix
+            .pull-left= star_rating @game.average_rating
+            %strong Quality
+            %span.help-inline #{"%.2f" % @game.average_rating} out of 5 (from #{pluralize(@game.ratings.size, 'vote', 'votes')})
+          .clearfix
+            .pull-left= star_rating @game.average_rating
+            %strong Replayability
+            %span.help-inline #{"%.2f" % @game.average_rating} out of 5 (from #{pluralize(@game.ratings.size, 'vote', 'votes')})
+      %dl.game-card
+        - unless @game.genres.empty?
+          %dt
+            %i.icon-list
+          %dd= @game.genre_links
+        - unless @game.publishers.empty?
+          %dt
+            %i.icon-group
+          %dd= @game.publisher_links
+        - unless @game.description.strip.empty?
+          %dt
+            %i.icon-book
+          %dd= simple_format @game.description
+
+
+    = render 'history/changelog', :object => @game
+    %h2
+      Reviews
+      %small.hide-if-0= link_to 'Submit a Review', '#', :class => 'btn btn-inverse review-toggle'
+    #post-review.well= render 'ratings/form', :rating => rating_ballot(@game)
+    = render @game.ratings.has_review unless @game.ratings.has_review.empty?
+
+
+
+

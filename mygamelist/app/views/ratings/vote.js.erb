@@ -1,0 +1,2 @@
+// vote.js.erb
+$('.helpful-<%= @rating.id %>').html("<%= escape_javascript(render('ratings/helpful', :rating => @rating, :saved => true)) %>");

@@ -1,0 +1,39 @@
+#new-speaker-modal.modal.fade
+  = form_for Speaker.new, :controller => 'speakers', :action => 'new', :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+    .modal-header
+      %a.close{:href => '#', :'data-dismiss' => 'modal'} &times;
+      %h3 Add New Speaker
+    .modal-body
+      .row
+        .span9
+          .control-group
+            = f.label :name
+            .controls
+              = f.text_field :first_name, :placeholder => 'John', :class => 'span2'
+              = f.text_field :last_name, :placeholder => 'Doe', :class => 'span2'
+          .control-group
+            = f.label :title
+            .controls
+              = f.text_field :title, :placeholder => 'Pastor', :class => 'span4'
+              %p.help-block e.g. Pastor, Elder, Teacher, etc.
+          .control-group
+            = f.label :bio
+            .controls
+              = f.text_area :bio, rows: 6, :class => 'span4'
+          .control-group
+            %label
+              Church
+            .controls
+              = collection_select(:speaker, :church_id, @authorized_churches, :id, :name, {:prompt => false}, :class => 'span4')
+          .control-group
+            %label
+              Upload Photo
+            .controls
+              = f.file_field :photo
+              = f.hidden_field :photo_cache
+        .span3
+          %h4 Preview
+          %p In the future, there will be some help-text here as well as (perhaps) a live preview.
+    .modal-footer
+      = f.submit 'Next', { :class => 'btn primary' }
+      %a{ :href => '', :class => 'btn secondary', :onclick => "$('#new-speaker-modal').modal('hide'); return false" } Cancel

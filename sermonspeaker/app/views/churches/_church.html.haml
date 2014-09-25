@@ -1,0 +1,7 @@
+= cache ['v1', 'list', church] do
+  %tr
+    %td
+      = link_to church.name, church
+      = link_to 'Edit', edit_church_path(church), :class => 'label label-info', :'data-toggle' => 'ability', :'data-ability' => "update-church-#{church.id}"
+    %td
+      = church.general_location

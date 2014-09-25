@@ -1,0 +1,92 @@
+!!! 5
+%html
+  %head
+    %title= page_title
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = yield :scripts
+    = csrf_meta_tags
+    :javascript
+      window.user_id = #{user_signed_in? ? current_user.id : 0};
+      window.user_role = "#{user_signed_in? ? current_user.role : ''}";
+
+  %body{:class => yield(:body_class)}
+    #spinner
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{:'data-toggle' => 'collapse', :'data-target' => '.nav-collapse'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'MyGameList.co', :root, :class => 'brand'
+          %ul.nav.pull-right
+            - if user_signed_in?
+              %li.dropdown#me-menu
+                %a.dropdown-toggle{:href => '#', :'data-toggle' => 'dropdown'}
+                  %div
+                    = image_tag current_user.avatar, :height => 19
+                    Me
+                    %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to my_profile_path do
+                      %i.icon-user
+                      My Profile
+                  %li
+                    = link_to edit_user_registration_path do
+                      %i.icon-cog
+                      Settings
+                  %li
+                    = link_to destroy_user_session_path, :method => :delete do
+                      %i.icon-signout
+                      Logout
+          .nav-collapse
+            %ul.nav
+              %li
+                = link_to :root do
+                  %i.icon-home
+                  Home
+              %li
+                = link_to games_path do
+                  %i.icon-th
+                  Games
+              %li
+                = link_to users_path do
+                  %i.icon-user
+                  People
+
+
+
+          .hide-unless-0
+            %ul.nav.pull-right
+              %li
+                = link_to new_user_session_path do
+                  %i.icon-signin
+                  Login
+              %li= link_to('Register', new_user_registration_path)
+    .container
+      - if false
+        %header
+          .subnav
+            %ul.nav.nav-pills
+              %li= link_to 'Home', :root
+              %li= link_to 'Home', :root
+              %li= link_to 'Home', :root
+              %li= link_to 'Home', :root
+              %li= link_to 'Home', :root
+      .row
+        .span12
+          - if flash[:error]
+            .alert.alert-error
+              %button.close{:'data-dismiss' => 'alert'} &times;
+              = flash[:error]
+          - if flash[:notice]
+            .alert.alert-success
+              %button.close{:'data-dismiss' => 'alert'} &times;
+              = flash[:notice]
+          = yield
+
+      %footer
+        .pull-right= link_to 'Back to Top', '#'
+        %p Website Copyright &copy; 2012 Jacob Gillespie

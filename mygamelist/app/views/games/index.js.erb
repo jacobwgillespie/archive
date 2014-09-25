@@ -1,0 +1,6 @@
+<% if @games.empty? %>
+window.end = true;
+$("#games").append("<div class=\"alert alert-info\">\n  <button class=\"close\" data-dismiss=\"alert\">&times;</button>\n  That's all for now!\n</div>");
+<% else %>
+$("#games ul").append("<%= escape_javascript(render(@games)) %>");
+<% end %>

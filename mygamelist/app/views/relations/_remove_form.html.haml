@@ -1,0 +1,7 @@
+- add_message ||= 'Add to List'
+- remove_message ||= 'Remove from List'
+
+- relation = current_user.relations.find_by_game_id_and_list(game_id, list)
+- relation.add_message = add_message
+- relation.remove_message = remove_message
+= link_to remove_message, relation_path(relation, :remove_message => remove_message, :add_message => add_message), :remote => true, :method => :delete, :class => "btn listadd-#{list}-#{game_id}"

@@ -1,0 +1,7 @@
+- page_title "Game Reviews from #{@user.name}"
+
+.page-header
+  %h1 Game Reviews from #{link_to @user.name, @user}
+
+= render @ratings unless @ratings.empty?
+= paginate @ratings

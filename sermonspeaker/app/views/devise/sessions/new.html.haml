@@ -1,0 +1,23 @@
+- content_for :page_header do
+  %h1
+    Login
+    %small Sign in to your Sermon Speaker account
+
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %fieldset
+    .clearfix
+      = f.label :email
+      .input
+        = f.email_field :email
+    .clearfix
+      = f.label :password
+      .input
+        = f.password_field :password
+    - if devise_mapping.rememberable?
+      .clearfix
+        .input
+          %label
+            = f.check_box :remember_me
+            %span Keep me signed in
+  = f.submit "Sign in", {:class => 'btn primary'}
+= render :partial => "devise/shared/links"

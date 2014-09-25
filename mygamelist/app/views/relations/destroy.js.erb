@@ -1,0 +1,2 @@
+// destroy.js.erb
+$('.<%= "listadd-#{@relation.list.name}-#{@relation.game.id}" %>').replaceWith("<%= escape_javascript(list_toggle_button(@relation.game, @relation.list.name, :add => @add_message, :remove => @remove_message)) %>");

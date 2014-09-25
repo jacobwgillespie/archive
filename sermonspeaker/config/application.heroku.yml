@@ -1,0 +1,27 @@
+defaults: &defaults
+  aws_key: <%= ENV['AWS_KEY'] %>
+  aws_secret: <%= ENV['AWS_SECRET'] %>
+  s3_bucket: <%= ENV['S3_BUCKET'] %>
+  zencoder_api_key: <%= ENV['ZENCODER_API_KEY'] %>
+  use_zencoder: <%= ENV['USE_ZENCODER'] %>
+  stripe_api_key: <%= ENV['STRIPE_API_KEY'] %>
+  airbrake_api_key: <%= ENV['AIRBRAKE_API_KEY'] %>
+  elasticsearch_server: <%= ENV['ELASTICSEARCH_SERVER'] %>
+  newrelic_rpm:
+    app_name: <%= ENV["NEW_RELIC_APP_NAME"] %>
+    license_key: <%= ENV["NEW_RELIC_LICENSE_KEY"] %>
+  allowed_upload_types:
+    documents: [pdf, doc, docx, rtf, md]
+    photos: [png, jpg, jpeg, tiff]
+    audio: [mp3, wav, wma]
+    video: [mov, avi, mp4, mkv, wmv, mpg]
+
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

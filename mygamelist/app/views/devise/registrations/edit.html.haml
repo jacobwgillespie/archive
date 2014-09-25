@@ -1,0 +1,31 @@
+.page-header
+  %h1 Edit My Account
+
+.row
+  .span4
+    %h2 Basic Details
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
+      = f.label :username
+      = f.text_field :username
+      = f.label :email
+      = f.email_field :email
+      = f.label :current_password
+      = f.password_field :current_password
+      %div= f.submit "Update"
+  .span4
+    %h2 Change Password
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
+      = f.label :password
+      = f.password_field :password, :autocomplete => "off"
+
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+      = f.label :current_password
+      = f.password_field :current_password
+      %div= f.submit "Update"
+  .span4
+    %h2 Cancel My Account
+    %p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
+

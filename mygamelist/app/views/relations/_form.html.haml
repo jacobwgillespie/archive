@@ -1,0 +1,19 @@
+= form_for @relation do |f|
+  -if @relation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@relation.errors.count, "error")} prohibited this relation from being saved:"
+      %ul
+        - @relation.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :game_id
+    = f.number_field :game_id
+  .field
+    = f.label :list
+    = f.text_field :list
+  .actions
+    = f.submit 'Save'

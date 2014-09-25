@@ -1,0 +1,7 @@
+- page_title "Editing #{@speaker.name}"
+- content_for :page_header do
+  %h1
+    Update Speaker Information
+    %small= @speaker.name
+
+= render 'form'

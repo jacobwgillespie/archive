@@ -1,0 +1,10 @@
+= star_rating game.average_rating
+
+
+%p
+  %strong Ratings:
+  = game.average_rating
+  \/ 5
+%p
+  %strong Your Rating:
+  = current_user_rating(game).value

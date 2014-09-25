@@ -1,0 +1,55 @@
+
+
+- if user_signed_in?
+  - page_title "Your Dashboard"
+- else
+  - page_title "Login or Register"
+
+- content_for :page_header do
+  .row
+    .span10
+      %h1
+        Dashboard
+        %small Manage your Sermon Speaker account
+    .span2
+      .dashboard
+        - if user_signed_in?
+          = link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'btn primary'
+
+
+- if user_signed_in?
+  .row
+    .span5
+      %h3 Your Information
+      %p Your personal information is as follows:
+      %address
+        %strong= @user.name
+        %br
+        = @user.email
+        %br
+        = link_to 'Edit your details', edit_user_registration_path
+    .span5
+      %h3 Your Church Information
+      - if @user.church
+        %p
+          You manage the church
+          %strong= link_to @user.church.name, @user.church
+        %ul
+          - @user.church.speakers.each do |speaker|
+            %li
+              = link_to speaker.name, speaker
+              - # TODO: do we need these?
+              - # js_ability, "edit-speaker-#{speaker.id}", can?(:edit, speaker)
+              - # js_ability, "destroy-speaker-#{speaker.id}", can?(:destroy, speaker)
+              = link_to 'Edit', edit_speaker_path(speaker), :class => 'label', :'data-toggle' => 'ability', :'data-ability' => "edit-speaker-#{speaker.id}"
+              = link_to 'Delete', @speaker, :confirm => "Are you sure you want to delete #{speaker.name} from Sermon Speaker?", :method => :delete, :class => 'label', :'data-toggle' => 'ability', :'data-ability' => "destroy-speaker-#{speaker.id}"
+      - else
+        %p
+          You're not currently managing any churches
+- else
+  = devise_error_messages!
+  .row
+    .span5
+      = render partial: 'login'
+    .span5
+      = render partial: 'register'

@@ -1,0 +1,235 @@
+- unless @church.funded?
+  - content_for :head do
+    %script{:type => 'text/javascript', :src => 'https://js.stripe.com/v1/'}
+
+= form_for @church, :html => {:multipart => true, :class => 'form-horizontal'} do |f|
+  -if @church.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@church.errors.count, "error")} prohibited this speaker from being saved:"
+      %ul
+        - @church.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset
+    .control-group
+      = f.label :name
+      .controls
+        = f.text_field :name
+    .control-group
+      = f.label :info
+      .controls
+        = f.text_area :info, :rows => 6, :class => 'span6'
+  - # TODO: fix error styles on forms
+  %fieldset
+    %legend
+      Location
+    .control-group
+      %label Address
+      .controls
+        = f.text_field :street, :placeholder => 'Street', :class => 'span6'
+    .control-group
+      .controls
+        = f.text_field :city, :placeholder => 'City', :class => 'span2'
+        ,&nbsp;&nbsp;
+        = f.text_field :state, :placeholder => 'State', :class => 'span1'
+        &nbsp;&nbsp;
+        = f.text_field :zip, :placeholder => 'Zip Code', :class => 'span3'
+    .control-group
+      %label &nbsp;
+      .controls
+        %label.checkbox
+          = f.check_box :currently_meeting
+          Currently Meeting?
+  %fieldset
+    %legend
+      Media Files
+    .control-group
+      %label
+        Church Photo (logo)
+      .controls
+        = f.file_field :photo
+        = f.hidden_field :photo_cache
+      .controls
+        - # TODO: show photo if exists
+        %label.checkbox
+          = f.check_box :remove_photo
+          %span Delete the existing uploaded photo
+    - if @church.user
+      .control-group
+        %label
+          Account Manager
+        .controls
+          %strong= @church.user.name
+          %span.help-block
+            Please email an admin at
+            %a{:href => 'mailto:hi@site.com'} hi@site.com
+            if you would like to transfer ownership of this church account
+      - if @church.funded?
+        .control-group
+          %label Payment
+          .controls
+            %strong This account is fully paid!
+            %strong= "Your #{@church.card_type} ending in #{@church.card_digits} will be charged $20/mo"
+            %span.help-block
+              Please email an admin at
+              %a{:href => 'mailto:hi@site.com'} hi@site.com
+              if you would like to cancel your church's account
+  - unless @church.funded?
+    %fieldset
+      %legend
+        Payment Information
+      .control-group
+        .payment-errors.error
+      .control-group
+        %label
+          Card Number
+        .controls.cc
+          .input-append
+            %input{:type => "text", :size => "20", :autocomplete => "off", :class => "card-number", :'data-type' => "generic"}
+            %span.add-on#cc-icon
+              %img{:src => '/assets/cc/generic.png'}
+    .control-group
+      %label
+        CVC
+      .controls
+        %input{:type => "text", :size => "4", :autocomplete => "off", :class => "card-cvc span1"}
+    .control-group
+      %label
+        Expiration Date (MM/YYYY)
+      .controls
+        %input{:type => "text", :size => "2", :autocomplete => "off", :class => "card-expiry-month span1"}
+        %input{:type => "text", :size => "4", :autocomplete => "off", :class => "card-expiry-year span2"}
+  .form-actions
+    = f.submit 'Save', { :class => 'btn primary submit-button' }
+- # TODO: fix this form code - only works on create, not edit
+- unless @church.funded?
+  :javascript
+    Stripe.setPublishableKey('pk_pe79H2m3DngHOQJXezu2XA080m1fZ');
+
+    function getCardType(number) {
+      var re = new RegExp("^4[0-9]{12}(?:[0-9]{3})?$");
+      if (number.match(re) != null)
+          return "visa";
+
+      re = new RegExp("^3[47][0-9]{13}$");
+      if (number.match(re) != null)
+          return "amex";
+
+      re = new RegExp("^5[1-5][0-9]{14}$");
+      if (number.match(re) != null)
+          return "mastercard";
+
+      re = new RegExp("^6(?:011|5[0-9]{2})[0-9]{12}$");
+      if (number.match(re) != null)
+          return "discover";
+
+      return "generic";
+    }
+
+    $(document).ready(function() {
+
+      $(".card-number").bind('keyup', function(e) {
+        var old_cardtype = $(this).data('type');
+        var new_cardtype = getCardType($(this).val());
+        if (old_cardtype != new_cardtype) {
+          $(this).data('type', new_cardtype);
+          $(this).parent().children('.add-on').html('<img src="/assets/cc/' + new_cardtype + '.png" alt="Image of ' + new_cardtype + ' credit card" />');
+        }
+      });
+
+      function addInputNames() {
+        // Not ideal, but jQuery's validate plugin requires fields to have names
+        // so we add them at the last possible minute, in case any javascript
+        // exceptions have caused other parts of the script to fail.
+        $(".card-number").attr("name", "card-number")
+        $(".card-cvc").attr("name", "card-cvc")
+        $(".card-expiry-year").attr("name", "card-expiry-year")
+      }
+      function removeInputNames() {
+        $(".card-number").removeAttr("name")
+        $(".card-cvc").removeAttr("name")
+        $(".card-expiry-year").removeAttr("name")
+      }
+
+      function submit(form) {
+        // remove the input field names for security
+        // we do this *before* anything else which might throw an exception
+        removeInputNames(); // THIS IS IMPORTANT!
+
+        // given a valid form, submit the payment details to stripe
+        $('.submit-button').attr("disabled", "disabled");
+
+        Stripe.createToken({
+          number: $('.card-number').val(),
+          cvc: $('.card-cvc').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+        }, function(status, response) {
+            if (response.error) {
+              // re-enable the submit button
+              $('.submit-button').removeAttr("disabled");
+
+              // show the error
+              $(".payment-errors").html(response.error.message);
+
+              // we add these names back in so we can revalidate properly
+              addInputNames();
+            } else {
+              // token contains id, last4, and card type
+              var token = response['id'];
+
+              // insert the stripe token
+              var input = $("<input type='hidden' name='church[pay_token]' value='" + token + "' />");
+              form.appendChild(input[0])
+
+              // and submit
+              form.submit();
+            }
+        });
+
+        return false;
+      }
+
+
+
+      // add custom rules for credit card validating
+                      jQuery.validator.addMethod("cardNumber", Stripe.validateCardNumber, "Please enter a valid credit card number.");
+                      jQuery.validator.addMethod("cardCVC", Stripe.validateCVC, "Please enter a valid security code.");
+                      jQuery.validator.addMethod("cardExpiry", function() {
+                          return Stripe.validateExpiry($(".card-expiry-month").val(),
+                                                       $(".card-expiry-year").val())
+                      }, "Please enter a valid expiration date.");
+
+                      // We use the jQuery validate plugin to validate required params on submit
+                      $("#new_church").validate({
+                          submitHandler: submit,
+                          errorClass:'error',
+                          validClass:'success',
+                          errorElement:'span',
+                          wrapper: 'span class="help-inline"',
+                          highlight: function (element, errorClass, validClass) {
+                            $(element).parents(".control-group").addClass(errorClass).removeClass(validClass);
+                            //$(element).parents(".control-group").find('span').addClass('help-inline');
+                          },
+                          unhighlight: function (element, errorClass, validClass) {
+                            $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+                          },
+                          rules: {
+                              "card-cvc" : {
+                                  cardCVC: true,
+                                  required: true
+                              },
+                              "card-number" : {
+                                  cardNumber: true,
+                                  required: true
+                              },
+                              "card-expiry-year" : "cardExpiry" // we don't validate month separately
+                          }
+                      });
+
+                      // adding the input field names is the last step, in case an earlier step errors
+                      addInputNames();
+
+
+    });
+

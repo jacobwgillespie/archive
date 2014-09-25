@@ -1,0 +1,286 @@
+
+.drag-drop #drag-drop-area {
+	border: 4px dashed #DDDDDD;
+	height: 200px;
+}
+
+.drag-drop .drag-drop-inside {
+	margin: 70px auto 0;
+	/*width: 250px;*/
+}
+
+.drag-drop-inside p {
+	color: #aaa;
+	font-size: 14px;
+	margin: 5px 0;
+	display: none;
+}
+
+.drag-drop .drag-drop-inside p {
+	text-align: center;
+}
+
+.drag-drop-inside p.drag-drop-info {
+	font-size: 20px;
+}
+
+.drag-drop .drag-drop-inside p,
+.drag-drop-inside p.drag-drop-buttons {
+	display: block;
+}
+
+/*
+#drag-drop-area:-moz-drag-over {
+	border-color: #83b4d8;
+}
+borger color while dragging a file over the uploader drop area */
+.drag-drop.drag-over #drag-drop-area {
+	border-color: #83b4d8;
+}
+
+#plupload-upload-ui {
+	position: relative;
+	width: 98%;
+}
+
+
+
+.media-item .describe {
+	border-collapse: collapse;
+	width: 100%;
+	border-top-style: solid;
+	border-top-width: 1px;
+	clear: both;
+	cursor: default;
+}
+
+.media-item.media-blank .describe {
+	border: 0;
+}
+
+.media-item .describe th {
+	vertical-align: top;
+	text-align: left;
+	padding: 5px 10px 10px;
+	width: 140px;
+}
+
+.media-item .describe .align th {
+	padding-top: 0;
+}
+
+.media-item .media-item-info tr {
+	background-color: transparent;
+}
+
+.media-item .describe td {
+	padding: 0 8px 8px 0;
+	vertical-align: top;
+}
+
+.media-item thead.media-item-info td {
+	padding: 4px 10px 0;
+}
+
+.media-item .media-item-info .A1B1 {
+	padding: 0 0 0 10px;
+}
+
+.media-item td.savesend {
+	padding-bottom: 15px;
+}
+
+.media-item .thumbnail {
+	max-height: 128px;
+	max-width: 128px;
+}
+
+#wpbody-content #async-upload-wrap a {
+	display: none;
+}
+
+.media-upload-form {
+	margin-top: 20px;
+}
+
+.media-upload-form td label {
+	margin-right: 6px;
+	margin-left: 2px;
+}
+
+.media-upload-form .align .field label {
+	display: inline;
+	padding: 0 0 0 23px;
+	margin: 0 1em 0 3px;
+	font-weight: bold;
+}
+
+.media-upload-form tr.image-size label {
+	margin: 0 0 0 5px;
+	font-weight: bold;
+}
+
+.media-upload-form th.label label {
+	font-weight: bold;
+	margin: 0.5em;
+	font-size: 13px;
+}
+
+.media-upload-form th.label label span {
+	padding: 0 5px;
+}
+
+abbr.required {
+	border: medium none;
+	text-decoration: none;
+}
+
+.media-item .describe input[type="text"],
+.media-item .describe textarea {
+	width: 460px;
+}
+
+.media-item .describe p.help {
+	margin: 0;
+	padding: 0 0 0 5px;
+}
+
+.describe-toggle-on,
+.describe-toggle-off {
+	display: block;
+	line-height: 36px;
+	float: right;
+	margin-right: 15px;
+}
+
+.media-item .describe-toggle-off,
+.media-item.open .describe-toggle-on,
+.media-item.open img.pinkynail {
+	display: none;
+}
+
+.media-item.open .describe-toggle-off {
+	display: block;
+}
+
+#media-items .media-item {
+	border-style: solid;
+	border-width: 1px;
+	min-height: 36px;
+	position: relative;
+	margin-top: -1px;
+	width: 100%;
+}
+
+#media-items {
+	width: 623px;
+}
+
+#media-items:empty {
+	border: 0 none;
+}
+
+.media-item .filename {
+	line-height: 36px;
+	overflow: hidden;
+	padding: 0 10px;
+}
+
+.media-item .error-div {
+	padding-left: 10px;
+}
+
+.media-item .pinkynail {
+	float: left;
+	margin: 2px 2px 0;
+	max-width: 40px;
+	max-height: 32px;
+}
+
+.media-item .startopen,
+.media-item .startclosed {
+	display: none;
+}
+
+.media-item .original {
+	position: relative;
+	height: 34px;
+}
+
+.media-item .progress {
+	float: right;
+    height: 22px;
+    margin: 6px 10px 0 0;
+    width: 200px;
+	line-height: 2em;
+	padding: 0;
+	overflow: hidden;
+	margin-bottom: 2px;
+	border: 1px solid #d1d1d1;
+	background: #fff;
+	background-image: linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 100%);
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+	box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+}
+
+.media-item .bar {
+	z-index: 9;
+	width: 0;
+	height: 100%;
+	margin-top: -24px;
+	background-color: #83B4D8;
+	background-image: linear-gradient(bottom, rgb(114,167,207) 0%, rgb(144,197,238) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(114,167,207) 0%, rgb(144,197,238) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(114,167,207) 0%, rgb(144,197,238) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(114,167,207) 0%, rgb(144,197,238) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(114,167,207) 0%, rgb(144,197,238) 100%);
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+	box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+.media-item .progress .percent {
+	z-index: 10;
+	position: relative;
+	width: 200px;
+	padding: 0 8px;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+	color: rgba(0,0,0,0.6);
+}
+
+.upload-php .fixed .column-parent {
+	width: 25%;
+}
+
+.js .html-uploader #plupload-upload-ui {
+	display: none;
+}
+
+.js .html-uploader #html-upload-ui {
+	display: block;
+}
+
+.media-upload-form .media-item.error {
+	margin: 0;
+	padding: 0;
+}
+
+.media-upload-form .media-item.error p,
+.media-item .error-div {
+	line-height: 16px;
+	font-size: 12px;
+	margin: 10px;
+	padding: 0;
+}
+
+.media-item .error-div a.dismiss {
+	float: right;
+	padding-left: 15px;
+}

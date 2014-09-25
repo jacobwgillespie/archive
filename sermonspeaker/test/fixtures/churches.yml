@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  info: MyText
+  info_processed: MyText
+  pay_token: MyString
+  customer_token: MyString
+  card_type: MyString
+  card_digits: MyString
+  subscription_status: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  latitude: 1.5
+  longitude: 1.5
+  currently_meeting: false
+  photo: MyString
+  status: MyString
+  key: MyString
+
+two:
+  name: MyString
+  info: MyText
+  info_processed: MyText
+  pay_token: MyString
+  customer_token: MyString
+  card_type: MyString
+  card_digits: MyString
+  subscription_status: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  latitude: 1.5
+  longitude: 1.5
+  currently_meeting: false
+  photo: MyString
+  status: MyString
+  key: MyString

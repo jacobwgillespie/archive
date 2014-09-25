@@ -1,0 +1,25 @@
+- # TODO: handle still being processed files and caching
+- #js_ability "update-media-file-#{media_file.id}", can?(:update, media_file)
+- #js_ability "update-media-file-#{media_file.id}-no", !can?(:update, media_file)
+- #js_ability "destroy-media-file-#{media_file.id}", can?(:destroy, media_file)
+
+= cache ['v1', media_file] do
+  %tr
+    %td
+      %h3
+        %span{:'data-placement' => "above", :rel => 'twipsy', :title => 'Click to Change Name', :'data-toggle' => 'ability', :'data-ability' => "update-sermon"}
+          = best_in_place media_file, :name
+        %span{:'data-toggle' => 'ability', :'data-ability' => "update-sermon", :'data-ability-inverse' => true}
+          = media_file.name
+        %small
+          %span.label.success= link_to 'Download', media_file.file_url, :'data-placement' => "above", :rel => 'twipsy', :title => 'Click to Download'
+          - if media_file.is? :audio
+            or listen below
+      - if media_file.is? :audio
+        .player
+          %audio{:controls => "control", :preload => "none", :src => media_file.file_url, :type => "audio/mp3"}
+      %p
+        From new file -
+        != "File size &mdash; #{number_to_human_size media_file.file_size}"
+        = link_to 'Delete', media_file, :confirm => 'Are you sure?', :method => :delete, :class => 'label important', :'data-toggle' => 'ability', :'data-ability' => "destroy-media-file-#{media_file.id}"
+    %td= image_tag media_file_type_image(media_file)

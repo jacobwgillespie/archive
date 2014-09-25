@@ -1,0 +1,6 @@
+- page_title "Games in List #{@list.name}"
+.page-header
+  %h1 Games in List #{@list.name}
+  %p= link_to @user.name, @user
+
+= render 'games/thumbnail_list', :games => @games
