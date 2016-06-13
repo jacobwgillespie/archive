@@ -1,0 +1,8 @@
+Description:
+    This will set up a Gunner Technology Rails Project
+
+Example:
+    rails generate project Thing
+
+    This will create:
+        a/lot/of/stuff

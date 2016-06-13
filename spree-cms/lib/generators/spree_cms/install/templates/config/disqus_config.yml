@@ -1,0 +1,18 @@
+development:
+  account: ""
+  api_key: ""
+  developer: ""
+
+test:
+  domain: test.host
+
+staging:
+  account: ""
+  api_key: ""
+  developer: ""
+
+production:
+  account: ""
+  api_key: ""
+  developer: ""
+
