@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+{{ partial "head.html" . }}
+
+<body>
+<div id="wrapper">
+  <header id="header" class="{{ block "headerClass" . }}default{{ end }}">
+    <a href="/" class="logo"><strong>av.community</strong> <span>all things media</span></a>
+    <nav>
+      <a href="/getting-started/">Getting Started</a>
+      <a href="/topics/">Topics</a>
+      <a href="/about/">About</a>
+    </nav>
+  </header>

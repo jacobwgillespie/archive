@@ -1,0 +1,9 @@
+{
+  "docs": {
+    "Introduction": ["what-is-metamorphosis", "installation", "philosophy"],
+    "API": ["mstream", "mlog", "task"]
+  },
+  "docs-other": {
+    "First Category": ["doc4", "doc5"]
+  }
+}

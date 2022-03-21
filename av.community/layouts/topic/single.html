@@ -1,0 +1,65 @@
+{{ partial "header.html" . }}
+<div id="main" class="alt">
+
+  <section id="one">
+    <div class="inner">
+      <header class="major">
+        <h1>
+        {{- if .Params.heading -}}
+            {{- .Params.heading -}}
+        {{- else -}}
+            {{- .Title -}}
+        {{- end -}}
+        </h1>
+      </header>
+      {{ .Content }}
+
+      {{- if ne .Params.menu.main.identifier nil -}}
+        {{ $children := (index .Menus "main").Children }}
+
+
+        {{- if eq .Params.flat true -}}
+          {{- range $children -}}
+          <h4><a href="{{ .URL }}" >{{ .Name }}</a></h4>
+          {{- end -}}
+        {{- else -}}
+
+          {{- range $children -}}
+            {{- if eq (.Children | len) 0 -}}
+              <h4><a href="{{ .URL }}" >{{ .Name }}</a></h4>
+            {{- end -}}
+          {{- end -}}
+
+          {{- $taggedPages := (index .Site.Taxonomies.tags .Params.menu.main.identifier).Pages -}}
+          {{- if gt (len $taggedPages) 0 -}}
+            <h3>Tagged Pages</h3>
+            {{- range $taggedPages -}}
+              <h4><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></h4>
+            {{- end -}}
+          {{- end -}}
+
+          {{- $.Scratch.Set "needsHR" false -}}
+          {{- range $children -}}
+            {{- if gt (.Children | len) 0 -}}
+              {{- $.Scratch.Set "needsHR" true -}}
+            {{- end -}}
+          {{- end -}}
+
+          {{- if $.Scratch.Get "needsHR" -}}
+            <hr />
+          {{- end -}}
+
+          {{- range $children -}}
+            {{- if gt (.Children | len) 0 -}}
+            <h4><a href="{{ .URL }}" >{{ .Name }}</a></h4>
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
+
+    </div>
+  </section>
+
+</div>
+{{ partial "footer.html" . }}

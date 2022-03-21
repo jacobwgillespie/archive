@@ -1,0 +1,18 @@
+{
+  "include": ["./src/**/*.ts"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es6", "esnext"],
+    "outDir": "dist/es",
+    "declaration": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "plugins": [{"name": "typescript-tslint-plugin", "alwaysShowRuleFailuresAsWarnings": false}]
+  }
+}

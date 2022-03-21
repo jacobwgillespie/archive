@@ -1,0 +1,3 @@
+variable "asdf" {
+  type = asdf
+}

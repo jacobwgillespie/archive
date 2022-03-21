@@ -1,0 +1,25 @@
+language: node_js
+node_js: "6"
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+before_install:
+  - sudo pip install -r requirements.txt
+  - GIMME_OUTPUT=$(gimme 1.7.5) && eval "$GIMME_OUTPUT"
+  - export GOPATH=$HOME/gopath
+  - export PATH=$HOME/gopath/bin:$PATH
+  - go get -v github.com/spf13/hugo
+
+env:
+  global:
+    # GH_TOKEN=xxxxxxxx
+    - secure: "Kn7/JMq2tQlMxEhOHbPmktZF3KcNDNhTh6Y/ExlqrNsXoMzA2iblLRz6MBc5nCNmjoO+C/VptMIC8gmdOW8Z0yB4Y+o1LbS4eSxHI0qhKhvFqgt0Dst5il+P9mnckPG7Zr+VD4RRE9kw2URB5XwunjemT4OOJPNCOJdWosJbOmQM3FbZP8lPg1I3AGfDeXOC/Xm3Zz1c0KdVzZ8Db58wfaQDDCr5qG0AYQ1nelI83lM+CGsddyBm4hHF7WdH+PU/HBzFzvS27dZ41VUVKOv7ec6Nvb8XOEndN7PkxJ/OPFdBmNcw1vJXYBsIT7XEDwQChEVU2qOGyJ6L+9l12VA0Y/Uu0ImvoJE5LZmSPu6ENR9BlnFora/lYX3b/Oi1qmYC8iV0Xlk/wCR3CCdTm2Cfg6lgO0X7ob3XF2z87+IyKDnRM6HG+htU1QRdW648KDbHUJnzIzgdUsExlERv0FBvtsnV5099ujnTw1nNftVfxYAVfYpJQ3nRjYrk/FyrsdmVJUKC/0qLhDDggf7OfbXmDzk1VTMMbDjaEmAr4pMHAgkbitKsoDXW5eI3ylV0/BfeOgcz/dg6Xjr1MLThNfyJEn9SI1n5lNcPhj3JRTzImP96Pttt7XdBSktTz4jnrRHazXmP/tRGN5bc8kbuO5f9Z1t+btkqMzYdllUrYr20B84="
+
+script:
+  - npm run build
+
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash scripts/deploy.sh

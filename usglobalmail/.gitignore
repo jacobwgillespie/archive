@@ -1,0 +1,7 @@
+dist
+node_modules
+*.log
+.rts2_cache*
+/*.js
+/*.d.ts
+/*.map

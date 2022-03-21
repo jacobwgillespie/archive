@@ -1,0 +1,45 @@
+{
+  "name": "usglobalmail",
+  "version": "0.1.1",
+  "description": "Unofficial client for US Global Mail mail forwarder",
+  "author": "Jacob Gillespie <jacobwgillespie@gmail.com>",
+  "homepage": "https://github.com/jacobwgillespie/usglobalmail",
+  "repository": "git://github.com/jacobwgillespie/usglobalmail.git",
+  "license": "MIT",
+  "source": "index.ts",
+  "main": "index.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "*.d.ts",
+    "*.js",
+    "*.map"
+  ],
+  "scripts": {
+    "build": "microbundle --target node --format es,cjs",
+    "watch": "yarn build --watch"
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "form-data": "^2.3.3",
+    "got": "^9.6.0",
+    "tough-cookie": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.11",
+    "@types/form-data": "^2.2.1",
+    "@types/got": "^9.4.4",
+    "@types/tough-cookie": "^2.3.5",
+    "microbundle": "^0.11.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.1"
+  }
+}

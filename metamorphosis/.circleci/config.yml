@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/metamorphosis
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - v1-dependencies-{{ checksum "package.json" }}-
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Type check code
+          command: yarn type-check
+
+      - run:
+          name: Lint code
+          command: yarn lint
+
+      - run:
+          name: Run tests
+          command: yarn test -w 2 --ci --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: reports
+
+      - run:
+          name: Run build
+          command: yarn build
+
+      - run:
+          name: Generate code coverage
+          command: yarn coverage -w 2
+
+      - store_test_results:
+          path: reports
+
+      - store_artifacts:
+          path: reports
+          destination: reports
+
+      - store_artifacts:
+          path: coverage
+          destination: coverage

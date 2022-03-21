@@ -1,0 +1,45 @@
+{
+  "name": "terraform-parse",
+  "version": "0.1.0",
+  "description": "Parse Terraform module, discovering modules and outputs",
+  "license": "MIT",
+  "author": "Jacob Gillespie <jacobwgillespie@gmail.com>",
+  "homepage": "https://github.com/jacobwgillespie/terraform-parse",
+  "repository": "git://github.com/jacobwgillespie/terraform-parse.git",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/jacobwgillespie"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "run-p -l 'build:*'",
+    "build:go": "env GOOS=js GOARCH=wasm go build -o dist/main.wasm ./src",
+    "build:ts": "tsc -b",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "test": "jest",
+    "prepack": "yarn clean && yarn build",
+    "watch": "run-p -l 'watch:*'",
+    "watch:go": "find {src,lib} | entr -n yarn build:go",
+    "watch:ts": "tsc -w --preserveWatchOutput"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.0",
+    "globby": "^11.0.0",
+    "node-fetch": "^2.6.0",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^12",
+    "@types/node-fetch": "^2.5.7",
+    "jest": "^25.5.3",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  }
+}

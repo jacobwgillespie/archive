@@ -1,0 +1,15 @@
+title = "av.community"
+baseurl = "/"
+languagecode = "en-us"
+disableHugoGeneratorInject = true
+
+pygmentscodefences = true
+pygmentsuseclasses = true
+
+staticdir = false
+
+[params]
+cachebuster = true
+
+[taxonomies]
+tag = "tags"

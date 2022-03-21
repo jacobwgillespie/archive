@@ -1,0 +1,8 @@
+*.log
+junit.xml
+
+.vscode/
+coverage/
+dist/
+node_modules/
+reports/

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly parse HCL module 1`] = `
+Object {
+  "outputs": Array [],
+  "variables": Array [
+    Object {
+      "description": "Description",
+      "name": "a",
+      "required": true,
+      "type": "dynamic",
+    },
+    Object {
+      "name": "b",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "name": "c",
+      "required": false,
+      "type": Array [
+        "list",
+        "string",
+      ],
+    },
+    Object {
+      "description": "Description",
+      "name": "d",
+      "required": true,
+      "type": Array [
+        "map",
+        Array [
+          "object",
+          Object {
+            "a": "string",
+            "b": "number",
+            "c": Array [
+              "set",
+              "string",
+            ],
+          },
+        ],
+      ],
+    },
+  ],
+}
+`;
+
+exports[`should error when parsing a broken HCL module 1`] = `[Error: module/main.tf:2,10-14: Invalid type specification; The keyword "asdf" is not a valid type specification.]`;

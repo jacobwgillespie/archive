@@ -1,0 +1,32 @@
+{{ partial "header.html" . }}
+<div id="main" class="alt">
+
+  <section id="one">
+    <div class="inner">
+      <header class="major">
+        <h1>
+        {{ if .Params.heading }}
+            {{ .Params.heading }}
+        {{ else }}
+            {{ .Title }}
+        {{ end }}
+        </h1>
+
+        <!-- <% if current_page.data.type %>
+        <% color = color_hash(current_page.data.type) %>
+        <span class="type" style="background-color: #<%= color %>; color: <%= contrasting_text_color(color) %>"><%= current_page.data.type %></span>
+        <% end %>
+        <h1><%= locals[:title] || current_page.data.title %></h1> -->
+      </header>
+      {{ .Content }}
+
+      <ul id="tags">
+  {{ range .Params.tags }}
+    <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+  {{ end }}
+</ul>
+    </div>
+  </section>
+
+</div>
+{{ partial "footer.html" . }}

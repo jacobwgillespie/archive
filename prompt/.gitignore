@@ -1,0 +1,4 @@
+*.log
+*.tgz
+dist
+node_modules
