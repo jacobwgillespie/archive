@@ -1,0 +1,18 @@
+{
+  "name": "language-hocon",
+  "version": "1.2.3",
+  "description": "HOCON language support in Atom",
+  "keywords": [
+    "language",
+    "grammar",
+    "hocon"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacobwgillespie/language-hocon"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
