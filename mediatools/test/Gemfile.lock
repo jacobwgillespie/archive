@@ -1,0 +1,22 @@
+GIT
+  remote: https://github.com/rkumar/rbcurse-core.git
+  revision: 0d91c52780f967bfebf9c83772fefa42963a94b8
+  specs:
+    rbcurse-core (0.0.3)
+      ffi-ncurses (>= 0.4.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ffi (1.0.11)
+    ffi-locale (1.0.1)
+      ffi (>= 1.0.9)
+    ffi-ncurses (0.4.0)
+      ffi (>= 1.0.9)
+      ffi-locale (>= 1.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rbcurse-core!

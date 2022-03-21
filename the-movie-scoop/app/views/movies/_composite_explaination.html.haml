@@ -1,0 +1,25 @@
+%p The Composite Score is an overall movie quality score (from 0 to 10) based on the following factors:
+
+%table.table
+  - if @movie.imdb_vote_average?
+    %tr
+      %th IMDb
+      %td= "#{@movie.imdb_vote_average} #{'star'.pluralize(@movie.imdb_vote_average)} / #{@movie.imdb_vote_count} #{'vote'.pluralize(@movie.imdb_vote_count)}"
+  - if @movie.tmdb_vote_average?
+    %tr
+      %th TMDb
+      %td= "#{@movie.tmdb_vote_average} #{'star'.pluralize(@movie.tmdb_vote_average)} / #{@movie.tmdb_vote_count} #{'vote'.pluralize(@movie.tmdb_vote_count)}"
+  - if @movie.rt_critic_score?
+    %tr
+      %th Rotten Tomatoes Critics
+      %td
+        = @movie.rt_critic_score
+        \/
+        = @movie.rt_critic_rating
+  - if @movie.rt_audience_score?
+    %tr
+      %th Rotten Tomatoes Audience
+      %td
+        = @movie.rt_audience_score
+        \/
+        = @movie.rt_audience_rating

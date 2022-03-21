@@ -1,0 +1,93 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %title thecinematic
+    = raw "<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag '//use.typekit.net/loo2pzd.js'
+    :javascript
+      try{Typekit.load({ async: true });}catch(e){}
+    = csrf_meta_tags
+  %body{'ng-app' => 'app'}
+    %nav.navbar.navbar-default.navbar-transparent-top.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to :root, class: 'navbar-brand' do
+            = icon('ticket')
+            thecinematic.co
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'Movies', :root
+            %li= link_to 'Lists', :root
+
+          = form_for :root, html: { class: 'navbar-form navbar-right', role: 'search' } do |f|
+            .form-group
+              = f.text_field :q, class: 'form-control', placeholder: 'Search...'
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li.dropdown
+                = link_to edit_user_registration_path, 'data-toggle' => 'dropdown', role: 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  = user_display_name
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to edit_user_registration_path do
+                      Edit Settings
+                  %li.divider{role: 'separator'}
+                  %li
+                    = link_to edit_user_registration_path do
+                      Your Profile
+                  %li
+                    = link_to edit_user_registration_path do
+                      Your Lists
+                  %li.divider{role: 'separator'}
+                  %li= link_to 'Log Out', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'Login', new_user_session_path, 'data-toggle' => 'modal', 'data-target' => '#login-modal', 'data-remote' => false
+              %li= link_to 'Sign Up', new_user_registration_path
+
+
+    = content_for :banner_html
+    .cover.hidden-xs{style: "background-image: url(#{content_for(:background_url)})"}
+    .cover.visible-xs-block{style: "background-image: url(#{content_for(:poster_url)})"}
+
+    .container= yield
+
+    %script{type: "text/javascript", async: true, defer: true, src: "//assets.pinterest.com/js/pinit.js"}
+
+    - unless user_signed_in?
+      #login-modal.modal.fade{tabindex: '-1', role: 'dialog', 'aria-labelledby' => 'login-modal-label'}
+        .modal-dialog.modal-sm{role: 'document'}
+          .modal-content
+            = form_tag session_path(:user) do
+              .modal-header
+                %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
+                  %span{'aria-hidden' => 'true'} &times;
+                %h4#login-modal-label.modal-title
+                  = icon('lock')
+                  Log In
+              .modal-body
+                .form-group
+                  %label{for: 'login-username'} Username / Email
+                  = text_field_tag 'user[login]', '', id: 'login-username', class: 'form-control'
+                .form-group
+                  %label{for: 'login-password'} Password
+                  = password_field_tag 'user[password]', '', id: 'login-password', class: 'form-control'
+                .checkbox
+                  %label
+                    = check_box_tag 'user[remember_me]'
+                    Remember Me
+                %hr
+                %p
+                  = link_to "Forgot your password?", new_password_path(:user)
+              .modal-footer
+                %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+                %button.btn.btn-primary{type: 'submit'} Log In

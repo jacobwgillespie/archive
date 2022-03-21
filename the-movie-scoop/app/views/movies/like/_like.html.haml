@@ -1,0 +1,6 @@
+- if current_user.likes?(movie)
+  %button#like-button.btn.btn-default.active{'data-toggle' => 'tooltip', title: 'Remove from your favorites', 'data-submit-form' => '#unlike-movie'}
+    = icon('heart')
+- else
+  %button#like-button.btn.btn-default{'data-toggle' => 'tooltip', title: 'Add to your favorites', 'data-submit-form' => '#like-movie'}
+    = icon('heart-o')

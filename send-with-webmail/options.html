@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Send from Webmail Options</title>
+		<script type='text/javascript' src='scripts/ender.min.js'></script>
+		<script type="text/javascript" src="scripts/app.js"></script>
+		<script type="text/javascript" src="scripts/ui.js"></script>
+		<script type="text/javascript" src="scripts/options.js"></script>
+		<link rel="stylesheet" media="all" href="css/style.css"/>
+	</head>
+
+	<body class="wrapper" lang="en">
+		<h1><img src="images/webmail-extension-128.png" alt="Extension Logo"/>Send with Webmail Options</h1>
+
+		<div id="messages"></div>
+
+		<form action="javascript:;" id="options">
+			<fieldset id="provider-fieldset">
+				<legend>Choose your webmail provider</legend>
+				<label><input type="radio" name="provider" class="provider" value="gmail">Gmail</label>
+				<label><input type="radio" name="provider" class="provider" value="yahoo">Yahoo!</label>
+				<label><input type="radio" name="provider" class="provider" value="sbc">SBC Global (uses Yahoo!)</label>
+				<label><input type="radio" name="provider" class="provider" value="att">AT&amp;T (uses Yahoo!)</label>
+				<label><input type="radio" name="provider" class="provider" value="live">Hotmail (Windows Live)</label>
+				<label><input type="radio" name="provider" class="provider" value="mail">Mail.com</label>
+				<label><input type="radio" name="provider" class="provider" value="opera">Opera</label>
+				<label><input type="radio" name="provider" class="provider" value="custom">Custom</label>
+				<p class="submit"><a href="http://jacobwg.com/send-with-webmail/#request" target="_blank">Have a suggestion for another provider?</a></p>
+			</fieldset>
+			<p><label for="link">Replacement Pattern:</label>
+			<input type="text" id="pattern" /></p>
+			<p class="small"><strong>You can leave this field as is unless you want to add a custom provider.</strong>  <code>mailto:</code> links will be replace with this link, and any placeholders will be replaced with their equivilents from the original <code>mailto:</code> link (see below for replacement tokens).</p>
+			<p><input type="submit" value="Save Options" class="button" /></p>
+		</form>
+
+		<article>
+			<p>You can use several placeholders in your webmail link:</p>
+			<ul>
+				<li><code>%T</code> - the to field</li>
+				<li><code>%S</code> - the subject field</li>
+				<li><code>%M</code> - the body field</li>
+				<li><code>%C</code> - the CC field</li>
+				<li><code>%B</code> - the BCC field</li>
+			</ul>
+			<p>The uppercase placeholders are URI escaped and their lowercase versions are not (e.g. <code>%T</code> resolves to <em>email%40domain.com</em> and <code>%t</code> resolves to <em>email@domain.com</em>).</p>
+
+			<p class="credits">Send with Webmail &copy; 2013 <a href="https://jacobwg.com">Jacob Gillespie</a> | <a href="http://jacobwg.com/send-with-webmail/">Get Help</a> | Like this plugin?  I'd love a <a href="https://www.gittip.com/jacobwg/">donation</a>.</p>
+	</body>
+
+</html>

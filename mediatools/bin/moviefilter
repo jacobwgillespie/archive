@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+# Does nothing at the moment but parse command line stuff
+
+require 'rubygems'
+require 'pp'
+require 'trollop'
+
+SUB_COMMANDS = %w(delete copy)
+global_opts = Trollop::options do
+  banner "Movie filtering utility"
+  opt :dry_run, "Don't actually do anything", :short => "-n"
+  stop_on SUB_COMMANDS
+end
+
+cmd = ARGV.shift # get the subcommand
+cmd_opts = case cmd
+  when "delete" # parse delete options
+    Trollop::options do
+      opt :force, "Force deletion"
+    end
+  when "copy"  # parse copy options
+    Trollop::options do
+      opt :double, "Copy twice for safety's sake"
+    end
+  else
+    Trollop::die "unknown subcommand #{cmd.inspect}"
+  end
+
+puts "Global options: #{global_opts.inspect}"
+puts "Subcommand: #{cmd.inspect}"
+puts "Subcommand options: #{cmd_opts.inspect}"
+puts "Remaining arguments: #{ARGV.inspect}"

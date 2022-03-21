@@ -1,0 +1,235 @@
+- content_for :background_url, "https://image.tmdb.org/t/p/original#{@movie.backdrop_url}"
+- content_for :poster_url, "https://image.tmdb.org/t/p/w780#{@movie.poster_url}"
+
+.row.movie-summary
+  .col-md-7.col-md-push-5.overview
+    .box{'ng-controller' => 'MovieController', 'ng-init' => "init(#{@movie.id});"}
+      #user-actions.action-buttons.pull-right{ 'ng-if' => 'movie.id' }
+        %span.ajax-indicator{:style => "display: none;"}= icon('spinner', class: 'fa-spin fa-fw')
+        .btn-group{:role => "group"}
+          %button.btn.btn-default.active{"data-toggle" => "tooltip", title: "Remove from seen", 'ng-if' => 'movie.seen', 'ng-click' => 'unseenMovie()'}= icon('eye')
+          %button.btn.btn-default{"data-toggle" => "tooltip", title: "Mark as seen", 'ng-if' => '!movie.seen', 'ng-click' => 'seenMovie()'}= icon('eye')
+          %button.btn.btn-default.active#like-button{"data-toggle" => "tooltip", title: "Remove from favorites", 'ng-if' => 'movie.likes', 'ng-click' => 'unlikeMovie()'}= icon('heart')
+          %button.btn.btn-default#like-button{"data-toggle" => "tooltip", title: "Mark as favorite", 'ng-if' => '!movie.likes', 'ng-click' => 'likeMovie()'}= icon('heart-o')
+          .btn-group{:role => "group"}
+            %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+              = icon('bars', class: 'fa-fw')
+              Add to List
+              %span.caret
+            %ul#your-lists.dropdown-menu
+              %li
+                %a.list{'ng-click' => 'unwatchlistMovie()', 'ng-if' => 'movie.in_watchlist'}
+                  = icon('check-circle-o', class: 'fa-fw')
+                  In Watchlist
+                %a.list{'ng-click' => 'watchlistMovie()', 'ng-if' => '!movie.in_watchlist'}
+                  = icon('clock-o', class: 'fa-fw')
+                  Watchlist
+              %li.divider{:role => "separator"}
+              %li.dropdown-header Your Lists
+              %li
+                %a.list{:href => "#", :onclick => "Movie.addToList(3)"}
+                  %i.fa.fa-circle-o.fa-fw
+                  Robot Movies
+              %li
+                %a.list{:href => "#", :onclick => "Movie.addToList(4)"}
+                  %i.fa.fa-circle-o.fa-fw
+                  Superhero Movies
+              %li.divider{:role => "separator"}
+              %li
+                %a{"data-remote" => "false", "data-target" => "#new-list-modal", "data-toggle" => "modal", :href => "#"}
+                  %i.fa.fa-plus.fa-fw
+                  New List
+
+      %h1.title
+        = @movie.title
+        %small= @movie.theater_release_date.year
+
+      %p
+        %span.badge= @movie.certification
+        &mdash;
+        = ISO_639.find_by_code(@movie.original_language)[3]
+
+      %hr
+
+      .clearfix
+        - if @movie.composite_score?
+          %a.label.composite-score-label.pull-right{class: score_class(@movie.composite_score), role: 'button', title: 'Composite Score', tabindex: 0, data: {toggle: 'popover', trigger: 'hover', html: 'true', content: render(partial: 'composite_explaination'), placement: 'left'}}= @movie.composite_score.round(1)
+        %p.star-ratings= stars_helper(@movie.composite_score)
+
+      %hr
+
+      %p.summary
+        - if @movie.tagline?
+          %strong= @movie.tagline
+          %br
+        = @movie.overview
+
+      - if @movie.casts.exists?
+        #cast-crew
+          %ul.nav.nav-tabs{role: 'tablist'}
+            %li.active{role: 'presentation'}
+              %a{href: '#cast', role: 'tab', 'data-toggle' => 'tab', 'aria-controls' => 'cast'} Cast
+            %li{role: 'presentation'}
+              %a{href: '#crew', role: 'tab', 'data-toggle' => 'tab', 'aria-controls' => 'crew'} Crew
+          .tab-content
+            #cast.tab-pane.active
+              %p
+              %p
+                - casts = @movie.casts
+                - visible = casts[0...10]
+                - more = casts[10..-1]
+                - visible.each do |cast|
+                  = link_to cast.person.name, person_path(cast.person_id), class: 'btn btn-default btn-person', data: {toggle: 'popover', trigger: 'hover', html: 'true', content: render(partial: 'cast_popup', locals: {cast: cast}), placement: 'auto'}
+                - if more && more.size > 0
+                  %button.btn.btn-default.btn-person{data: {toggle: 'collapse'}, href: '#more-cast', aria: {expanded: 'false', controls: 'more-cast'}} More&hellip;
+                  #more-cast.collapse
+                    - more.each do |cast|
+                      = link_to cast.person.name, person_path(cast.person_id), class: 'btn btn-default btn-person', data: {toggle: 'popover', trigger: 'hover', html: 'true', content: render(partial: 'cast_popup', locals: {cast: cast}), placement: 'auto'}
+            #crew.tab-pane
+              - if @movie.crews.exists?
+                %p
+                %table.table.table-no-border
+                  - crews = @movie.crews.to_a.group_by(&:department)
+                  - crew_order = ['Directing', 'Writing', 'Production', 'Sound', 'Editing', :all]
+                  - crew_order.each do |department|
+                    - department = (department == :all) ? crews : { department => crews.delete(department) }
+                    - department.each do |department, crew|
+                      - if crew && crew.size > 0
+                        %tr
+                          %th= department
+                          %td
+                            - crew.each do |crew|
+                              = link_to crew.person.name, person_path(crew.person_id), class: 'btn btn-default btn-person', data: {toggle: 'popover', trigger: 'hover', html: 'true', content: render(partial: 'crew_popup', locals: {crew: crew}), placement: 'auto'}
+      %hr
+
+      %p.text-right
+        More info at
+        - if @movie.homepage_url?
+          = link_to 'Website', @movie.homepage_url, target: '_blank'
+          \/
+        - if @movie.imdb_id?
+          = link_to 'IMDb', "http://www.imdb.com/title/#{@movie.imdb_id}/", target: '_blank'
+          \/
+        = link_to 'TMDb', "https://www.themoviedb.org/movie/#{@movie.id}", target: '_blank'
+    - reviews = @movie.critic_reviews.where("quote <> ''").limit(6)
+    - if reviews.exists?
+      .box
+        %h3 Critic Reviews
+        - reviews.in_groups_of(3, false).each do |review_group|
+          .row
+            - review_group.each do |critic_review|
+              .col-xs-4
+                %p
+                  %small
+                    = image_tag "#{critic_review.freshness}.png", height: 18, class: 'pull-left freshness'
+                    = link_to critic_review.critic, critic_review.url, target: '_blank'
+                    -  if critic_review.original_score
+                      &mdash;
+                      = critic_review.original_score
+                %p= critic_review.quote
+
+        - if @movie.rt_url?
+          = link_to 'Read more&hellip;'.html_safe, @movie.rt_url, class: 'btn btn-default pull-right', target: '_blank'
+    - if @movie.related_movies.exists?
+      .box
+        %h2 Related Movies
+        %hr
+        = render partial: 'carousel', locals: { id: 'similar-movies', movies: @movie.related_movies.where('poster_url IS NOT NULL').order(tmdb_popularity: :desc) }
+  .col-md-3.col-md-offset-2.col-md-pull-7.sidebar
+    .poster.hidden-xs.hidden-sm{style: "background-image: url(#{content_for(:poster_url)})"}
+    - if @movie.trailer? || @movie.availabilities.streaming.exists? || @movie.availabilities.purchase.exists? || @movie.availabilities.dvd.exists? || @movie.availabilities.purchase.exists?
+      .box.text-center
+        - if @movie.availabilities.streaming.exists? || @movie.availabilities.purchase.exists? || @movie.availabilities.dvd.exists? || @movie.availabilities.purchase.exists?
+          %p
+            .btn-group.btn-group-justified
+              - if @movie.availabilities.streaming.exists? || @movie.availabilities.purchase.exists?
+                = link_to '#watch', class: 'btn btn-success btn-md', 'data-toggle' => 'modal', 'data-target' => '#movie-watch-modal' do
+                  = icon('play', class: 'fa-fw')
+                  Watch Now
+              - if @movie.availabilities.dvd.exists? || @movie.availabilities.purchase.exists?
+                = link_to '#', class: 'btn btn-default btn-md', 'data-toggle' => 'modal', 'data-target' => '#movie-buy-modal' do
+                  = icon('usd', class: 'fa-fw')
+                  Purchase
+        - if @movie.trailer?
+          %p
+            %button.btn.btn-default.btn-block{'data-toggle' => 'modal', 'data-target' => '#movie-trailer-modal'}
+              = icon('film', class: 'fa-fw')
+              Trailer
+    .box
+      %h3 Details
+      %table.table
+        %tr
+          %td
+            %dl
+              %dt Release Date
+              %dd= @movie.theater_release_date.strftime('%B %d, %Y')
+              %dd= "#{@movie.dvd_release_date.strftime('%B %d, %Y')} (DVD)" if @movie.dvd_release_date
+              - if @movie.runtime?
+                %dt Runtime
+                %dd= RuntimeFormatter.format(@movie.runtime)
+          %td
+            %dl
+              - if @movie.budget?
+                %dt Budget
+                %dd= "$#{number_to_human @movie.budget}"
+              - if @movie.revenue?
+                %dt Revenue
+                %dd= "$#{number_to_human @movie.revenue}"
+      %h3 Sharing
+      %table.table
+        %tr
+          %td.text-left
+            = link_to "//www.pinterest.com/pin/create/button/?url=#{CGI.escape(movie_url(@movie))}&media=#{CGI.escape(content_for(:poster_url))}&description=#{CGI.escape("#{@movie.title} (#{@movie.theater_release_date.year})")}", 'data-pin-do' => 'buttonPin', 'data-pin-config' => 'beside', 'data-pin-color' => 'red', 'data-pin-height' => '28' do
+              = image_tag '//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png'
+          %td.text-right
+            = link_to 'Tweet', 'https://twitter.com/share', class: 'twitter-share-button', 'data-via' => 'tmscoop', 'data-size' => 'large'
+.row.movie-details
+  .col-md-5.col-md-offset-2.first
+    #watch
+    #buy
+
+#movie-watch-modal.modal.fade{tabindex: '-1', role: 'dialog', 'aria-labelledby' => 'movie-watch-label'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
+          %span{'aria-hidden' => 'true'} &times;
+        %h4#movie-watch-label.modal-title
+          Watch
+          =@movie.title
+      .modal-body
+        - if @movie.availabilities.streaming.exists? || @movie.availabilities.purchase.exists? || @movie.availabilities.rental.exists?
+          %table.table.table-hover
+            - @movie.availabilities.streaming.each do |availability|
+              = render partial: 'availability', locals: { availability: availability }
+            - @movie.availabilities.rental.each do |availability|
+              = render partial: 'availability', locals: { availability: availability }
+            - @movie.availabilities.purchase.each do |availability|
+              = render partial: 'availability', locals: { availability: availability }
+      .modal-footer
+        %button.btn.btn-primary{type: 'button', 'data-dismiss' => 'modal'} Close
+
+= render partial: 'new_list_modal', locals: { movie: @movie }
+
+#movie-buy-modal.modal.fade{tabindex: '-1', role: 'dialog', 'aria-labelledby' => 'movie-buy-label'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
+          %span{'aria-hidden' => 'true'} &times;
+        %h4#movie-buy-label.modal-title
+          Buy
+          =@movie.title
+      .modal-body
+        - if @movie.availabilities.dvd.exists?
+          %table.table.table-hover
+            - @movie.availabilities.dvd.each do |availability|
+              = render partial: 'availability', locals: { availability: availability }
+      .modal-footer
+        %button.btn.btn-primary{type: 'button', 'data-dismiss' => 'modal'} Close
+- if @movie.trailer?
+  #movie-trailer-modal.modal.fade{tabindex: '-1', role: 'dialog', 'aria-labelledby' => 'movie-trailer-label'}
+    .modal-dialog.modal-lg{role: 'document'}
+      .modal-content
+        .modal-body
+          %iframe{width: "867", height: "480", src: "https://www.youtube.com/embed/#{@movie.trailer.key}?rel=0", frameborder: "0", allowfullscreen: true}

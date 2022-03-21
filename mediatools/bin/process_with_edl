@@ -1,0 +1,189 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'pp'
+
+def seconds_to_timecode seconds
+  sprintf("%02d:%02d:%02.2f", seconds/3600, seconds/60 % 60, seconds % 60)
+end
+
+edl = ARGV[0]
+file = ARGV[1]
+
+first_segment = true
+last_segment = true
+
+length = `mplayer -vo null -ao null -frames 0 -identify #{file} 2>&1 | grep ID_LENGTH | cut -d= -f2`.strip.to_f
+
+actions = []
+
+text = File.open(edl, 'rb') { |f| f.read }
+text.split("\n").each { |line|
+  line.gsub(/([\d|.]*) ([\d|.]*) (\d)/) { |s|
+    first_segment = false if $1.to_f == 0
+    last_segment = false if $2.to_f == length
+    actions << [seconds_to_timecode($1.to_f), seconds_to_timecode($2.to_f), $3.to_i]
+  }      
+}
+
+split = ""
+
+actions.each do |action|
+  
+  split += "#{action[0]},#{action[1]},"
+  
+end
+
+puts "mkvmerge -o tmp.mkv --split \"timecodes:#{split[0...-1]}\" #{file}"
+
+current_part = 1
+
+Dir['tmp-*.mkv'].each do |part|
+  
+  mute = first_segment ? current_part % 2 == 0 : current_part % 2 != 0
+  
+  #puts "Part #{current_part} is named #{part} and mute is #{mute}"
+  
+  if mute
+    puts "mkvextract tracks #{part} 1:video 2:audio"
+    puts "ffmpeg -i audio -vol 0 -acodec ac3 -y audio.ac3"
+    puts "mv #{part} #{part}.old"
+    puts "mkvmerge -o #{part} video audio.ac3"
+    puts "rm #{part}.old audio audio.aac video"
+  else
+    puts "mkvextract tracks #{part} 1:video 2:audio"
+    puts "ffmpeg -i audio -vol 100 -acodec ac3 -y audio.ac3"
+    puts "mv #{part} #{part}.old"
+    puts "mkvmerge -o #{part} video audio.ac3"
+    puts "rm #{part}.old audio audio.aac video"
+  end
+  
+  current_part += 1
+  
+end
+
+join = Dir['tmp-*.mkv'][0]
+
+Dir['tmp-*.mkv'][1..-1].each do |part|
+  join += " +#{part}"
+end
+
+puts "mkvmerge -o out.mkv #{join}"
+
+Dir['tmp-*.mkv'].each do |part|
+  puts "rm #{part}"
+end
+
+=begin
+
+class EdlParser
+  
+  def initialize
+    @actions = nil
+  end
+  
+  def self.parse(filename)
+    actions = []
+    text = File.open(filename, 'rb') { |f| f.read }
+    text.split("\n").each { |line|
+      line.gsub(/([\d|.]*) ([\d|.]*) (\d)/) { |s|
+        actions << [$1.to_f, $2.to_f, $3.to_i]
+      }      
+    }
+    
+    actions
+  end
+
+end
+
+def get_section in_file, out_file, start_time, end_time, mute
+  raise "start = end" if start_time == end_time
+  
+  #length = end_time - start_time - 0.001
+  #codecs = mute ? "-vcodec copy -acodec ac3 -vol 0" : "-vcodec copy -acodec copy"
+  #puts "ffmpeg #{in_file} #{codecs} -ss #{start_time} -t #{length} -y #{out_file}"
+  
+  length = `mplayer -vo null -ao null -frames 0 -identify #{in_file} 2>&1 | grep ID_LENGTH | cut -d= -f2`.strip
+  #puts "Length is #{length}"
+  
+  end_time = length if (end_time == 'end')
+  
+  audio = mute ? "-af volume=-200 -oac lavc -lavcopts acodec=ac3" : "-oac copy"
+  audio_lavc = mute ? ":acodec=ac3" : ""
+  
+  video = "-ovc lavc -lavcopts vcodec=mpeg2video:vrc_buf_size=1835:vrc_maxrate=9800:vbitrate=5000:keyint=1:vstrict=0#{audio_lavc}:abitrate=192:autoaspect -ofps 30000/1001"
+  
+  puts "echo 0 #{start_time} 0 > tmp.edl"
+  puts "echo #{end_time} #{length} 0 >> tmp.edl"
+  puts "mencoder #{in_file} #{video} #{audio} -ss #{start_time} -endpos #{end_time} -o #{out_file}"
+end
+
+
+edl = ARGV[0]
+files = ARGV[1..-1]
+
+#puts "You want to apply #{edl} to #{files.join ', '}"
+
+file = ''
+
+files.each do |f|
+  file += "#{f} "
+end
+  
+  #puts "Applying edl to #{file}"
+  
+  audio_codec = 'lavc'
+  video_opts = '-ovc lavc -lavcopts vcodec=mpeg2video:vrc_buf_size=1835:vrc_maxrate=9800:vbitrate=5000:keyint=1:vstrict=0:acodec=ac3:abitrate=192:autoaspect -ofps 30000/1001'
+  #puts "mencoder #{file} -of mpeg -alang en -nocache -sid 1000 -oac #{audio_codec} #{video_opts} -o #{file}.new.avi"# -vf harddup
+
+  
+  actions = EdlParser.parse edl
+  
+  position = 0
+  tmp_name = 1
+  
+  actions.each do |action|
+    get_section "#{file}", "part.#{tmp_name}.mkv", position, action[0], false
+    tmp_name += 1
+    get_section "#{file}", "part.#{tmp_name}.mkv", action[0], action[1], true
+    tmp_name += 1
+    
+    #system "/usr/bin/env ffmpeg -i #{file} -vcodec copy -acodec copy -ss #{position} -t #{action[0] - position} -sameq -y #{file}.part.#{tmp_name}.avi"
+    #tmp_name += 1
+    #system "/usr/bin/env ffmpeg -i #{file} -vcodec copy -acodec ac3 -vol 0 -ss #{action[0]} -t #{action[1] - action[0]} -sameq -y #{file}.part.#{tmp_name}.avi"
+    #tmp_name += 1
+    position = action[1]
+  end
+
+  get_section "#{file}", "part.#{tmp_name}.mkv", position, 'end', false
+
+  #system "/usr/bin/env ffmpeg -i #{file} -vcodec copy -acodec copy -ss #{position} -sameq -y #{file}.part.#{tmp_name}.avi"  
+  
+  file_list = ''
+  
+  (1...tmp_name).to_a.each do |i|
+    file_list += " part.#{i}.avi"
+  end
+  
+  #system "cat #{file_list} > #{file}.new.avi"
+  #system "mencoder #{file}.new.avi -o #{file}.finalavi.avi -forceidx -ovc copy -oac copy"
+  
+  #system "/usr/bin/env mencoder \"#{file}\" -edl \"#{edl}\" -ovc copy -oac copy -o \"#{file}.new\""
+  
+
+#puts "Files processed!"
+
+
+=end
+
+
+
+
+
+
+
+
+
+
+
+

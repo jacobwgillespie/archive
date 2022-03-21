@@ -1,0 +1,77 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+ul.menu {
+  flex: 1;
+  list-style: none;
+  margin-top: 1em;
+  padding-left: 1.5em;
+  @include clearfix;
+
+  li {
+    display: inline-block;
+    margin-right: 1.5em;
+
+    .cart-count {
+      font-size: .8em;
+
+      &:before {
+        content: '(';
+      }
+
+      &:after {
+        content: ')';
+      }
+    }
+
+    a {
+      color: #000;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.5s ease;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}
+
+header {
+  display: flex;
+  margin-bottom: 4em;
+  flex-direction: column;
+  text-align: center;
+
+  .title {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2em;
+
+    a {
+      color: #000;
+    }
+
+    span {
+      display: block;
+      font-size: .8em;
+      color: #666;
+      text-transform: lowercase;
+      font-weight: 300;
+    }
+  }
+}
+
+@media (min-width: 415px) {
+  header {
+    flex-direction: row;
+    text-align: left;
+  }
+}

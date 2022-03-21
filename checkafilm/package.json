@@ -1,0 +1,28 @@
+{
+  "name": "checkafilm",
+  "description": "Movie information",
+  "version": "0.3.3",
+  "private": true,
+  "dependencies": {
+    "firebase": "~0.6.3",
+    "express": "3.3.8",
+    "jade": "*",
+    "underscore": "~1.5.2",
+    "moment": "~2.1.0",
+    "vidinfo": "~0.2.1",
+    "moviedb": "~0.1.0",
+    "nconf": "~0.6.7",
+    "jsdom": "~0.8.4"
+  },
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "subdomain": "checkafilm",
+  "domains": [
+    "checkafilm.com",
+    "www.checkafilm.com"
+  ]
+}

@@ -1,0 +1,21 @@
+#new-list-modal.modal.fade{tabindex: '-1', role: 'dialog', 'aria-labelledby' => 'new-list-modal-label'}
+  .modal-dialog.modal-sm{role: 'document'}
+    .modal-content
+      = form_for [current_user, List.new], remote: true do |f|
+        = hidden_field_tag :first_movie, movie.id
+        .modal-header
+          %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
+            %span{'aria-hidden' => 'true'} &times;
+          %h4#new-list-modal-label.modal-title
+            = icon('plus')
+            Add Movie to New List
+        .modal-body
+          .form-group
+            = f.label :title
+            = f.text_field :title, class: 'form-control'
+          .form-group
+            = f.label :body, 'Description'
+            = f.text_area :body, class: 'form-control', rows: '4'
+        .modal-footer
+          %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Cancel
+          %button.btn.btn-primary{type: 'submit'} Create and Add

@@ -1,0 +1,306 @@
+<% page_title @title.page_title %>
+
+<% if @title.fresh? %>
+  <header class="jumbotron subhead" id="titlehead">
+    <div class="container">
+      <h1>Loading Title...</h1>
+      <p class="lead">One moment while we load that movie...</p>
+    </div>
+  </header>
+<% end %>
+
+<% if @title.blocked? %>
+  <header class="jumbotron subhead" id="titlehead">
+    <div class="container">
+      <h1>Blocked Title</h1>
+      <p class="lead">This title is blocked on this website, sorry (usually for pornographic material)...</p>
+    </div>
+  </header>
+<% end %>
+
+<% if @title.missing? %>
+  <header class="jumbotron subhead" id="titlehead">
+    <div class="container">
+      <h1>Title Not Found</h1>
+      <p class="lead">Sorry, but we couldn't find that title...</p>
+    </div>
+  </header>
+<% end %>
+
+<% if @title.loaded? %>
+  <% content_for :header do %>
+    <link rel="canonical" href="http://checkafilm.com<%= title_path(@title) %>">
+    <% if @title.plot_summary? %><meta name="description" content="<%= @title.plot_summary %>"><% end %>
+    <meta property="og:title", content="<%= @title.page_title %>">
+    <meta property="og:type", content="movie">
+    <meta property="og:url", content="http://checkafilm.com<%= title_path(@title) %>">
+    <meta property="og:image", content="<%= @title.poster_url %>">
+    <meta property="og:site_name", content="Check a Film">
+    <meta property="fb:admins", content="100000505263000">
+  <% end %>
+  <header class="jumbotron masthead" id="titlehead">
+    <div class="container">
+      <h1><%= @title.name %><% if @title.release_date? %> <small><%= @title.release_date.year %></small><% end %></h1>
+      <p class="lead"><%= @title.plot_summary %></p>
+    </div>
+  </header>
+  <script type="text/javascript">
+    window.images = <%= @title.backdrops.map { |b| b.image_url }.to_json.html_safe %>;
+  </script>
+
+  <div class="bs-docs-social">
+    <div class="container">
+      <ul class="bs-docs-social-buttons">
+        <li>
+          <div class="g-plusone" data-annotation="inline" data-width="300" data-href="http://checkafilm.com<%= title_path(@title) %>"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://checkafilm.com<%= title_path(@title) %>" data-send="false" data-width="450" data-show-faces="true"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% if @title.loaded? %>
+  <div class="container">
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#generalInformation"><i class="icon-chevron-right"></i> General</a></li>
+          <li><a href="#rottenTomatoes"><i class="icon-chevron-right"></i> Rotten Tomatoes</a></li>
+          <li><a href="#plotInformation"><i class="icon-chevron-right"></i> Plot</a></li>
+          <li><a href="#links"><i class="icon-chevron-right"></i> External Links</a></li>
+          <% if @title.plugged_in_review? %>
+            <li><a href="#pluggedIn"><i class="icon-chevron-right"></i> Plugged In Review</a></li>
+          <% end %>
+          <% if @title.kids_in_mind_sex_number? %>
+            <li><a href="#kidsInMind"><i class="icon-chevron-right"></i> Kids in Mind</a></li>
+          <% end %>
+          <% if @title.trailers.size > 0 %>
+            <li><a href="#trailers"><i class="icon-chevron-right"></i> Trailers</a></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="span9">
+
+        <section id="generalInformation">
+          <div class="page-header">
+            <h1>General Information</h1>
+          </div>
+
+          <img class="hidden-phone pull-right" src="<%= @title.poster_url(:thumb) %>" alt="<%= @title.name %> Poster Image">
+
+          <dl class="dl-horizontal">
+            <% if @title.imdb_votes %>
+              <dt>IMDb Rating</dt>
+              <dd><%= @title.imdb_rating %> (from <%= pluralize(@title.imdb_votes, 'vote', 'votes') %>)</dd>
+            <% end %>
+            <% if @title.tmdb_votes %>
+              <dt>TMDb Rating</dt>
+              <dd><%= @title.tmdb_rating %> (from <%= pluralize(@title.tmdb_votes, 'vote', 'votes') %>)</dd>
+            <% end %>
+            <% unless @title.mpaa_rating.nil? or @title.mpaa_rating.empty? %>
+              <dt>MPAA Rating</dt>
+              <dd>
+                <span class="label label-rating<%= @title.mpaa_rating %>"><%= @title.mpaa_rating %></span>
+              </dd>
+            <% end %>
+            <% unless @title.release_date.nil? %>
+              <dt>Release Date</dt>
+              <dd><%= @title.release_date %></dd>
+            <% end %>
+            <% unless @title.release_date_dvd.nil? %>
+              <dt>Release (DVD)</dt>
+              <dd><%= @title.release_date_dvd %></dd>
+            <% end %>
+            <% if @title.runtime? %>
+              <dt>Runtime</dt>
+              <dd><%= runtime(@title) %></dd>
+            <% end %>
+          </dl>
+  ​
+        </section>
+
+        <section id="rottenTomatoes">
+          <div class="page-header">
+            <h1>Rotten Tomatoes</h1>
+          </div>
+
+          <div class="rotten-tomatoes">
+            <% critic_class = (@title.rotten_tomatoes_critics_rating ? @title.rotten_tomatoes_critics_rating.split(/ /).first.downcase : '') %>
+            <% audience_class = (@title.rotten_tomatoes_audience_rating ? @title.rotten_tomatoes_audience_rating.split(/ /).first.downcase : 'wts') %>
+            <div class="meter_box clearfix">
+              <div class="critics">
+                <div class="tomato_numbers">
+                  <div class="header">Critic Score</div>
+                  <span class="meter numeric <%= critic_class %>"><%= @title.rotten_tomatoes_critics_score.to_i %></span>
+                </div>
+              </div>
+              <div class="consensus">
+                <div class="tomatometer <%= critic_class %>">
+                  <span style="width: <%= @title.rotten_tomatoes_critics_score.to_i %>%;"</span>
+                </div>
+                <p class="critic_consensus"><%= @title.rotten_tomatoes_critics_consensus %></p>
+              </div>
+              <div class="audience">
+                <div class="header">Audience Score</div>
+                <span class="meter numeric <%= audience_class %>"><%= @title.rotten_tomatoes_audience_score.to_i %></span>
+                <% if audience_class == 'wts' %><div class="want-to-see">want to see</div><% end %>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="plotInformation">
+          <div class="page-header">
+            <h1>Plot</h1>
+          </div>
+
+          <p><%= @title.plot_details %></p>
+        </section>
+
+        <section id="links">
+          <div class="page-header">
+            <h1>External Links</h1>
+          </div>
+
+          <ul class="nav nav-tabs nav-stacked">
+            <% if @title.homepage? %>
+              <li><%= link_to '<i class="icon-external-link"></i> Homepage'.html_safe, @title.homepage, target: '_blank' %></li>
+            <% end %>
+            <% if @title.imdb_link? %>
+              <li><%= link_to '<i class="icon-external-link"></i> IMDb'.html_safe, @title.imdb_link, target: '_blank' %></li>
+            <% end %>
+            <% if @title.tmdb_link? %>
+              <li><%= link_to '<i class="icon-external-link"></i> TMDb'.html_safe, @title.tmdb_link, target: '_blank' %></li>
+            <% end %>
+            <% if @title.rotten_tomatoes_link? %>
+              <li><%= link_to '<i class="icon-external-link"></i> Rotten Tomatoes'.html_safe, @title.rotten_tomatoes_link, target: '_blank' %></li>
+            <% end %>
+            <% if @title.plugged_in_link? %>
+              <li><%= link_to '<i class="icon-external-link"></i> Plugged In'.html_safe, @title.plugged_in_link, target: '_blank' %></li>
+            <% end %>
+            <% if @title.kids_in_mind_link? %>
+              <li><%= link_to '<i class="icon-external-link"></i> Kids in Mind'.html_safe, @title.kids_in_mind_link, target: '_blank' %></li>
+            <% end %>
+          </ul>
+        </section>
+
+        <% if @title.plugged_in_review? %>
+          <section id="pluggedIn">
+            <div class="page-header">
+              <h1>Plugged In Review</h1>
+            </div>
+
+            <p><a href="<%= @title.plugged_in_link %>" target="_blank">View on PluggedIn.com <i class="icon-external-link"></i></a></p>
+
+            <% unless @title.plugged_in_review['introduction'].nil? %>
+            <%= @title.plugged_in_review['introduction'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['positive_elements'].nil? %>
+            <h3>Positive Elements</h3>
+            <%= @title.plugged_in_review['positive_elements'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['spiritual_content'].nil? %>
+            <h3>Spiritual Content</h3>
+            <%= @title.plugged_in_review['spiritual_content'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['sexual_content'].nil? %>
+            <h3>Sexual Content</h3>
+            <%= @title.plugged_in_review['sexual_content'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['violent_content'].nil? %>
+            <h3>Violent Content</h3>
+            <%= @title.plugged_in_review['violent_content'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['crude_language'].nil? %>
+            <h3>Crude Language</h3>
+            <%= @title.plugged_in_review['crude_language'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['drug_content'].nil? %>
+            <h3>Drug Content</h3>
+            <%= @title.plugged_in_review['drug_content'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['negative_elements'].nil? %>
+            <h3>Negative Elements</h3>
+            <%= @title.plugged_in_review['negative_elements'].html_safe %>
+            <% end %>
+
+            <% unless @title.plugged_in_review['conclusion'].nil? %>
+            <h3>Conclusion</h3>
+            <%= @title.plugged_in_review['conclusion'].html_safe %>
+            <% end %>
+          </section>
+        <% end %>
+
+        <% if @title.kids_in_mind_sex_number? %>
+          <section id="kidsInMind">
+            <div class="page-header">
+              <h1>Kids in Mind Rating</h1>
+            </div>
+            <div class="row">
+              <div class="span5">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th>Sexual Content</th>
+                      <td><%= @title.kids_in_mind_sex_number %></td>
+                    </tr>
+                      <th>Violence</th>
+                      <td><%= @title.kids_in_mind_violence_number %></td>
+                    <tr>
+                    </tr>
+                    <tr>
+                      <th>Profanity</th>
+                      <td><%= @title.kids_in_mind_language_number %></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p><a href="<%= @title.kids_in_mind_link %>" target="_blank">See More Detail on Kids-In-Mind.com <i class="icon-external-link"></i></a></p>
+              </div>
+              <div class="span4">
+                <p>Kids in Mind numbers range from 0 to 10, with 10 being the highest possible rating.  For example, a movie with a violence number of 10 would be more violent than a movie with a 5.</p>
+              </div>
+            </div>
+          </section>
+        <% end %>
+
+        <% "TODO: add counter cache" %>
+        <% if @title.trailers.size > 0 %>
+          <section id="trailers">
+            <div class="page-header">
+              <h1>Trailers</h1>
+            </div>
+            <div class="trailers">
+              <ul class="thumbnails">
+                <% @title.trailers.each do |trailer| %>
+                  <li class="span2">
+                    <%= link_to "http://www.youtube.com/watch?v=#{trailer.url}", class: 'thumbnail fancybox-media' do %>
+                      <img src="<%= trailer.thumbnail_url %>" alt="<%= trailer.name %>">
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </section>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+<% end %>

@@ -1,0 +1,103 @@
+'.source.mscript':
+    'Alias template':
+        'prefix': 'alias'
+        'body': """
+        *:/$1 $2= >>>
+            $3
+        <<<
+        """
+    'Event handler template':
+        'prefix': 'bind'
+        'body': """
+        bind($1, null, null, @e) {
+            $2
+        }
+        """
+    'For':
+        'prefix': 'for'
+        'body': """
+        for(@i = 0, @i < $1, @i++) {
+            $2
+        }
+        """
+    'Foreach (basic)':
+        'prefix': 'foreach'
+        'body': """
+        foreach($1 in $2) {
+            $3
+        }
+        """
+    'Foreach (key-value)':
+        'prefix': 'foreach-key-val'
+        'body': """
+        foreach($1: $2 in $3) {
+            $4
+        }
+        """
+    'Switch':
+        'prefix': 'switch'
+        'body': """
+        switch($1) {
+        case $2:
+            $3
+        default:
+            $4
+        }
+        """
+    'If':
+        'prefix': 'if'
+        'body': """
+        if($1) {
+            $2
+        }
+        """
+    'If else':
+        'prefix': 'if-else'
+        'body': """
+        if($1) {
+            $2
+        } else {
+            $3
+        }
+        """
+    'Try-catch':
+        'prefix': 'try-catch'
+        'body': """
+        try {
+            $1
+        } catch($2 @ex) {
+            $3
+        }
+        """
+    'Try-finally':
+        'prefix': 'try-catch-finally'
+        'body': """
+        try {
+            $1
+        } catch($2 @ex) {
+            $3
+        } finally {
+            $4
+        }
+        """
+    'Procedure':
+        'prefix': 'proc'
+        'body': """
+        proc _$1($2) {
+            $3
+        }
+        """
+    'Timeout':
+        'prefix': 'set_timeout'
+        'body': """
+        set_timeout($1, closure() {
+            $2
+        });
+        """
+    'Interval':
+        'prefix': 'set_interval'
+        'body': """
+        set_timeout($1, $2, closure() {
+            $3
+        });
+        """

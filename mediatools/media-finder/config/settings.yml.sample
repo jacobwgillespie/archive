@@ -1,0 +1,14 @@
+defaults: &defaults
+  tvdb_key: secret
+  tmdb_key: secret
+  trakt_key: secret
+  nzbmatrix_key: secret
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

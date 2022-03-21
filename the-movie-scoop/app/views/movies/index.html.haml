@@ -1,0 +1,30 @@
+- content_for :background_url, "https://image.tmdb.org/t/p/original#{@movie.backdrop_url}"
+- content_for :poster_url, "https://image.tmdb.org/t/p/w780#{@movie.poster_url}"
+- content_for :banner_html do
+  = link_to @movie, class: 'banner-title' do
+    %h4
+      = @movie.title
+      - if @movie.theater_release_date?
+        %small= @movie.theater_release_date.year
+      - if @movie.composite_score
+        %span.label{class: score_class(@movie.composite_score)}= @movie.composite_score.round(1)
+
+%br
+
+.row
+  .col-md-12
+    %h1 New in Theaters
+    .well
+      = render partial: 'carousel', locals: { id: 'new-theaters', movies: @new_theaters }
+
+.row
+  .col-md-12
+    %h1 New on DVD
+    .well
+      = render partial: 'carousel', locals: { id: 'new-dvd', movies: @new_dvd }
+
+.row
+  .col-md-12
+    %h1 Top Movies
+    .well
+      = render partial: 'carousel', locals: { id: 'top-movies', movies: @top }

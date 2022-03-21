@@ -1,0 +1,94 @@
+extends layout
+
+block content
+  div.row
+    div.large-3.columns
+      img(src="http://cf2.imgobject.com/t/p/w342" + poster_path)
+      dl
+        if typeof(production_companies) !== 'undefined'
+          if production_companies.length === 1
+            dt Production Company
+          else
+            dt Production Companies
+          each company in production_companies
+            dd= company.name
+        dt Status
+        dd= status
+        dt Release Date
+        dd= release_date.format('MMMM Do YYYY')
+        dt Runtime
+        dd #{runtime} minutes
+        dt Genres
+        dd= genre_list
+        dt TMDb Rating
+        dd #{vote_average} (from #{vote_count} votes)
+    div.large-9.columns
+      h1
+        a(href="/title/#{id}")
+          | #{title}
+          small  (#{release_date.year()})
+      h4.subheader= tagline
+      p= overview
+
+      h2 Trailers
+      ul.large-block-grid-2
+        each trailer in trailers.youtube
+          li
+            iframe(src="http://www.youtube.com/embed/#{trailer.source}", frameborder="0", allowfullscreen)
+
+      h2 Cast
+      ul.large-block-grid-5.movie-grid
+        each member in casts.cast
+          li
+            div
+              img(src=(member.profile_path ? "http://cf2.imgobject.com/t/p/w92" + member.profile_path : "/images/person.gif"))
+              p #{member.name} as #{member.character}
+      h2 Crew
+      ul.large-block-grid-5.movie-grid
+        each member in casts.crew
+          li
+            div
+              img(src=(member.profile_path ? "http://cf2.imgobject.com/t/p/w92" + member.profile_path : "/images/person.gif"))
+              p #{member.name} - #{member.job}
+
+      if typeof(pluggedin.review) !== 'undefined'
+        h2 Plugged In Review
+        | !{pluggedin.review.introduction}
+
+        if pluggedin.review.positive_elements
+          h3 Positive Elements
+          | !{pluggedin.review.positive_elements}
+
+        if pluggedin.review.spiritual_content
+          h3 Spiritual Content
+          | !{pluggedin.review.spiritual_content}
+
+        if pluggedin.review.sexual_content
+          h3 Sexual Content
+          | !{pluggedin.review.sexual_content}
+
+        if pluggedin.review.violent_content
+          h3 Violent Content
+          | !{pluggedin.review.violent_content}
+
+        if pluggedin.review.crude_language
+          h3 Crude Language
+          | !{pluggedin.review.crude_language}
+
+        if pluggedin.review.drug_content
+          h3 Drugs and Alcohol
+          | !{pluggedin.review.drug_content}
+
+        if pluggedin.review.negative_elements
+          h3 Other Negative Elements
+          | !{pluggedin.review.negative_elements}
+
+        if pluggedin.review.conclusion
+          h3 Conclusion
+          | !{pluggedin.review.conclusion}
+
+      h2 Media
+      ul(data-orbit)
+        each backdrop in images.backdrops
+          li
+            img(src="http://cf2.imgobject.com/t/p/w1280" + backdrop.file_path)

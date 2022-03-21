@@ -1,0 +1,30 @@
+<% if cart.cart_items.empty? %>
+  <div class="cart">
+    <h2>Your Cart</h2>
+
+    <p>Your cart is empty!</p>
+    <p><a class="button" href="/">Acquire Supplies</a></p>
+  </div>
+<% else %>
+  <div class="cart">
+    <h2>Your Cart</h2>
+
+    <div class="cart-items">
+      <div class="cart-item header">
+        <div>Product</div>
+        <div class="hide-mobile">Price</div>
+        <div>Quantity</div>
+        <div>Subtotal</div>
+      </div>
+
+      <%= render partial: 'cart_item', collection: cart.cart_items.includes(:product), as: :item %>
+
+      <div class="cart-item">
+        <div></div>
+        <div class="hide-mobile"></div>
+        <div><%= button_to 'Clear Cart', :cart, method: :delete, remote: true %></div>
+        <div><%= link_to 'Checkout Now', :checkout, class: 'button', data: { turbolinks: "false" } %></div>
+      </div>
+    </div>
+  </div>
+<% end %>

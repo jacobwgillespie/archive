@@ -1,0 +1,610 @@
+@charset "UTF-8";
+/*==================================================*/
+/*  Cabin CSS Framework by Adam Whitcroft           */
+/*  Reset based on Eric Meyer's CSS Reset           */
+/*==================================================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, 
+caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img,abbr,acronym { 
+	border:0;
+}
+address,caption,cite,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	padding:0;
+	margin:0;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+	content:'';
+	content: none;
+}
+/*==================================================*/
+/*  Cabin CSS Framework 1.1 by Adam Whitcroft       */
+/*  hello[at]adamwhitcroft[dot]com                  */
+/*  @adamwhitcroft                                  */
+/*==================================================*/
+/*  Table of contents:                              */
+/*                                                  */
+/*  01  $HTML, Body                                 */
+/*  02  $Common                                     */
+/*  03  $Clearfix                                   */
+/*  03  $Typography                                 */
+/*  04  $Lists - ol,ul,dl                           */
+/*  05  $Logo                                       */
+/*  06  $Menu                                       */
+/*  07  $Images                                     */
+/*==================================================*/
+/*  $HTML, Body                                     */
+/*==================================================*/
+html {
+	font-family:sans-serif;
+	font-size:100%;
+	line-height:1.5em;
+	background:#ffffff;
+	color:#1a1a1a;
+	overflow-y:scroll;
+	-webkit-text-size-adjust: none;
+}
+body {
+	min-height:100%;
+}
+/*==================================================*/
+/*  $Common                                         */
+/*  Set commonly occuring declarations here         */
+/*==================================================*/
+.wrapper {
+	margin:0 auto;
+	/*width:940px;
+	padding:10px;*/
+	max-width:720px;
+	padding:40px;
+}
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+.nomargin {
+	margin:0;
+}
+.box {
+	padding:20px;
+	margin-bottom:1.5em;
+}
+.box:last-child {
+	margin-bottom:0px;
+}
+h1,h2,h3,h4,h5,h6,ul,ol,dl,p,blockquote,address,figure,pre,fieldset,table,hr {
+	margin-bottom:1em;
+}
+/*==================================================*/
+/*  $Clearfix                                       */
+/*==================================================*/
+/*== Uses Nicholas Gallagher's method ==*/
+/*== http://nicolasgallagher.com/micro-clearfix-hack/ ==*/
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+.cf {
+    zoom:1;
+}
+/*==================================================*/
+/*  $Typography                                     */
+/*==================================================*/
+h1,h2,h3,h4,h5,h6 {
+	font-weight:bold;
+}
+h1 {
+    font-size:2em;
+    line-height:1.5em;
+}
+h2 {
+    font-size:1.5em;
+    line-height:1em;
+}
+h3 {
+    font-size:1.25em; 
+    line-height:1.2em; 
+}
+h4 {
+    font-size:1.125em;
+    line-height:1.33em;
+}
+h5,h6 {
+    font-size:1em;
+    line-height: 1.5em;
+}
+/*== Paragraphs ==*/
+p {
+    font-size:1em;
+    line-height:1.5em;
+}
+q,i,em,cite {
+	font-style:italic;	
+}
+b,strong {
+	font-weight:bold;
+}
+s,del {
+	text-decoration:line-through;
+}
+mark {
+	background:#ffdd3d;
+}
+abbr {
+	cursor:help;
+	border-bottom:1px dotted #bbb;
+}
+small {
+	font-size:0.75em;
+}
+hr {
+	border:0;
+	border-top:1px solid #bbb;
+	border-bottom:1px solid #fff;
+	clear:both;
+	display:block;
+}
+/*== Blockquotes ==*/
+/*==================================================*/
+/*  <blockquote>                                    */
+/*    <p>                                           */
+/*      The quote                                   */
+/*    </p>                                          */
+/*    <footer> or <small>                           */
+/*      The quote citation information              */
+/*    </footer> or </small>                         */
+/*  </blockquote>                                   */
+/*==================================================*/
+blockquote {
+	padding-left:24px;
+	border-left:5px solid #bbb;
+}
+blockquote p {
+	margin:0;
+}
+blockquote footer,
+blockquote small {
+	font-style:italic;
+	display:block;
+	font-size:0.75em;
+	text-indent:0.5em;
+	color:#bbb;	
+}
+blockquote footer:before,
+blockquote small:before {
+	content:"\2014";
+}
+/*== Links ==*/
+a,a:link {
+	text-decoration:none;
+	cursor:pointer;
+	color:#ff8a00;
+	font-weight:bold;
+}
+a:hover {
+	text-decoration:underline;
+	color:#b76300;
+}
+a:visited {
+	color:#b76300;
+}
+/*== Pre & Code ==*/
+pre,code {
+	font-family: consolas, monospace, sans-serif;
+	font-size:1em;
+	background:#fff6c7;
+}
+pre {
+	padding:10px;
+	overflow:auto;
+	white-space:pre;
+	white-space:pre-wrap;
+	word-wrap:break-word;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;	
+}
+code {
+	line-height:1em;
+}
+.codecomment {
+	color:#008800;
+}
+/*== Selection ==*/
+::selection {
+	color:#bda72d;
+	background:#fbf4d0;
+}
+::-moz-selection {
+	color:#bda72d;
+	background:#fbf4d0;
+}
+a::selection {
+	color:#ff8a00;	
+}
+a::-moz-selection {
+	color:#ff8a00;
+}
+/*==================================================*/
+/*  $Lists - ol,ul,dl                               */
+/*==================================================*/
+ul,ol {
+/* margin-bottom set in $Common */
+}
+ul ul,ul ol,ol ol,ol ul {
+	margin:0 0 0 40px;
+}
+ol {
+	list-style:decimal outside;
+}
+ol ol {
+	list-style:lower-alpha outside;
+}
+ul {
+	list-style:block outside;
+}
+dl {
+/* margin-bottom set in $Common */	
+}
+dt {
+	font-weight:bold;
+}
+dt:after{
+	content:":";
+}
+dt::after{
+	content:":";
+}
+dd {
+	margin:0 0 0 40px;
+}
+/*==================================================*/
+/*  $Logo                                           */
+/*  <a id="logo" href="/" title="Go home">          */
+/*    <img src="img/yourlogo.png"                   */
+/*  </a>                                            */
+/*==================================================*/
+.logo,.logo img {
+	display:block;
+	width:auto;
+	height:auto;
+}
+.logo {
+	background:url(img/yourlogo.png);
+}
+.logo:hover {
+	background-position:0 -00px;
+}
+.logo img {
+	position:absolute;
+	left:-9999px;
+}
+/*==================================================*/
+/*  $Menu                                           */
+/*==================================================*/
+/*== Horizontal Menu ==*/
+/*== Apply class="horizontal" to your menu ul eg: <ul class="horizontal"> ==*/
+.horizontal {
+	overflow:hidden;
+	list-style:none;
+	margin:0 0 1.5em 0;	
+	border-top:1px solid #bbb;
+	border-bottom:1px solid #bbb;	
+}
+.horizontal li {
+	float:left;
+}
+.horizontal li a {
+	padding:5px;
+	display:block;
+}
+/*== Horizontally Centered Menu ==*/
+/*== Apply class="centered" to your menu ul eg: <ul class="centered"> ==*/
+.centered {
+	list-style:none;
+	text-align:center;
+	border-top:1px solid #bbb;
+	border-bottom:1px solid #bbb;	
+}
+.centered li {
+	display:inline;
+}
+.centered li a {
+	display:inline-block;
+	padding:5px;
+}
+/*== Vertical Menu ==*/
+/*== Apply class="vertical" to your menu ul eg: <ul class="vertical"> ==*/
+.vertical {
+	overflow:hidden;
+	list-style:none;
+	margin:0 0 1.5em 0;
+}
+.vertical li {
+	line-height:1.5em;
+	border-bottom:1px solid #bbb;
+}
+.vertical li a {
+	padding:5px;
+	display:block;
+}
+.vertical li:last-child {
+	border:none;
+}
+/*==================================================*/
+/*  $Images                                         */
+/*==================================================*/
+img {
+	max-width:100%;
+	height:auto;
+	font-style:italic;
+}
+embed,object,video {
+	max-width:100%;
+	height:auto;
+}
+/*==================================================*/
+/*  Not part of Cabin                               */
+/*==================================================*/
+.gitinfo {
+	text-align:center;
+	background:#fff6c7;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+
+/*----------------------------------------
+//////////////////////////////////////////	
+FORMS.CABIN.CSS
+//////////////////////////////////////////
+Author:		Adam Whitcroft
+URL:		http://www.cabincss.com
+Twitter:	@adamwhitcroft
+License:	MIT
+//////////////////////////////////////////
+----------------------------------------*/
+fieldset {
+	padding:10px;
+	border:1px solid #BBBBBB;
+	margin-bottom:1.5em;
+}
+label {
+	display:block;
+}
+input,textarea {
+	padding:10px;
+	font-family:inherit;
+	font-size:100%; /* 16px */
+	line-height:1.5em;
+	border:1px solid #BBBBBB;
+}
+input:hover,
+textarea:hover {
+	/*
+	If you want to add some custom hover states for the
+	input and textarea, do so here.
+	*/
+}
+.button {
+	cursor:pointer;
+	/*
+	This is the most basic button appearance. It's recommended
+	you add some background colour and border styles to make
+	the button stand out a little more.
+	*/
+}
+.button:hover {
+	/* 
+	If you are using custom button styles, remember to add
+	in some hover stlyes!
+	*/
+}
+/*----------------------------------------
+	SUCCESS, ERROR & ALERT MESSAGES
+	Apply the following classes to your success, 
+	error & alert messages.
+----------------------------------------*/
+.success,
+.error,
+.alert {
+	padding:10px;
+}
+.success {
+	border:1px solid #CBF231;
+	background:#EAFFCB;
+	color:green;
+}
+.success a {
+	color:green;
+	text-decoration:underline;
+}
+.error {
+	border:1px solid #F23131;
+	background:#FFCBCB;
+	color:red;
+}
+.error a {
+	color:red;
+	text-decoration:underline;
+}
+.alert {
+	border:1px solid #F2DF30;
+	background:#fffce7;
+	color:#c2af00;
+}
+.alert a {
+	color:#c2af00;
+	text-decoration:underline;
+}
+
+
+h1 img {
+	vertical-align: middle;
+	padding-right: 20px;
+}
+
+input#pattern {
+	width: 97%;
+}
+
+/*
+Animate.css - http://daneden.me/animate
+LICENSED UNDER THE  MIT LICENSE (MIT)
+
+Copyright (c) 2011 Dan Eden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+.animated {
+	-webkit-animation: 1s ease;
+	-moz-animation: 1s ease;
+	-ms-animation: 1s ease;
+	-o-animation: 1s ease;
+	animation: 1s ease;
+}
+
+.animated.hinge {
+	-webkit-animation: 2s ease;
+	-moz-animation: 2s ease;
+	-ms-animation: 2s ease;
+	-o-animation: 2s ease;
+	animation: 2s ease;
+}
+
+@-webkit-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-moz-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-moz-transform: translateY(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		-moz-transform: translateY(0);
+	}
+}
+
+@-ms-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-ms-transform: translateY(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		-ms-transform: translateY(0);
+	}
+}
+
+@-o-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-ms-transform: translateY(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		-ms-transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fadeInDown {
+	-webkit-animation-name: fadeInDown;
+	-moz-animation-name: fadeInDown;
+	-ms-animation-name: fadeInDown;
+	-o-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+}
+
+div#messages {
+	height: 50px;
+}
+
+.message {
+	color: #fff;
+	background-color: #090;
+	border: 3px solid black;
+	padding: 6px;
+	margin-bottom: 20px;
+	cursor:pointer;
+}
+
+.hidden {
+	display: none;
+}
+
+p.credits, .small {
+	font-size: 0.75em;
+}
+
+p.submit {
+	text-align: right;
+	margin: 0;
+}

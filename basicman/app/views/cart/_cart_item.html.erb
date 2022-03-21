@@ -1,0 +1,21 @@
+<div class="cart-item">
+  <div>
+    <a href="<%= item.product.slug %>">
+      <img src="<%= item.product.image_square_small.url %>" height="100" width="100" />
+    </a>
+    <div><a href="<%= item.product.slug %>"><%= item.product.name %></a></div>
+  </div>
+  <div class="hide-mobile"><%= number_to_currency(item.price, precision: 0) %></div>
+  <div>
+    <%= form_tag :cart, method: :patch, remote: true do %>
+      <%= hidden_field_tag :product_id, item.product.id %>
+      <select data-product-id="<%= item.product.id %>" name="quantity">
+        <option value="0">Remove</option>
+        <% (1..([item.quantity, 5].max)).each do |i| %>
+          <option value="<%= i %>"<% if item.quantity == i %> selected<% end %>><%= i %></option>
+        <% end %>
+      </select>
+    <% end %>
+  </div>
+  <div><%= number_to_currency(item.subtotal, precision: 0) %></div>
+</div>

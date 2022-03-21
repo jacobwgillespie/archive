@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'highline/import'
+require 'fileutils'
+
+EXTS = %w(avi mpeg xvid mp4 m4v mkv wmv mpg flv)
+
+renames = {}
+prefix = nil
+season = 1
+
+begin
+
+  files = []
+  EXTS.each do |ext|
+    new_files = Dir.glob("*.#{ext}").sort
+    new_files = new_files.sort
+    next if new_files.empty?
+    files += new_files
+  end
+
+  files.sort!
+
+  puts "Found #{files.size} files"
+
+  first_title = files.first.gsub(/\.[a-z]+$/, '')
+  prefix_match = first_title.match(/^[^0-9]+[a-z]/i)
+  prefix_guess = !prefix_match.nil? && prefix_match[0] != "" ? prefix_match[0] : prefix
+  prefix = ask("Prefix? ") { |q|
+    q.default = prefix_guess if prefix_guess
+  }
+
+  season_match = first_title.match(/[1-9]/)
+  season_guess = !season_match.nil? && season_match[0] != '0' ? season_match[0].to_i : season
+  season = ask("Season? ", Integer) { |q|
+    q.default = season_guess
+    q.in = 0..900
+  }
+
+  previous_number = 0
+
+  files.each do |file|
+    number_match = file.sub(season.to_s, '').match(/[1-9][0-9]*/)
+    number_guess = !number_match.nil? ? number_match[0].to_i : 0
+
+    number_guess = previous_number + 1
+
+    number = ask("Episode number for \"#{file}\"? (0 to skip) ", Integer) { |q|
+      q.default = number_guess
+      q.in = 0..900
+    }
+    next if number == 0
+    previous_number = number
+    title = "%s - S%02iE%02i" % [prefix, season, number]
+    ext = File.extname file
+    ext = ext[1..-1]
+    renames["#{title}.#{ext}"] = file
+  end
+
+
+  renames = renames.select { |to, from| to != from }.sort
+  abort "No files to rename found!" if renames.empty?
+
+  puts "About to rename:"
+  renames.each { |to, from| puts "#{to} (#{from})" }
+
+  exit unless agree "Really rename all files? "
+  renames.each { |to, from| FileUtils.mv(from, to) }
+
+rescue EOFError
+  abort "\n^D"
+rescue Interrupt
+  abort "\n^C"
+end

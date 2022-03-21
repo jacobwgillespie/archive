@@ -1,0 +1,8 @@
+name: blazerod
+version: '@VERSION@'
+description: '@DESCRIPTION@'
+
+author: Jacob Gillespie
+website: '@URL@'
+
+main: com.blazerod.agent.Plugin

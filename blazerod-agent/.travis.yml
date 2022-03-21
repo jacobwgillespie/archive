@@ -1,0 +1,25 @@
+language: java
+jdk:
+- oraclejdk8
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.m2
+
+after_success:
+  - ./gradlew shadowJar
+
+deploy:
+  provider: releases
+  api_key:
+    secure: CgGlbp2n3LqCFP6/ioH9xBqEnU5PHmHmiEhlCmMZ0zNzPqjvmF5UHxSKJS9B3q3cgqwZ5jfg4t+ByLY/o86qvwc11cqujVOmjJnV0lUXFwMDCZ1ThLksVxHJcZi/CsoF3OwP9Gr3O7wMPRyYvI2Djip44HuyyIK4bWDE97Rl1za8W3IQY2ZHQ2xNmi8wpoT43UZrnIy233AT8DrkrJv6gPOu42xFzru33bIPE7ZXVonkzui6CAWnNeQRjuQMBX+jgATh/0SNX+0l0jilHTX67VsvJM+fY/K5AN7kX+VUsDo8EuwnLtHDuTkSpQBMZ2kacxIFe4PMaYA9EVSnXTIJuueyy2z6TE4ZumEcTEsnY7YDBJBe1oNPvn2wUzUtENlT7Rsuepfsp0CHdSUq/3shJqV4maeZ7Xfp/s96AG7YEcrHUt0XIge70foXOv//jT1RmCAl0DhbnJrtm+YRYLHlvcx1VbHy/Xm+wbInuyssu0ZAVG/Xi3RqA3RIWO7QztO+t7YJjWigiPy0qJwmgnev0g1FzHgfkgmjxrB+a9bItD2K4VmYS5fsidlK3q33MMYIl2GGvj4pYFOZew4SrXLTsNO08e2HQS61n6+H6SEhejYOiKbMiHxXpL75NtnoFDdJAne3n7f99j7TPrhxtPtHJNhneDsdDuiniXOVd4pfiZ4=
+  file: build/blazerod-*.jar
+  file_glob: true
+  on:
+    repo: BlazerodMC/blazerod-agent
+    tags: true

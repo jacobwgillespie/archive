@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div.row
+    div.large-12.columns
+      div.panel
+        h1 Check a Film
+        p Look up any movie by title, see a summary of content and quality.
+
+      h2 Now Playing
+      ul.large-block-grid-5.movie-grid
+        each result in nowPlaying.results
+          li
+            a(href="/title/#{result.id}")
+              img(src=(result.poster_path ? "http://cf2.imgobject.com/t/p/w92" + result.poster_path : "/images/movie.gif"))
+              p #{result.title}
+
+      h2 upcoming
+      ul.large-block-grid-5.movie-grid
+        each result in upcoming.results
+          li
+            a(href="/title/#{result.id}")
+              img(src=(result.poster_path ? "http://cf2.imgobject.com/t/p/w92" + result.poster_path : "/images/movie.gif"))
+              p #{result.title}
+      pre= json

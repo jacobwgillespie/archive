@@ -1,0 +1,32 @@
+.back-to-top a {
+  background-color: #bbb;
+  bottom: 1em;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  padding: 5px 14px;
+  position: fixed;
+  right: 1em;
+
+  &:hover {
+    background-color: #999;
+  }
+}
+
+.logo {
+  // margin: 90px 0 40px 0;
+  color: #000;
+  font-size: 1.875em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.small-logo {
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.inline {
+  display: inline-block;
+}

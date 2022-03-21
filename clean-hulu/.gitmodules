@@ -1,0 +1,3 @@
+[submodule "vender/hulu-filter"]
+	path = vender/hulu-filter
+	url = https://github.com/jacobwg/hulu-filter

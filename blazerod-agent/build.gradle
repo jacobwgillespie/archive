@@ -1,0 +1,81 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+buildscript {
+    ext.kotlin_version = '1.0.6'
+
+    repositories {
+        mavenCentral()
+        maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'net.sf.proguard:proguard-gradle:5.3.2'
+    }
+}
+
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '1.2.3'
+}
+
+apply plugin: 'kotlin'
+
+group = 'com.blazerod'
+version = '0.0.1'
+description = """Analytics agent for blazerod.com"""
+ext.url = 'https://github.com/BlazerodMC/blazerod-agent'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+repositories {
+    maven { url 'https://maven-central.storage.googleapis.com' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/groups/public/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'http://lutece.paris.fr/nexus/content/repositories/lutece_third_party' }
+
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.spigotmc', name: 'spigot-api', version: '1.8.8-R0.1-SNAPSHOT'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: "$kotlin_version"
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.5.0'
+}
+
+processResources {
+    filter ReplaceTokens, tokens: [
+            'DESCRIPTION': project.property('description'),
+            'URL'        : project.property('url'),
+            'VERSION'    : project.property('version')
+    ]
+}
+
+build.finalizedBy(shadowJar)
+
+shadowJar {
+    classifier 'dist'
+    dependencies {
+        exclude(dependency('org.spigotmc:.*:.*'))
+    }
+    exclude '.cache'
+}
+
+task proguard(type: proguard.gradle.ProGuardTask) {
+    libraryjars "${System.getProperty('java.home')}/lib/rt.jar"
+    libraryjars project.configurations.compile.collect()
+
+    injars "build/libs/${shadowJar.archiveName}"
+    outjars "build/${project.property('name')}-${project.property('version')}.jar"
+
+    configuration 'proguard.txt'
+}
+
+shadowJar.finalizedBy(proguard)

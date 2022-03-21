@@ -1,0 +1,76 @@
+- content_for :poster_url, "https://image.tmdb.org/t/p/w780#{@person.profile_url}"
+- content_for :background_url, "https://image.tmdb.org/t/p/original#{@movie.backdrop_url}"
+- content_for :banner_html do
+  = link_to @movie, class: 'banner-title' do
+    %h4
+      = @movie.title
+      - if @movie.theater_release_date?
+        %small= @movie.theater_release_date.year
+      - if @movie.composite_score
+        %span.label{class: score_class(@movie.composite_score)}= @movie.composite_score.round(1)
+
+.row.movie-summary
+  .col-md-10.col-md-offset-2.box
+    .col-md-4
+      %img.img-responsive.hidden-xs.hidden-sm{src: content_for(:poster_url), width: 390}
+    .col-md-8
+      %h1
+        = @person.name
+        - if @person.birthday?
+          %small
+            = @person.birthday.year
+            - if @person.deathday?
+              &mdash;
+              = @person.deathday.year
+
+      %table.table
+        %tr
+          - if @person.birthday?
+            %th Born
+            %td
+              = @person.birthday.strftime('%B %d, %Y')
+              - if @person.birthplace?
+                %br
+                = @person.birthplace
+          - if @person.deathday?
+            %th Died
+            %td
+              = @person.deathday.strftime('%B %d, %Y')
+              %br
+              at
+              = (@person.deathday.mjd - @person.birthday.mjd) / 365
+              years old
+          - if @person.birthday? && !@person.deathday?
+            %th Age
+            %td= (Date.today.mjd - @person.birthday.mjd) / 365
+
+      %p= simple_format @person.bio
+
+      %hr
+
+      - if @person.homepage?
+        %p.text-right
+          = link_to 'Homepage', @person.homepage, class: 'btn btn-default', target: '_blank'
+
+        %hr
+
+.row.person-details
+  .col-md-10.col-md-offset-2
+    - if @person.cast_movies.exists?
+      .box
+        %h3 Cast
+        .row
+          - @person.cast_movies.each do |movie|
+            .col-xs-6.col-md-3
+              = link_to movie, class: 'thumbnail' do
+                %span.label.pull-right{class: score_class(movie.composite_score)}= movie.composite_score.round(1)
+                %img{src: "https://image.tmdb.org/t/p/w780#{movie.poster_url}"}
+    - if @person.crew_movies.exists?
+      .box
+        %h3 Crew
+        .row
+          - @person.crew_movies.each do |movie|
+            .col-xs-6.col-md-3
+              = link_to movie, class: 'thumbnail' do
+                %span.label.pull-right{class: score_class(movie.composite_score)}= movie.composite_score.round(1)
+                %img{src: "https://image.tmdb.org/t/p/w780#{movie.poster_url}"}

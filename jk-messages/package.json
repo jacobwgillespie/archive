@@ -1,0 +1,35 @@
+{
+  "name": "jk-messages",
+  "version": "2.3.5",
+  "private": true,
+  "description": "Webapp for viewing Facebook messages between Jacob and Kathryn",
+  "homepage": "https://github.com/jacobwg/jk-messages",
+  "keywords": [],
+  "author": "Jacob Gillespie <mail@jacobwg.com> (http://jacobwg.com)",
+  "maintainers": [
+    "Jacob Gillespie <mail@jacobwg.com> (https://jacobwg.com)"
+  ],
+  "contributors": [
+    "Jacob Gillespie <mail@jacobwg.com> (https://jacobwg.com)"
+  ],
+  "bugs": {
+    "url": "https://github.com/jacobwg/jk-messages/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jacobwg/jk-messages.git"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "dependencies": {
+    "docpad": "6.x",
+    "docpad-plugin-jade": "2.x",
+    "docpad-plugin-ghpages": "2.x"
+  },
+  "devDependencies": {
+    "docpad-plugin-livereload": "~2.4.0"
+  },
+  "main": "node_modules/docpad/bin/docpad-server"
+}

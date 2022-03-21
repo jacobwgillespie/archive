@@ -1,0 +1,25 @@
+{
+  "name": "Send from Webmail",
+  "manifest_version": 2,
+  "version": "1.2",
+  "description": "Makes your webmail be the default email application.  Supports custom webmail providers in addition to the built-in ones.",
+  "icons": {
+    "128": "images/webmail-extension-128.png",
+    "16": "images/webmail-extension-16.png"
+  },
+  "homepage_url": "http://jacobwg.com/send-with-webmail/",
+  "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+  "options_page": "options.html",
+  "background": {
+    "scripts": [
+      "scripts/app.js",
+      "scripts/background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [ {
+    "all_frames": true,
+    "js": [ "mailto.js" ],
+    "matches": [ "http://*/*", "https://*/*" ]
+  } ]
+}

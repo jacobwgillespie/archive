@@ -1,0 +1,7 @@
+source 'http://rubygems.org'
+
+gem 'xml-simple', :require => 'xmlsimple'
+gem 'roxml'
+gem 'i18n'
+gem 'auteur'
+gem 'settingslogic'

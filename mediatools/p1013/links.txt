@@ -1,0 +1,3 @@
+http://www.commandlinefu.com/commands/view/3559/use-heading-subtitle-file-as-watermark-using-mencoder
+http://hubpages.com/hub/1001-mencoder-tips
+http://trac.opensubtitles.org/projects/opensubtitles/wiki/XMLRPC#SearchToMail

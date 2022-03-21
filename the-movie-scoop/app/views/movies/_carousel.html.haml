@@ -1,0 +1,17 @@
+.movie-carousel.carousel.slide{id: id}
+  .carousel-inner
+    - active = true
+    - movies.in_groups_of(4, false).each do |movie_group|
+      .item{class: active ? 'active' : ''}
+        - active = false
+        .row
+          - movie_group.each do |movie|
+            .col-sm-3
+              = link_to movie do
+                - if movie.composite_score
+                  %span.label.pull-right{class: score_class(movie.composite_score)}= movie.composite_score.round(1)
+                %img.img-responsive{src: "https://image.tmdb.org/t/p/w780#{movie.poster_url}"}
+  %a.left.carousel-control{'data-slide' => 'prev', :href => "##{id}"}
+    %i.glyphicon.glyphicon-chevron-left
+  %a.right.carousel-control{'data-slide' => 'next', :href => "##{id}"}
+    %i.glyphicon.glyphicon-chevron-right

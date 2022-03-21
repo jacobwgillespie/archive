@@ -1,0 +1,10 @@
+$('#jobs').html("<%= escape_javascript(render('jobs', jobs: @title.jobs)) %>");
+<%
+  active = false
+  @title.jobs.each do |job|
+    active = true if job.status != 'completed'
+  end
+%>
+<% if active %>
+"active";
+<% end %>

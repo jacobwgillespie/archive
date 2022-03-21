@@ -1,0 +1,44 @@
+<% if current_site.homepage_image %>
+  <%= image_tag current_site.homepage_image.url, alt: 'Homepage Feature', width: 1200, height: 800, class: 'hero' %>
+<% end %>
+
+<hr />
+
+<div class="pitch">
+
+  <%= current_site.homepage_lede.html_safe %>
+
+  <p>
+    <img src="<%= asset_path 'amazon.svg' %>" alt="Amazon logo" width="200" style="float: right; margin-left: 2em" />
+    All of our product recommendations are available for purchase on Amazon.com.  You can either purchase them directly from Amazon, or utilize our shopping cart to quickly add items to your order.  When you are ready to checkout, you will be redirected to Amazon with a pre-filled cart to complete your purchase.
+    Read about <a href="/about">how it works</a>.
+    If you aren't already an <a href="http://www.amazon.com/tryprimefree/?ref_=assoc_tag_ph_1427739975520&_encoding=UTF8&camp=1789&creative=9325&linkCode=pf4&tag=ja07-20&linkId=KIVRFHR6PRF2GZRI">Amazon Prime</a> member, it is highly recommended for the savings and shipping benefits.
+  </p>
+
+  <p>
+    Additionally, click on the products below for more information on why we chose each one and information about what it does and how to use it.
+  </p>
+
+</div>
+
+<hr id="supplies" />
+
+<div>
+  <ul class="menu categories">
+    <% @categories.each do |category| %>
+    <li><a href="/#<%= category.slug %>"><%= category.name %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<% @categories.each do |category| %>
+  <hr id="<%= category.slug %>" />
+
+  <h2><%= category.name %></h2>
+
+  <%= category.description.html_safe %>
+
+  <div class="products">
+    <%= render partial: 'card', collection: category.products, as: :product %>
+  </div>
+<% end %>

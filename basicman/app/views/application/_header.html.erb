@@ -1,0 +1,11 @@
+<header>
+  <div class="title">
+    <a class="logo" href="/"><%= current_site.name %></a>
+    <span><%= current_site.subtitle %></span>
+  </div>
+  <ul class="menu">
+    <li><a href="/#supplies">Supplies</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/cart">Cart <%= render partial: 'cart/count' %></a></li>
+  </ul>
+</header>

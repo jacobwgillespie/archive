@@ -1,0 +1,45 @@
+doctype 5
+| <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+| <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+head
+  meta(charset="utf-8")
+  meta(name="viewport", content="width=device-width")
+  title= title
+  link(rel='stylesheet', href='/stylesheets/normalize.css')
+  link(rel='stylesheet', href='/stylesheets/foundation.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  script(src="/javascripts/custom.modernizr.js")
+body
+  nav.top-bar
+    ul.title-area
+      li.name
+        h1
+          a(href="/") Check a Film
+      li.toggle-topbar.menu-icon
+        a(href="#")
+          span Menu
+    section.top-bar-section
+      ul.left
+        li.divider
+        li
+          a(href="/") Home
+        li.divider
+      ul.right
+        li.has-form
+          form(action="/search", method="get")
+            div.row.collapse
+              div.small-8.columns
+                input(type="text", name="q", placeholder="search")
+              div.small-4.columns
+                input(type="submit", class="alert button")
+
+
+  block content
+
+  script
+    document.write('<script src=' +
+    ('__proto__' in {} ? '/javascripts/zepto' : '/javascripts/jquery') +
+    '.js><\/script>')
+
+  script(src="/javascripts/foundation.min.js")
+  script(src="/javascripts/script.js")

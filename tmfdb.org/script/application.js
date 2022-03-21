@@ -1,0 +1,2 @@
+alert("We've updated the Hulu filter... to update:\n\n* Delete the bookmarklet from your bookmarks bar\n* Go to http://tmfdb.org and add the new bookmark\n* All done!\n\nAfter you click OK, you will be redirected to tmfdb.org to add the new bookmark...");
+window.location = "http://tmfdb.org";

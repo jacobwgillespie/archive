@@ -1,0 +1,7 @@
+libraries:
+  shows:
+    root: /share/Media/Shows
+  anime:
+    root: /share/Media/Anime
+  movies:
+    root: /share/Media/Movies

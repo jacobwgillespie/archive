@@ -1,0 +1,131 @@
+/* Basic Styles */
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+body {
+  font-family: 'adelle','Helvetica Neue',Helvetica,Arial,sans-serif;
+  color: #222;
+  margin: 3rem 0;
+}
+
+a {
+  color: #90b4a8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+small {
+  color: #bbb;
+  font-size: 75%;
+}
+
+
+/* Footer */
+
+footer {
+  position: relative;
+  bottom: 0;
+  padding: 36px 0;
+}
+
+
+/* Full-width Images */
+
+.unit > img, .unit > a > img {
+  width: 100%;
+}
+
+
+/* Messages */
+
+.jacob, .kathryn {
+  padding: 36px 0;
+}
+
+.kathryn {
+  background-color: #FFF0F5;
+}
+
+
+/* Avatar Images */
+
+.avatar {
+  display: block;
+  position: relative;
+}
+
+.avatar img {
+  display: block;
+  width: 100%;
+  border: 3px solid #000000;
+}
+
+.avatar::before {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  -webkit-box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .5);
+     -moz-box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .5);
+          box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .5);
+}
+
+
+/* Buttons */
+
+.btn {
+  display: block;
+  padding: 8px 15px;
+  padding: .375rem;
+  text-align: center;
+  color: #fff;
+  background-color: #90b4a8;
+  border-radius: .24rem;
+  font-size: .75rem;
+  text-shadow: 0 1px 1px rgba(0,0,0,.1);
+  border: 1px solid #000;
+  border: 1px solid rgba(0,0,0,.1);
+  line-height: 2;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+
+/* Site Title */
+
+.site-title {
+  margin-bottom: 0;
+  letter-spacing: -.05px;
+}
+
+
+/* Mobile Utilities */
+
+@media screen and (max-width: 650px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+
+/* Webfont Loading */
+
+.wf-loading {
+  height: 100%;
+  overflow: hidden;
+  background: url(/images/ajax-loader.gif) center center no-repeat fixed;
+}
+
+.wf-loading * {
+  opacity: 0;
+}
+
+.wf-active body, .wf-inactive body {
+  -webkit-animation: fade 1s ease;
+     -moz-animation: fade 1s ease;
+}

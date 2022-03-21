@@ -1,0 +1,12 @@
+%tr.text-center
+  %td{style: 'width: 180px;'}
+    = link_to availability.url, target: '_blank' do
+      = image_tag source_icon(availability.source), height: 48
+  %td
+    %h4= source_friendly_name(availability.source)
+  %td
+    = link_to availability.url, target: '_blank', class: 'btn btn-primary' do
+      - if availability.price > 0
+        = "$#{availability.price}"
+      - else
+        Go

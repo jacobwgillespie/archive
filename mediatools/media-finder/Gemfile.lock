@@ -1,0 +1,46 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.1.0)
+      multi_json (~> 1.0)
+    addressable (2.2.6)
+    auteur (0.0.3)
+      json (>= 1.4.6)
+      rest-client (~> 1.6.3)
+      ruby-tmdb (~> 0.2.1)
+      rubytree (~> 0.8.1)
+      tvdb_party (~> 0.6.0)
+    deepopenstruct (0.1.2)
+    httparty (0.8.1)
+      multi_json
+      multi_xml
+    i18n (0.6.0)
+    json (1.6.1)
+    mime-types (1.16)
+    multi_json (1.0.3)
+    multi_xml (0.4.1)
+    nokogiri (1.5.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    roxml (3.1.6)
+      activesupport (>= 2.3.0)
+      nokogiri (>= 1.3.3)
+    ruby-tmdb (0.2.1)
+      addressable
+      deepopenstruct (>= 0.1.2)
+      json
+    rubytree (0.8.1)
+    settingslogic (2.0.8)
+    tvdb_party (0.6.2)
+      httparty (>= 0.6.1)
+    xml-simple (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  auteur
+  i18n
+  roxml
+  settingslogic
+  xml-simple

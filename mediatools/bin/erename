@@ -1,0 +1,264 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'highline/import'
+require 'fileutils'
+require 'tvdb_party'
+require 'pp'
+
+EXTS = %w(avi mpeg xvid mp4 m4v mkv wmv mpg)
+
+QUALITIES = [
+  'cam', 'camrip',
+  'ts', 'telesync',
+  'scr', 'screener', 'dvdscr', 'dvdscreener',
+  'r5',
+  'ppvrip', 'ppv',
+  'dvdrip',
+  'dvdr', 'dvd',
+  'hdtv', 'pdtv', 'dsr', 'dvb', 'tvrip', 'stv', 'dth',
+  'bdrip', 'brrip', 'bluray', 'mkv', 'bdr', 'bd5', 'bd9'
+]
+
+FORMATS = [
+  'divx', 'xvid', 'x264', '264', 'mpeg', 'wmv'
+]
+
+def similarity(str1, str2)
+  str1 = str1.dup
+  str2 = str2.dup
+  str1.downcase!
+  pairs1 = (0..str1.length-2).collect {|i| str1[i,2]}.reject {
+    |pair| pair.include? " "}
+  str2.downcase!
+  pairs2 = (0..str2.length-2).collect {|i| str2[i,2]}.reject {
+    |pair| pair.include? " "}
+  union = pairs1.size + pairs2.size
+  intersection = 0
+  pairs1.each do |p1|
+    0.upto(pairs2.size-1) do |i|
+      if p1 == pairs2[i]
+        intersection += 1
+        pairs2.slice!(i)
+        break
+      end
+    end
+  end
+  (2.0 * intersection) / union
+end
+
+def most_similar file, episodes
+  sim = episodes.first
+  sim_score = similarity(file, episodes.first.name)
+
+  episodes.each do |episode|
+    score = similarity(file, episode.name)
+    #puts "#{score} - #{episode.name}"
+    if score > sim_score
+      sim = episode
+      sim_score = score
+    end
+  end
+  [sim, sim_score]
+end
+
+def find_numbers string
+  guess_one = string.scan /S(\d{1,2})E(\d{1,2})([a-z])?/i
+
+  # Format: 001x001
+  guess_two = string.scan /(\d{1,3})x(\d{1,3})([a-z])?/i
+
+  # Format: S001
+  guess_three = string.scan /S(\d{1,2})/i
+
+  # Format: 001
+  guess_four = string.scan /(\d{1,2})([a-z])?/i
+
+  [guess_one, guess_two, guess_three, guess_four]
+
+end
+
+def lcs_size(s1, s2)
+
+    num=Array.new(s1.size){Array.new(s2.size)}
+    len,ans=0
+
+   s1.scan(/./).each_with_index do |l1,i |
+     s2.scan(/./).each_with_index do |l2,j |
+
+        unless l1==l2
+           num[i][j]=0
+        else
+          (i==0 || j==0)? num[i][j]=1 : num[i][j]=1 + num[i-1][j-1]
+          len = ans = num[i][j] if num[i][j] > len
+        end
+     end
+   end
+
+   ans
+
+end
+def lcs(s1, s2)
+  res=""
+  num=Array.new(s1.size){Array.new(s2.size)}
+  len,ans=0
+  lastsub=0
+  s1.scan(/./).each_with_index do |l1,i |
+    s2.scan(/./).each_with_index do |l2,j |
+      unless l1==l2
+        num[i][j]=0
+      else
+        (i==0 || j==0)? num[i][j]=1 : num[i][j]=1 + num[i-1][j-1]
+        if num[i][j] > len
+          len = ans = num[i][j]
+          thissub = i
+          thissub -= num[i-1][j-1] unless num[i-1][j-1].nil?
+          if lastsub==thissub
+            res+=s1[i,1]
+          else
+            lastsub=thissub
+            res=s1[lastsub, (i+1)-lastsub]
+          end
+        end
+      end
+    end
+  end
+  res
+end
+
+def dups_with_count array
+  hash = Hash.new(0)
+  array.each {|v| hash[v] += 1}
+  hash.reject! { |key, value| value == 1 }
+  hash
+end
+
+
+
+tvdb = TvdbParty::Search.new(ENV['TVDB_KEY'])
+
+begin
+
+  #show_id = ask("What is the TMDb show ID? ")
+  #season = ask("What is the season number? ")
+
+  show_id = 75886
+
+  show = tvdb.get_series_by_id(show_id)
+  show.episodes
+
+  files = []
+  EXTS.each do |ext|
+    new_files = Dir.glob("*.#{ext}")
+    next if new_files.empty?
+    files += new_files
+  end
+
+  files.sort!
+
+  puts "#{files.length} Media Files Found"
+
+  parts_array = files.map do |f|
+    f.split(/[ ,\-\.\(\)]/).compact.reject(&:empty?)
+  end
+
+  parts_array.map! do |f|
+    f.reject { |p| QUALITIES.include? p.downcase }
+  end
+  parts_array.map! do |f|
+    f.reject { |p| FORMATS.include? p.downcase }
+  end
+  parts_array.map! do |f|
+    f.reject { |p| EXTS.include? p.downcase }
+  end
+
+  flat_parts_array = parts_array.flatten
+  parts_duplicates = dups_with_count flat_parts_array.map!(&:downcase)
+
+  puts parts_duplicates
+
+  duplicate_threshhold = files.length.to_f * 0.8
+  filtered_duplicates = parts_duplicates.reject { |key, count| count < duplicate_threshhold }
+  puts filtered_duplicates
+
+  files.each do |file|
+    puts file
+    episode, score = most_similar(file, show.episodes)
+
+    parts = file.split(/[ ,\-\.\(\)]/).compact.reject(&:empty?)
+    parts.reject! { |p| QUALITIES.include? p.downcase }
+    parts.reject! { |p| EXTS.include? p.downcase }
+    parts.reject! { |p| FORMATS.include? p.downcase }
+    puts "Filename in parts is #{parts}"
+
+    parts_plus_numbers = []
+
+    parts.each_index do |idx|
+      guess_one, guess_two, guess_three, guess_four = find_numbers parts[idx]
+      guess_episode = nil
+      guess_part = nil
+      guess_finder = -1
+
+      unless guess_four.empty?
+        guess_episode = guess_four.first[0].to_i
+        guess_part = guess_four.first[1]
+        guess_finder = 4
+      end
+
+      unless guess_three.empty?
+        guess_episode = -1
+        guess_finder = 3
+      end
+
+      unless guess_two.empty?
+        guess_episode = guess_two.first[1]
+        guess_part = guess_two.first[2]
+        guess_finder = 2
+      end
+
+      unless guess_one.empty?
+        guess_episode = guess_one.first[1]
+        guess_part = guess_one.first[2]
+        guess_finder = 1
+      end
+
+      parts_plus_numbers << {
+        :idx => idx,
+        :guess_finder => guess_finder,
+        :guess_episode => guess_episode.to_i,
+        :guess_part => guess_part
+      }
+    end
+
+    parts_plus_numbers.sort! { |a,b| b[:guess_finder] <=> a[:guess_finder] }
+
+    ep = parts_plus_numbers.first[:guess_episode]
+    pt = parts_plus_numbers.first[:guess_part]
+
+    unless parts_plus_numbers.first[:idx] == -1
+      guess_title = parts[(parts_plus_numbers.first[:idx] + 1)..-1].join ' '
+      episode, score = most_similar(guess_title, show.episodes)
+      puts "The guessed episode title is #{guess_title}"
+    end
+
+    puts "Similar (#{score}) to #{episode.name}"
+
+    if ep == -1
+      puts "Unable to find an episode number in the filename"
+      print "Using matched episode number #{episode.number}"
+    else
+      print "Guessed episode number is #{ep}"
+    end
+    print " part #{pt}" unless pt.nil?
+    puts
+    puts "This does NOT match the title" unless ep == episode.number
+
+
+    puts "\n\n"
+  end
+
+rescue EOFError
+  abort "\n^D"
+rescue Interrupt
+  abort "\n^C"
+end

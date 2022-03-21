@@ -1,0 +1,52 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+:root {
+  --brand-color: #61dafb;
+}
+
+.Header {
+  color: #fff;
+  background: #373277;
+}
+
+.Header-container {
+  max-width: var(--max-content-width);
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.Header-brand {
+  font-size: 1.75em; /* ~28px */
+  color: color(var(--brand-color) lightness(+10%));
+  text-decoration: none;
+}
+
+.Header-brandTxt {
+  margin-left: 10px;
+}
+
+.Header-nav {
+  float: right;
+  margin-top: 6px;
+}
+
+.Header-banner {
+  text-align: center;
+}
+
+.Header-bannerTitle {
+  padding: 10px;
+  margin: 0;
+  font-size: 4em;
+  font-weight: normal;
+  line-height: 1em;
+}
+
+.Header-bannerDesc {
+  padding: 0;
+  margin: 0;
+  font-size: 1.25em;
+  color: rgba(255, 255, 255, .5);
+}

@@ -1,0 +1,1 @@
+# to extract individual subtitles - /\d*\n(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})\n(.*\n[^\n]+)/

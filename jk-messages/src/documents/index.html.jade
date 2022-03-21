@@ -1,0 +1,61 @@
+---
+layout: 'default'
+title: 'Messages'
+---
+
+div.container(id='main')
+  div.grid
+    header.unit.two-of-three
+      h1.site-title
+        a(href='/#/') J&amp;K Messages
+      div(ng-switch="state")
+        h2.site-tagline(ng-switch-when="loading") Loading...
+        h2.site-tagline(ng-switch-when="anonymous") Please log in...
+        h2.site-tagline(ng-switch-when="authorizing") Checking your credentials...
+        h2.site-tagline(ng-switch-when="unauthorized") You are not authorized...
+        h2.site-tagline(ng-switch-default) {{ currentMoment.format('dddd, MMMM Do YYYY') }}
+    div.unit.one-of-three
+      div(ng-show="state == 'authorized-current' || state == 'authorized-updating'")
+        a.btn(ng-href="/#/{{prevDay}}") Previous Day
+        a.btn(ng-href="/#/{{nextDay}}") Next Day
+      button.btn(ng-click="login()", ng-show="state == 'anonymous'") Sign In with Facebook
+      button.btn(ng-click="loginJacob()", ng-show="state == 'anonymous'") Sign In for Jacob
+      button.btn(ng-click="logout()", ng-show="state != 'loading' && state != 'anonymous'") Sign Out
+
+    hr.unit.span-grid
+
+    div(ng-show="state == 'authorized-updating' || state == 'authorized-current'")
+      div.unit.span-grid(ng-show="!hasMessagesToday && state == 'authorized-current'")
+        p
+          strong No messages on this day...
+      div.unit.span-grid(ng-show="state == 'authorized-updating'")
+        p
+          strong Loading messages...&nbsp;
+          img(src='/images/ajax-loader.gif')
+      div(ng-repeat="message in messages")
+        div(ng-class="message.author_key")
+          div.unit.one-of-five
+            span.avatar.hide-mobile
+              img(ng-src="/images/{{message.author_key}}.jpg")
+          div.unit.four-of-five
+            p
+              strong {{ message.header }}
+            div(ng-bind-html-unsafe="message.html")
+            div(ng-show="showSeen(message.local_id)")
+              small(ng-bind-html-unsafe="formattedSeen(message.local_id)")
+
+      hr.unit.span-grid
+
+  footer.grid(ng-show="state == 'authorized-updating' || state == 'authorized-current'")
+    div.unit.one-of-five
+      h2 Stats
+    div.unit.one-of-five
+    div.unit.one-of-five
+      strong Messaging
+      div {{ durationMessages }}
+    div.unit.one-of-five
+      strong Official Relationship
+      div {{ durationRelationship }}
+    div.unit.one-of-five(ng-show="data.wordCount")
+      strong Word Count
+      div {{ data.wordCount }} words

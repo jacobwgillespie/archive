@@ -1,0 +1,1 @@
+class RefreshFailure < StandardError; end

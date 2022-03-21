@@ -1,0 +1,20 @@
+<% if jobs.size > 0 %>
+  <% active = false %>
+  <section>
+    <div class="well">
+      <% jobs.each do |job| %>
+        <% if job.message %><p><%= job.message %></p><% end %>
+        <%
+          active = true if job.status != 'completed'
+          num = job.num.to_f || 0
+          total = job.total.to_f || 0
+          percent = (num / total) * 100
+        %>
+        <div class="progress <% if job.status == 'completed' %>progress-success<% else %>progress-striped active<% end %>">
+          <div class="bar" style="width: <%= percent %>%"></div>
+        </div>
+      <% end %>
+    </div>
+    <% if not active %><div id="done"></div><% end %>
+  </section>
+<% end %>

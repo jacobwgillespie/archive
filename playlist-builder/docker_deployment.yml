@@ -1,0 +1,11 @@
+production:
+  repositories:
+    docker:
+      url: index.docker.io
+      username: _env:DOCKER_USERNAME
+      password: _env:DOCKER_PASSWORD
+      email: _env:DOCKER_EMAIL
+  services:
+    web:
+      image: playlist/playlist-builder
+      ports: ["8080:80:443"]

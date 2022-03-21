@@ -1,0 +1,19 @@
+= form_tag movie_like_path(movie), method: :put, remote: true, id: 'like-movie' do; end
+= form_tag movie_like_path(movie), method: :delete, remote: true, id: 'unlike-movie' do; end
+= form_tag movie_seen_path(movie), method: :put, remote: true, id: 'seen-movie' do; end
+= form_tag movie_seen_path(movie), method: :delete, remote: true, id: 'unseen-movie' do; end
+= form_tag movie_watchlist_path(movie), method: :put, remote: true, id: 'watchlist-movie' do; end
+= form_tag movie_watchlist_path(movie), method: :delete, remote: true, id: 'unwatchlist-movie' do; end
+= form_tag list_movie_path(List.find(3), movie), method: :put, remote: true, id: 'add-list-movie' do; end
+
+%span.ajax-indicator{style: 'display: none;'}= icon('spinner', class: 'fa-spin fa-fw')
+
+.btn-group{role: 'group'}
+  = render partial: 'movies/seen/seen', locals: { movie: movie }
+  = render partial: 'movies/like/like', locals: { movie: movie }
+  .btn-group{role: 'group'}
+    %button.btn.btn-default.dropdown-toggle{'data-toggle' => 'dropdown', aria: {haspopup: 'true', expanded: 'false'}}
+      = icon('bars', class: 'fa-fw')
+      Add to List
+      %span.caret
+    = render partial: 'in_lists', locals: { movie: movie }

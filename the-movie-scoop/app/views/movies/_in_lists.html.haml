@@ -1,0 +1,19 @@
+%ul.dropdown-menu#your-lists
+  = render partial: 'movies/watchlist/watchlist', locals: { movie: movie }
+  %li.divider{role: 'separator'}
+  %li.dropdown-header Your Lists
+  - current_user.lists.each do |list|
+    %li
+      - if list.has_movie? movie
+        = link_to '#', onclick: "Movie.removeFromList(#{list.id})" do
+          = icon('check-circle-o', class: 'fa-fw')
+          = list.title
+      - else
+        = link_to '#', onclick: "Movie.addToList(#{list.id})" do
+          = icon('circle-o', class: 'fa-fw')
+          = list.title
+  %li.divider{role: 'separator'}
+  %li
+    = link_to '#', 'data-toggle' => 'modal', 'data-target' => '#new-list-modal', 'data-remote' => 'false' do
+      = icon('plus', class: 'fa-fw')
+      New List

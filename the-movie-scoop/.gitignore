@@ -1,0 +1,17 @@
+!.keep
+*.DS_Store
+*.swp
+.env
+/coverage/
+/log/
+/public/system/
+/public/uploads/
+/tmp/
+rerun.txt
+.env*
+.bundle
+.foreman
+dump.rdb
+
+/config/skylight.yml
+node_modules/

@@ -1,0 +1,205 @@
+@charset "UTF-8";
+
+#main {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/**
+ *
+ *
+  Unicode Ampersand
+ *
+ */
+
+@font-face {
+  font-family: "Ampersand";
+  src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+  unicode-range: U+0026;
+}
+
+@font-face {
+  font-family: "Ampersand";
+  src: local("Georgia");
+  unicode-range: U+270C;
+}
+
+.amp {
+  font-family: Ampersand, Georgia, serif;
+}
+
+/**
+ *
+ *
+  Base Type
+ *
+ */
+html {
+  font: normal 112.5%/1.65 serif;
+}
+
+body {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  color: #444444;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+
+.tera {
+  font-size: 117px;
+  font-size: 6.5rem;
+  margin-bottom: 0.25385rem;
+}
+
+.giga {
+  font-size: 90px;
+  font-size: 5rem;
+  margin-bottom: 0.33rem;
+}
+
+.mega {
+  font-size: 72px;
+  font-size: 4rem;
+  margin-bottom: 0.4125rem;
+}
+
+h1,
+.alpha {
+  font-size: 60px;
+  font-size: 3.33333rem;
+  margin-bottom: 0.495rem;
+}
+
+h2,
+.beta {
+  font-size: 48px;
+  font-size: 2.66667rem;
+  margin-bottom: 0.61875rem;
+}
+
+h3,
+.gamma {
+  font-size: 36px;
+  font-size: 2rem;
+  margin-bottom: 0.825rem;
+}
+
+h4,
+.delta {
+  font-size: 24px;
+  font-size: 1.33333rem;
+  margin-bottom: 1.2375rem;
+}
+
+h5,
+.epsilon {
+  font-size: 21px;
+  font-size: 1.16667rem;
+  margin-bottom: 1.41429rem;
+}
+
+h6,
+.zeta {
+  font-size: 18px;
+  font-size: 1rem;
+  margin-bottom: 1.65rem;
+}
+
+/**
+ *
+  Hyphens
+ *
+ */
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+  /* Accepted values: [ none | manual | auto ] */
+  -webkit-hyphens: none; /* Safari 5.1 thru 6, iOS 4.2 thru 6 */
+  -moz-hyphens: none; /* Firefox 16 thru 20 */
+  -ms-hyphens: none; /* IE10 */
+  -o-hyphens: none;  /* PRESTO...haha LOL */
+  hyphens: none;   /* W3C standard */
+}
+
+/**
+ *
+  Code Blocks
+ *
+ */
+
+pre code {
+  word-wrap: normal;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+}
+
+pre {
+  white-space: pre;
+}
+
+code {
+  white-space: pre;
+  font-family: monospace;
+}
+
+/**
+ * Abbreviations Markup
+ *
+  <abbr title="hyper text markup language">HMTL</abbr>
+ *
+ * Extend this object into your markup.
+ *
+ */
+abbr {
+  font-variant: small-caps;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: gray;
+}
+abbr:hover {
+  cursor: help;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222222;
+}
+
+.drop-cap:first-letter {
+  float: left;
+  margin: 0;
+  padding: 0.125em 0.125em 0 0;
+  font-size: 6em;
+  font-family: Copperplate;
+  line-height: 0.5;
+  text-indent: 0;
+  background: transparent;
+  color: inherit;
+}

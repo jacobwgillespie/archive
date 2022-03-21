@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+if ARGV.length < 1
+  print "MKV repacker script"
+  print "  Usage: mkv2avi file(s)"
+else
+  ARGV.each do |file|
+    puts "Unpacking file #{file}"
+    system("mkvextract tracks #{file} 1:temp_video.avi 2:temp_audio.ogg")
+    puts "Unpacking file #{file}"
+    system("ffmpeg -i temp_audio.ogg  -i temp_video.avi -vcodec copy #{file}.avi")
+    puts "Cleaing up"
+    #system("rm temp_video.avi temp_audio.ogg")
+  end
+end
+
+puts "Done"

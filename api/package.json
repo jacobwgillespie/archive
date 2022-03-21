@@ -1,0 +1,18 @@
+{
+  "name": "jacobwg-api",
+  "description": "API for my life",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "~3.3.0",
+    "underscore": "~1.5.2",
+    "moment": "~2.1.0",
+    "nconf": "~0.6.7"
+  },
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}

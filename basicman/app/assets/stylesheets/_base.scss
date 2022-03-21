@@ -1,0 +1,77 @@
+// 1. Set default font family to sans-serif.
+// 2. Prevent iOS and IE text size adjust after device orientation change,
+//    without disabling user zoom.
+// 3. Always show scrollbar
+html {
+  font-family: sans-serif; // 1
+  -ms-text-size-adjust: 100%; // 2
+  -webkit-text-size-adjust: 100%; // 2
+  overflow-y: scroll; // 3
+}
+
+// 1. Remove default margin
+body {
+  margin: 0; // 1
+  padding: 1em;
+  font-size: 1.125em;
+  font-family: 'Avenir Next', 'HelveticaNeue-Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 2em;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 4em;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// 1. Remove background from active links in IE10
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: #6caddf;
+
+  &:visited {
+    color: #6caddf;
+  }
+}
+
+// Improve readability of focused elements when they are also in an active/hover state.
+a:active,
+a:hover {
+  outline: 0;
+}
+
+h1, h2, h3, h4, h5 {
+}
+
+hr {
+  background: #eee;
+  height: 1px;
+  border: 0;
+  margin: 3em 0;
+}
+
+p {
+  margin-bottom: 2em;
+}
+
+input[type="submit"],
+button, a.button {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 6px;
+  min-width: 28px;
+  font-size: .8em;
+  text-transform: uppercase;
+  line-height: 1em;
+
+  &:hover {
+    background-color: #ddd;
+  }
+}

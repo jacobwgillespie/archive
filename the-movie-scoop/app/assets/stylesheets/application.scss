@@ -1,0 +1,267 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+@import "bootstrap-sprockets";
+$border-radius-base: 4px;
+//$border-radius-small: 0;
+//$border-radius-large: 0;
+
+$brand-primary: #1565c0; // blue
+$brand-success: #43a047; // green
+$brand-info: #0097a7; // teal
+$brand-warning: #fbc02d; // orange / yellow
+$brand-danger: #b71c1c; // red
+
+
+// Customize button border radius
+$btn-border-radius-base: 4px;
+
+// Change default font
+$font-family-sans-serif: 'Roboto', 'source-sans-pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body {
+  min-height: 2000px;
+  //padding-top: 50px;
+  background-color: #eee;
+}
+
+.navbar-brand {
+  font-family: 'futura-pt', $font-family-sans-serif;
+  i {
+    @extend small;
+  }
+}
+
+.banner-title {
+  display: block;
+  width: 100%;
+  height: 75vh;
+  color: #fff;
+  position: absolute;
+
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  h4 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+
+    small {
+      color: #fff;
+    }
+  }
+}
+
+.movie-summary .title {
+  max-width: 90%;
+}
+
+.movie-summary .composite-score-label {
+  @extend h1;
+  font-size: 24px;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.star-ratings {
+  font-size: 24px;
+  padding: .2em .6em .3em;
+
+  i {
+    color: #ffd700;
+  }
+}
+
+.cover {
+  width: 100%;
+  height: 75vh;
+
+  -moz-box-shadow:    inset 0 -200px 500px -150px #000;
+  -webkit-box-shadow: inset 0 -200px 500px -150px #000;
+   box-shadow:        inset 0 -200px 500px -150px #000;
+
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: top center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+
+.box {
+  @include box-shadow(0 0px 6px rgba(0,0,0,.27));
+  background-color: #fff;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  @extend .clearfix;
+}
+
+blockquote {
+  font-size: 1em;
+}
+
+.sidebar {
+  padding-left: 0;
+  .box {
+    margin-bottom: 20px;
+  }
+}
+
+.movie-summary {
+  margin-top: -100px;
+
+  .poster {
+    @extend .box;
+    min-height: 420px;
+    padding: 0;
+    margin-bottom: 10px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: top center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .box {
+    padding: 20px;
+  }
+
+  .overview {
+    padding: 0;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .movie-summary .poster {
+    min-height: 340px;
+  }
+}
+
+.movie-details {
+  .box {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  .first .box {
+    margin-right: 20px;
+  }
+  .col-md-5 {
+    padding: 0;
+  }
+  .freshness {
+    margin-right: 8px;
+  }
+}
+
+.person-details {
+  .box {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  .col-md-10 {
+    padding: 0;
+  }
+}
+
+.thumbnail .label,
+.carousel .label {
+  position: absolute;
+  top: 12px;
+  font-size: 1.1em;
+  right: 28px;
+}
+
+.movie-carousel {
+  .carousel-control {
+    padding-top: 17%;
+    width: 10%;
+  }
+}
+
+.navbar-transparent-top {
+  border-bottom: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.75);
+
+  .navbar-nav > .open > a {
+    &, &:focus, &:hover {
+      background-color: transparent;
+      color: #fff;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.75);
+    border: none;
+
+    .divider {
+      background-color: #000;
+    }
+
+    & > li > a {
+      color: #fff;
+      &:hover, &:focus {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .navbar-brand, .navbar-nav > li > a {
+    color: #fff;
+
+    &:hover, &:active, &:focus {
+      color: #f0f0f0;
+    }
+  }
+
+  .form-control {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+  }
+}
+
+.btn-person {
+  margin-bottom: 5px;
+}
+
+.table-no-border {
+  & > thead, & > tbody, & > tfoot {
+    & > tr {
+      & > td, & > th {
+        border: none;
+      }
+    }
+  }
+}
+
+.modal-content,
+.label {
+  border-radius: 4px;
+}
+
+.freshness {
+  margin-right: 1em;
+}
+
+#like-button.active {
+  color: #B71C1C;
+}
+
+#seen-button.active {
+  color: #4CAF50;
+}

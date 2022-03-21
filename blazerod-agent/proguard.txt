@@ -1,0 +1,27 @@
+-optimizationpasses 1
+-overloadaggressively
+-mergeinterfacesaggressively
+-allowaccessmodification
+-forceprocessing
+
+-keepnames class com.blazerod.**
+
+-verbose
+-dontwarn javax.**
+-dontwarn org.apache.log.**
+-dontwarn org.apache.log4j.**
+-dontwarn org.apache.avalon.framework.**
+-dontwarn org.joda.**
+-dontwarn scala.**
+-dontwarn org.apache.tools.ant.**
+-dontwarn com.google.common.**
+-dontwarn org.yaml.**
+-dontwarn org.bukkit.**
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+-keep class com.blazerod.agent.** { *; }
+
+# bukkit.org restrictions
+-dontobfuscate
+-dontoptimize

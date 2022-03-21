@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  original_language: MyString
+  overview: MyText
+  runtime: 1
+  status: MyString
+  certification: MyString
+  theater_release_date: 2015-08-04
+  dvd_release_date: 2015-08-04
+  tmdb_popularity: 1.5
+  tmdb_vote_average: 1.5
+  tmdb_vote_count: 1
+  imdb_vote_average: 1.5
+  imdb_vote_count: 1
+  rt_critic_rating: MyString
+  rt_critic_score: 1
+  rt_critic_consensus: MyText
+  rt_audience_rating: MyString
+  rt_audience_score: 1
+  homepage_url: MyString
+  rt_url: MyString
+  plugged_in_url: MyString
+  imdb_id: MyString
+  rt_id: 1
+  backdrop_url: MyString
+  poster_url: MyString
+  budget: 1
+  revenue: 1
+  plugged_in_rating: 1
+  plugged_in_caution_kids: MyString
+  plugged_in_caution_teens: MyString
+  plugged_in_caution_adults: MyString
+
+two:
+  title: MyString
+  original_language: MyString
+  overview: MyText
+  runtime: 1
+  status: MyString
+  certification: MyString
+  theater_release_date: 2015-08-04
+  dvd_release_date: 2015-08-04
+  tmdb_popularity: 1.5
+  tmdb_vote_average: 1.5
+  tmdb_vote_count: 1
+  imdb_vote_average: 1.5
+  imdb_vote_count: 1
+  rt_critic_rating: MyString
+  rt_critic_score: 1
+  rt_critic_consensus: MyText
+  rt_audience_rating: MyString
+  rt_audience_score: 1
+  homepage_url: MyString
+  rt_url: MyString
+  plugged_in_url: MyString
+  imdb_id: MyString
+  rt_id: 1
+  backdrop_url: MyString
+  poster_url: MyString
+  budget: 1
+  revenue: 1
+  plugged_in_rating: 1
+  plugged_in_caution_kids: MyString
+  plugged_in_caution_teens: MyString
+  plugged_in_caution_adults: MyString

@@ -1,0 +1,12 @@
+<% text ||= 'Add to Cart' %>
+<div class="add-to-cart add-to-cart-<%= product.id %>">
+  <%= button_to text, cart_path, method: :post, remote: true, params: { product_id: product.id }, title: 'Add to Cart' %>
+  <div class="cart-quantity">
+    <% item = current_items.detect { |i| i.product_id == product.id } %>
+    <% if item %>
+      <a href="/cart"><%= item.quantity %> in cart</a>
+    <% else %>
+      <span>&nbsp;</span>
+    <% end %>
+  </div>
+</div>

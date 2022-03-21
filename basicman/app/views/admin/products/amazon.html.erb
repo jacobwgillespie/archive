@@ -1,0 +1,76 @@
+<%#
+# Show
+
+This view is the template for the show page.
+It renders the attributes of a resource,
+as well as a link to its edit page.
+
+## Local variables:
+
+- `page`:
+  An instance of [Administrate::Page::Show][1].
+  Contains methods for accessing the resource to be displayed on the page,
+  as well as helpers for describing how each attribute of the resource
+  should be displayed.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
+%>
+
+<% content_for(:title) { 'Amazon Search' } %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title" id="page-title">
+    <%= content_for(:title) %>
+  </h1>
+</header>
+
+<section class="main-content__body main-content__body--flush">
+
+  <%= form_tag amazon_admin_products_path, class: "form" do %>
+    <div class="field-unit field-unit--string">
+      <div class="field-unit__label">
+        <label for="q">Search</label>
+      </div>
+      <div class="field-unit__field">
+        <%= text_field_tag :q, params[:q], placeholder: 'Amazon URL or ASIN' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag(
+        "Go",
+        name: nil,
+        class: "button",
+      ) %>
+    </div>
+  <% end %>
+
+  <% unless @resource.nil? %>
+  <dl>
+    <dt class="attribute-label">ASIN</dt>
+    <dd class="attribute-data attribute-data--string"><%= @resource.asin %></dd>
+
+    <% @resource.offers.each do |offer| %>
+      <dt class="attribute-label">Offer</dt>
+      <dd class="attribute-data attribute-data--string">
+        <p>
+          <%= offer[:condition] %>
+          <br />
+          <%= number_to_currency offer[:price] / 100 %>
+          <br />
+          <%= offer[:availability] %>
+          <br />
+          <%= text_field_tag :offer_id, offer[:id], name: nil %>
+        </p>
+      </dd>
+    <% end %>
+
+    <% @resource.images.each do |image| %>
+      <dt class="attribute-label">Image</dt>
+      <dd class="attribute-data attribute-data--image">
+        <%= image_tag image, class: 'amazon-image' %>
+      </dd>
+    <% end %>
+  </dl>
+  <% end %>
+</section>

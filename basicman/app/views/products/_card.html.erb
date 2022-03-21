@@ -1,0 +1,11 @@
+<div class="product-card">
+  <a href="/<%= product.slug %>" class="image">
+    <img src="<%= product.image_square.url %>" alt="<%= product.name %> photo" width="360" height="360" />
+  </a>
+  <h3><a href="/<%= product.slug %>"><%= product.name %></a></h3>
+  <div class="header">
+    <strong>$<%= product.price.ceil %></strong>
+    &nbsp;&#x2500;&nbsp;
+    <%= render partial: 'add_to_cart', locals: { text: '+', product: product } %>
+  </div>
+</div>

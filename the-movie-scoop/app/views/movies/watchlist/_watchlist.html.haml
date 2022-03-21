@@ -1,0 +1,9 @@
+%li#watchlist-button
+  - if current_user.in_watchlist?(movie)
+    = link_to '#', 'data-toggle' => 'tooltip', title: 'Remove from watchlist', 'data-submit-form' => '#unwatchlist-movie' do
+      = icon('clock-o', class: 'fa-fw')
+      In Watchlist
+  - else
+    = link_to '#', 'data-toggle' => 'tooltip', title: 'Add to watchlist', 'data-submit-form' => '#watchlist-movie' do
+      = icon('clock-o', class: 'fa-fw')
+      Watchlist

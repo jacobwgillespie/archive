@@ -1,0 +1,6 @@
+- if current_user.seen?(movie)
+  %button#seen-button.btn.btn-default.active{'data-toggle' => 'tooltip', title: 'Remove from watched', 'data-submit-form' => '#unseen-movie'}
+    = icon('eye')
+- else
+  %button#seen-button.btn.btn-default{'data-toggle' => 'tooltip', title: 'Mark as watched', 'data-submit-form' => '#seen-movie'}
+    = icon('eye')

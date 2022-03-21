@@ -1,0 +1,3 @@
+morph(".product-card .add-to-cart-<%= @product.id %>", "<%= escape_morph_javascript(render partial: 'products/add_to_cart', locals: { text: '+', product: @product }) %>");
+morph(".product-detail .add-to-cart-<%= @product.id %>", "<%= escape_morph_javascript(render partial: 'products/add_to_cart', locals: { product: @product }) %>");
+morph(".cart-count-component", "<%= escape_morph_javascript(render partial: 'cart/count') %>");

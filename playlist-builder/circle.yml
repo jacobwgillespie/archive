@@ -1,0 +1,20 @@
+machine:
+  services:
+    - docker
+
+#dependencies:
+#  pre:
+#    - "[[ -d /home/ubuntu/.go_workspace/src/github.com/playlist/playlist-api ]] || git clone git@github.com:playlist/playlist-api.git /home/ubuntu/.go_workspace/src/github.com/playlist/playlist-api"
+#    - "[[ -d /home/ubuntu/.go_workspace/src/github.com/playlist/playlist-api ]] && cd /home/ubuntu/.go_workspace/src/github.com/playlist/playlist-api && git pull origin master"
+
+test:
+  post:
+    - docker build -t playlist/playlist-builder:$CIRCLE_BUILD_NUM .
+    - docker tag playlist/playlist-builder:$CIRCLE_BUILD_NUM playlist/playlist-builder:latest
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" < .dockercfg.template > ~/.dockercfg
+      - bash -x deploy.sh $CIRCLE_BUILD_NUM

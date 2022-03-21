@@ -1,0 +1,3 @@
+[submodule "hulu-filter"]
+	path = hulu-filter
+	url = git://github.com/jacobwg/hulu-filter.git

@@ -1,0 +1,9 @@
+// Hard-disable the loader
+
+body {
+  overflow: auto !important;
+}
+
+#loading {
+  display: none !important;
+}

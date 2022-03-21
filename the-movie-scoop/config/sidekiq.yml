@@ -1,0 +1,9 @@
+---
+:queues:
+  - default
+  - tmdb
+  - imdb
+  - rottentomatoes
+  - canistreamit
+  - composite_score
+  - movie_data

@@ -1,0 +1,22 @@
+.about {
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .box {
+    flex: 1;
+    text-align: center;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 415px) {
+  .about {
+    .row {
+      flex-direction: row;
+    }
+  }
+}

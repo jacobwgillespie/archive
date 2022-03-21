@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie_id: 
+  source: MyString
+  price: 1.5
+  external_id: MyString
+  direct_url: MyString
+  url: 
+
+two:
+  movie_id: 
+  source: MyString
+  price: 1.5
+  external_id: MyString
+  direct_url: MyString
+  url: 

@@ -1,0 +1,39 @@
+<% page_title "#{@query} - Search Results" %>
+<header class="jumbotron subhead" id="titlehead">
+  <div class="container">
+    <h1>Search: <%= @query %></h1>
+    <p class="lead">Here's what we found...</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li><a href="#searchResults"><i class="icon-chevron-right"></i> Search Results</a></li>
+      </ul>
+    </div>
+    <div class="span9">
+      <section id="searchResults">
+        <div class="page-header">
+          <h1>Search Results</h1>
+        </div>
+
+        <ul class="thumbnails titles">
+          <% @results.each do |title| %>
+            <li class="span2">
+              <%= link_to "/tmdb/#{title.id}", class: 'thumbnail' do %>
+                <% if title.poster_path.nil? %>
+                  <img src="<%= asset_path('poster.png') %>">
+                <% else %>
+                  <img src="http://cf2.imgobject.com/t/p/w185<%= title.poster_path %>">
+                <% end %>
+                <h4><%= title.title %><% unless title.release_date.nil? %> (<%= Date.parse(title.release_date).year %>)<% end %></h4>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

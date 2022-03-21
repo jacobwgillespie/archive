@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <% if content_for? :title %>
+      <title><%= yield :title %> | <%= current_site.name %> - <%= current_site.title_slogan %></title>
+    <% else %>
+      <title><%= current_site.name %> - <%= current_site.title_slogan %></title>
+    <% end %>
+
+    <%= yield :meta %>
+    <%= render 'favicon' %>
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= current_site.header_scripts.html_safe %>
+  </head>
+
+  <body>
+    <div id="container" class="container">
+      <%= render "application/header" %>
+      <%= yield %>
+      <%= render "application/footer" %>
+    </div>
+
+    <div class="back-to-top">
+      <a href="#">&uarr;</a>
+    </div>
+
+    <%= current_site.footer_scripts.html_safe %>
+  </body>
+</html>

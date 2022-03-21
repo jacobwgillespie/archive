@@ -1,0 +1,6 @@
+{
+  "name": "withData",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./withData.js"
+}

@@ -1,0 +1,3 @@
+source 'http://rubygems.org'
+
+gem 'rbcurse-core', :require => false, :git => 'https://github.com/rkumar/rbcurse-core.git'

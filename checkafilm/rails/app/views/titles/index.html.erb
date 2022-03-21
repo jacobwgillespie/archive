@@ -1,0 +1,99 @@
+<header class="jumbotron subhead" id="titlehead">
+  <div class="container">
+    <h1>Check a Film</h1>
+    <p class="lead">Look up any movie by title for a summary of quality and content</p>
+    <p class="lead">Courtesy of IMDb, TMDb, Rotten Tomatoes, Plugged In, and Kids in Mind</p>
+  </div>
+</header>
+
+<div class="bs-docs-social">
+  <div class="container">
+    <ul class="bs-docs-social-buttons">
+      <li>
+        We recommend <a href="http://www.amazon.com/gp/product/B002YPRW7S/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B002YPRW7S&linkCode=as2&tag=ja07-20" target="_blank">ClearPlay</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li><a href="#newReleases"><i class="icon-chevron-right"></i> New Releases</a></li>
+        <li><a href="#newOnDVD"><i class="icon-chevron-right"></i> New on DVD</a></li>
+        <li><a href="#recentlyAdded"><i class="icon-chevron-right"></i> Recently Added</a></li>
+        <li><a href="#recent"><i class="icon-chevron-right"></i> Recently Updated</a></li>
+      </ul>
+    </div>
+    <div class="span9">
+      <section id="newReleases">
+        <div class="page-header">
+          <h1>New Releases</h1>
+        </div>
+
+        <ul class="thumbnails titles">
+          <% @new_releases.each do |title| %>
+            <li class="span2">
+              <%= link_to title, class: 'thumbnail' do %>
+                <img src="<%= title.poster_url(:thumb) %>">
+                <h4><%= title.page_title %></h4>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section id="newOnDVD">
+        <div class="page-header">
+          <h1>New on DVD</h1>
+        </div>
+
+        <ul class="thumbnails titles">
+          <% @new_on_dvd.each do |title| %>
+            <li class="span2">
+              <%= link_to title, class: 'thumbnail' do %>
+                <img src="<%= title.poster_url(:thumb) %>">
+                <h4><%= title.page_title %></h4>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section id="recentlyAdded">
+        <div class="page-header">
+          <h1>Recently Added</h1>
+        </div>
+
+        <ul class="thumbnails titles">
+          <% @recently_added.each do |title| %>
+            <li class="span2">
+              <%= link_to title, class: 'thumbnail' do %>
+                <img src="<%= title.poster_url(:thumb) %>">
+                <h4><%= title.page_title %></h4>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section id="recent">
+        <div class="page-header">
+          <h1>Recently Updated Titles</h1>
+        </div>
+
+        <ul class="thumbnails titles">
+          <% @recently_updated.each do |title| %>
+            <li class="span2">
+              <%= link_to title, class: 'thumbnail' do %>
+                <img src="<%= title.poster_url(:thumb) %>">
+                <h4><%= title.page_title %></h4>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

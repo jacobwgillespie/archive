@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  source: MyString
+  key: MyString
+  size: MyString
+  type: 
+  language: MyString
+  movie_id: 
+
+two:
+  name: MyString
+  source: MyString
+  key: MyString
+  size: MyString
+  type: 
+  language: MyString
+  movie_id: 
