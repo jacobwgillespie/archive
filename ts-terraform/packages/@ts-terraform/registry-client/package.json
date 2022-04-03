@@ -1,0 +1,48 @@
+{
+  "name": "@ts-terraform/registry-client",
+  "version": "0.4.0",
+  "description": "Terraform Registry client",
+  "license": "MIT",
+  "bin": {
+    "ts-terraform-fetch-provider": "./dist/bin/ts-terraform-fetch-provider.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "watch": "tsc -b -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "got": "^11.3.0",
+    "tslib": "^2.0.0",
+    "unzipper": "^0.10.11"
+  },
+  "devDependencies": {
+    "@ts-terraform/config-typescript": "^0.4.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/node": "^12",
+    "@types/unzipper": "^0.10.3",
+    "typescript": "^3.9.3"
+  },
+  "funding": {
+    "type": "GitHub",
+    "url": "https://github.com/sponsors/jacobwgillespie"
+  },
+  "homepage": "https://ts-terraform.dev",
+  "keywords": [
+    "ts-terraform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ts-terraform/ts-terraform.git",
+    "directory": "packages/@ts-terraform/ts-terraform"
+  }
+}

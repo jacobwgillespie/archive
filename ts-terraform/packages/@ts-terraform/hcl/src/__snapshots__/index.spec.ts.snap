@@ -1,0 +1,4920 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly parse HCL 1`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 8,
+            "column": 9,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [],
+        "labels": null,
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 6,
+            "column": 7,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 2`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 8,
+            "column": 9,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [],
+        "labels": null,
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 6,
+            "column": 7,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 3`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 8,
+            "column": 9,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [],
+        "labels": null,
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 6,
+            "column": 7,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 13,
+          "column": 14,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 0,
+          "column": 1,
+          "line": 1,
+        },
+      },
+      "detail": "A block definition must end with a newline.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 13,
+          "column": 14,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 8,
+          "column": 9,
+          "line": 1,
+        },
+      },
+      "summary": "Missing newline after block definition",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 4`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 19,
+            "column": 1,
+            "line": 2,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 19,
+            "column": 1,
+            "line": 2,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [],
+        "labels": null,
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 7,
+            "column": 8,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 6,
+            "column": 7,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 8,
+          "column": 9,
+          "line": 1,
+        },
+      },
+      "detail": "A single-line block definition can contain only a single argument. If you meant to define argument \\"block\\", use an equals sign to assign it a value. To define a nested block, place it on a line of its own within its parent block.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 8,
+          "column": 9,
+          "line": 1,
+        },
+      },
+      "summary": "Argument definition required",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 5`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 14,
+            "column": 15,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 13,
+            "column": 14,
+            "line": 1,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [
+          Object {
+            "end": Object {
+              "byte": 11,
+              "column": 12,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 6,
+              "column": 7,
+              "line": 1,
+            },
+          },
+        ],
+        "labels": Array [
+          "foo",
+        ],
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 13,
+            "column": 14,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 12,
+            "column": 13,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 6`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 12,
+            "column": 13,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 11,
+            "column": 12,
+            "line": 1,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [
+          Object {
+            "end": Object {
+              "byte": 9,
+              "column": 10,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 6,
+              "column": 7,
+              "line": 1,
+            },
+          },
+        ],
+        "labels": Array [
+          "foo",
+        ],
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 11,
+            "column": 12,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 10,
+            "column": 11,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 7`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {},
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {},
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 42,
+            "column": 43,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 41,
+            "column": 42,
+            "line": 1,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [
+          Object {
+            "end": Object {
+              "byte": 39,
+              "column": 40,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 6,
+              "column": 7,
+              "line": 1,
+            },
+          },
+        ],
+        "labels": Array [
+          "invalid \${ ... } foo",
+        ],
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 41,
+            "column": 42,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 40,
+            "column": 41,
+            "line": 1,
+          },
+        },
+        "type": "block",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 17,
+          "column": 18,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 6,
+          "column": 7,
+          "line": 1,
+        },
+      },
+      "detail": "Template sequences are not allowed in this string. To include a literal \\"$\\", double it (as \\"$$\\") to escape it.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 17,
+          "column": 18,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid string literal",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 8`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "literalValueExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "type": "number",
+          "val": 1,
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 9`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "literalValueExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "type": "number",
+          "val": 1,
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 10`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 17,
+                  "column": 18,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 13,
+                  "column": 14,
+                  "line": 1,
+                },
+              },
+              "type": "bool",
+              "val": true,
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 19,
+              "column": 20,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 19,
+            "column": 20,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 11`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 14,
+                  "column": 15,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "\${",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 19,
+                  "column": 20,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 14,
+                  "column": 15,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "true}",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 20,
+              "column": 21,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 20,
+            "column": 21,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 12`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 14,
+                  "column": 15,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "%{",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 19,
+                  "column": 20,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 14,
+                  "column": 15,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "true}",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 20,
+              "column": 21,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 20,
+            "column": 21,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 13`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "$",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 13,
+                  "column": 14,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "$",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 14,
+              "column": 15,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 14,
+            "column": 15,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 14`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "$",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 13,
+              "column": 14,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 13,
+            "column": 14,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 15`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "%",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 13,
+                  "column": 14,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "%",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 14,
+              "column": 15,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 14,
+            "column": 15,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 16`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello ",
+            },
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "%",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 13,
+              "column": 14,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 13,
+            "column": 14,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 17`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "hello!",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 12,
+              "column": 13,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 12,
+            "column": 13,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 18`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "•",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 12,
+              "column": 13,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 12,
+            "column": 13,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 19`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 12,
+                  "column": 13,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "\\\\uu2022",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 13,
+              "column": 14,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 13,
+            "column": 14,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 7,
+          "column": 8,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "detail": "The \\\\u escape sequence must be followed by four hexadecimal digits.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 7,
+          "column": 8,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid escape sequence",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 20`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 15,
+                  "column": 16,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "𝄞",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 16,
+              "column": 17,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 16,
+            "column": 17,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 21`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 15,
+                  "column": 16,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "d11e",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 16,
+              "column": 17,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 16,
+            "column": 17,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 22`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "\\\\U2022",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 12,
+              "column": 13,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 12,
+            "column": 13,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 11,
+          "column": 12,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "detail": "The \\\\U escape sequence must be followed by eight hexadecimal digits.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 11,
+          "column": 12,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid escape sequence",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 23`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "\\\\u20m2",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 12,
+              "column": 13,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 12,
+            "column": 13,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 9,
+          "column": 10,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "detail": "The \\\\u escape sequence must be followed by four hexadecimal digits.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 9,
+          "column": 10,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid escape sequence",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 24`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 15,
+                  "column": 16,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "\\\\U00300000",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 16,
+              "column": 17,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 16,
+            "column": 17,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "detail": "Cannot encode character U+300000 in UTF-8.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid escape sequence",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 25`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 15,
+                  "column": 16,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 5,
+                  "column": 6,
+                  "line": 1,
+                },
+              },
+              "type": "string",
+              "val": "\\\\Ub2705550",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 16,
+              "column": 17,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 16,
+            "column": 17,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "detail": "Cannot encode character U+b2705550 in UTF-8.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 15,
+          "column": 16,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid escape sequence",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 26`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 16,
+                  "column": 1,
+                  "line": 3,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 10,
+                  "column": 1,
+                  "line": 2,
+                },
+              },
+              "type": "string",
+              "val": "Hello
+",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 19,
+              "column": 4,
+              "line": 3,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 19,
+            "column": 4,
+            "line": 3,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+      "b": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 23,
+            "column": 4,
+            "line": 4,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 22,
+            "column": 3,
+            "line": 4,
+          },
+        },
+        "expr": Object {
+          "kind": "templateExpr",
+          "parts": Array [
+            Object {
+              "kind": "literalValueExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 27,
+                  "column": 8,
+                  "line": 4,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 25,
+                  "column": 6,
+                  "line": 4,
+                },
+              },
+              "type": "string",
+              "val": "Hi",
+            },
+          ],
+          "srcRange": Object {
+            "end": Object {
+              "byte": 28,
+              "column": 9,
+              "line": 4,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 24,
+              "column": 5,
+              "line": 4,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "b",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 21,
+            "column": 2,
+            "line": 4,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 20,
+            "column": 1,
+            "line": 4,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 28,
+            "column": 9,
+            "line": 4,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 20,
+            "column": 1,
+            "line": 4,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 27`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "scopeTraversalExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 11,
+              "column": 12,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "traversal": Array [
+            Object {
+              "kind": "traverseRoot",
+              "name": "foo",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 7,
+                  "column": 8,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 4,
+                  "column": 5,
+                  "line": 1,
+                },
+              },
+            },
+            Object {
+              "kind": "traverseAttr",
+              "name": "bar",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 7,
+                  "column": 8,
+                  "line": 1,
+                },
+              },
+            },
+          ],
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 11,
+            "column": 12,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 28`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "scopeTraversalExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 15,
+              "column": 16,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "traversal": Array [
+            Object {
+              "kind": "traverseRoot",
+              "name": "foo",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 7,
+                  "column": 8,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 4,
+                  "column": 5,
+                  "line": 1,
+                },
+              },
+            },
+            Object {
+              "key": "cty.DynamicVal",
+              "keyType": "dynamic",
+              "kind": "traverseIndex",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 7,
+                  "column": 8,
+                  "line": 1,
+                },
+              },
+            },
+            Object {
+              "kind": "traverseAttr",
+              "name": "baz",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 15,
+                  "column": 16,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 11,
+                  "column": 12,
+                  "line": 1,
+                },
+              },
+            },
+          ],
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 15,
+            "column": 16,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 11,
+          "column": 12,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 8,
+          "column": 9,
+          "line": 1,
+        },
+      },
+      "detail": "When using the legacy index syntax, chaining two indexes together is not permitted. Use the proper index syntax instead, like [0][1].",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 11,
+          "column": 12,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 8,
+          "column": 9,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid legacy index syntax",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 29`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateWrapExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 40,
+              "column": 41,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "wrapped": Object {
+            "bracketRange": Object {
+              "end": Object {
+                "byte": 38,
+                "column": 39,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 25,
+                "column": 26,
+                "line": 1,
+              },
+            },
+            "collection": Object {
+              "kind": "scopeTraversalExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 25,
+                  "column": 26,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 7,
+                  "column": 8,
+                  "line": 1,
+                },
+              },
+              "traversal": Array [
+                Object {
+                  "kind": "traverseRoot",
+                  "name": "var",
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 10,
+                      "column": 11,
+                      "line": 1,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 7,
+                      "column": 8,
+                      "line": 1,
+                    },
+                  },
+                },
+                Object {
+                  "kind": "traverseAttr",
+                  "name": "public_subnets",
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 25,
+                      "column": 26,
+                      "line": 1,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 10,
+                      "column": 11,
+                      "line": 1,
+                    },
+                  },
+                },
+              ],
+            },
+            "key": Object {
+              "kind": "scopeTraversalExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 37,
+                  "column": 38,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 26,
+                  "column": 27,
+                  "line": 1,
+                },
+              },
+              "traversal": Array [
+                Object {
+                  "kind": "traverseRoot",
+                  "name": "count",
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 31,
+                      "column": 32,
+                      "line": 1,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 26,
+                      "column": 27,
+                      "line": 1,
+                    },
+                  },
+                },
+                Object {
+                  "kind": "traverseAttr",
+                  "name": "index",
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 37,
+                      "column": 38,
+                      "line": 1,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 31,
+                      "column": 32,
+                      "line": 1,
+                    },
+                  },
+                },
+              ],
+            },
+            "kind": "indexExpr",
+            "openRange": Object {
+              "end": Object {
+                "byte": 26,
+                "column": 27,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 25,
+                "column": 26,
+                "line": 1,
+              },
+            },
+            "srcRange": Object {
+              "end": Object {
+                "byte": 38,
+                "column": 39,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 7,
+                "column": 8,
+                "line": 1,
+              },
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 40,
+            "column": 41,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 30`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "templateWrapExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 30,
+              "column": 31,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "wrapped": Object {
+            "each": Object {
+              "kind": "anonSymbolExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 28,
+                  "column": 29,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 25,
+                  "column": 26,
+                  "line": 1,
+                },
+              },
+            },
+            "item": Object {
+              "kind": "anonSymbolExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 28,
+                  "column": 29,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 25,
+                  "column": 26,
+                  "line": 1,
+                },
+              },
+            },
+            "kind": "splatExpr",
+            "markerRange": Object {
+              "end": Object {
+                "byte": 28,
+                "column": 29,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 25,
+                "column": 26,
+                "line": 1,
+              },
+            },
+            "source": Object {
+              "kind": "scopeTraversalExpr",
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 25,
+                  "column": 26,
+                  "line": 1,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 7,
+                  "column": 8,
+                  "line": 1,
+                },
+              },
+              "traversal": Array [
+                Object {
+                  "kind": "traverseRoot",
+                  "name": "var",
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 10,
+                      "column": 11,
+                      "line": 1,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 7,
+                      "column": 8,
+                      "line": 1,
+                    },
+                  },
+                },
+                Object {
+                  "kind": "traverseAttr",
+                  "name": "public_subnets",
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 25,
+                      "column": 26,
+                      "line": 1,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 10,
+                      "column": 11,
+                      "line": 1,
+                    },
+                  },
+                },
+              ],
+            },
+            "srcRange": Object {
+              "end": Object {
+                "byte": 28,
+                "column": 29,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 7,
+                "column": 8,
+                "line": 1,
+              },
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 30,
+            "column": 31,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 31`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "literalValueExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "type": "number",
+          "val": 1,
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 32`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "closeRange": Object {
+            "end": Object {
+              "byte": 32,
+              "column": 33,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 31,
+              "column": 32,
+              "line": 1,
+            },
+          },
+          "collExpr": Object {
+            "kind": "scopeTraversalExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 20,
+                "column": 21,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 17,
+                "column": 18,
+                "line": 1,
+              },
+            },
+            "traversal": Array [
+              Object {
+                "kind": "traverseRoot",
+                "name": "foo",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 20,
+                    "column": 21,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 17,
+                    "column": 18,
+                    "line": 1,
+                  },
+                },
+              },
+            ],
+          },
+          "condExpr": Object {
+            "kind": "literalValueExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 31,
+                "column": 32,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 27,
+                "column": 28,
+                "line": 1,
+              },
+            },
+            "type": "bool",
+            "val": true,
+          },
+          "group": false,
+          "keyExpr": null,
+          "keyVar": "k",
+          "kind": "functionCallExpr",
+          "openRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "srcRange": Object {
+            "end": Object {
+              "byte": 32,
+              "column": 33,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "valExpr": Object {
+            "kind": "scopeTraversalExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 23,
+                "column": 24,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 22,
+                "column": 23,
+                "line": 1,
+              },
+            },
+            "traversal": Array [
+              Object {
+                "kind": "traverseRoot",
+                "name": "v",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 23,
+                    "column": 24,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 22,
+                    "column": 23,
+                    "line": 1,
+                  },
+                },
+              },
+            ],
+          },
+          "valVar": "v",
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 32,
+            "column": 33,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 33`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "closeRange": Object {
+            "end": Object {
+              "byte": 40,
+              "column": 41,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 39,
+              "column": 40,
+              "line": 1,
+            },
+          },
+          "collExpr": Object {
+            "kind": "scopeTraversalExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 20,
+                "column": 21,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 17,
+                "column": 18,
+                "line": 1,
+              },
+            },
+            "traversal": Array [
+              Object {
+                "kind": "traverseRoot",
+                "name": "foo",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 20,
+                    "column": 21,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 17,
+                    "column": 18,
+                    "line": 1,
+                  },
+                },
+              },
+            ],
+          },
+          "condExpr": Object {
+            "kind": "literalValueExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 39,
+                "column": 40,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 35,
+                "column": 36,
+                "line": 1,
+              },
+            },
+            "type": "bool",
+            "val": true,
+          },
+          "group": true,
+          "keyExpr": Object {
+            "kind": "scopeTraversalExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 23,
+                "column": 24,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 22,
+                "column": 23,
+                "line": 1,
+              },
+            },
+            "traversal": Array [
+              Object {
+                "kind": "traverseRoot",
+                "name": "k",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 23,
+                    "column": 24,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 22,
+                    "column": 23,
+                    "line": 1,
+                  },
+                },
+              },
+            ],
+          },
+          "keyVar": "k",
+          "kind": "functionCallExpr",
+          "openRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "srcRange": Object {
+            "end": Object {
+              "byte": 40,
+              "column": 41,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "valExpr": Object {
+            "kind": "scopeTraversalExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 28,
+                "column": 29,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 27,
+                "column": 28,
+                "line": 1,
+              },
+            },
+            "traversal": Array [
+              Object {
+                "kind": "traverseRoot",
+                "name": "v",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 28,
+                    "column": 29,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 27,
+                    "column": 28,
+                    "line": 1,
+                  },
+                },
+              },
+            ],
+          },
+          "valVar": "v",
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 40,
+            "column": 41,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 40,
+          "column": 41,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 4,
+          "column": 5,
+          "line": 1,
+        },
+      },
+      "detail": "Key expression is not valid when building a tuple.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 23,
+          "column": 24,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 22,
+          "column": 23,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid 'for' expression",
+    },
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 40,
+          "column": 41,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 4,
+          "column": 5,
+          "line": 1,
+        },
+      },
+      "detail": "Grouping ellipsis (...) cannot be used when building a tuple.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 31,
+          "column": 32,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 28,
+          "column": 29,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid 'for' expression",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 34`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "literalValueExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "type": "number",
+          "val": 1,
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 5,
+            "column": 6,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 6,
+          "column": 7,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 0,
+          "column": 1,
+          "line": 1,
+        },
+      },
+      "detail": "Argument definitions must be separated by newlines, not commas. An argument definition must end with a newline.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 6,
+          "column": 7,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+      },
+      "summary": "Unexpected comma after argument",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 35`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "kind": "literalValueExpr",
+          "srcRange": Object {
+            "end": Object {
+              "byte": 5,
+              "column": 6,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+          "type": "dynamic",
+          "val": null,
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 4,
+          "column": 5,
+          "line": 1,
+        },
+      },
+      "detail": "The \\"\`\\" character is not valid. To create a multi-line string, use the \\"heredoc\\" syntax, like \\"<<EOT\\".",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 4,
+          "column": 5,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid character",
+    },
+    Object {
+      "context": Object {
+        "end": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 4,
+          "column": 5,
+          "line": 1,
+        },
+      },
+      "detail": "Expected the start of an expression, but found an invalid expression token.",
+      "expression": null,
+      "severity": 1,
+      "subject": Object {
+        "end": Object {
+          "byte": 5,
+          "column": 6,
+          "line": 1,
+        },
+        "filename": "example.hcl",
+        "start": Object {
+          "byte": 4,
+          "column": 5,
+          "line": 1,
+        },
+      },
+      "summary": "Invalid expression",
+    },
+  ],
+}
+`;
+
+exports[`should correctly parse HCL 36`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "a": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 3,
+            "column": 4,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 2,
+            "column": 3,
+            "line": 1,
+          },
+        },
+        "expr": Object {
+          "bracketRange": Object {
+            "end": Object {
+              "byte": 42,
+              "column": 43,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 29,
+              "column": 30,
+              "line": 1,
+            },
+          },
+          "collection": Object {
+            "args": Array [
+              Object {
+                "kind": "scopeTraversalExpr",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 28,
+                    "column": 29,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 9,
+                    "column": 10,
+                    "line": 1,
+                  },
+                },
+                "traversal": Array [
+                  Object {
+                    "kind": "traverseRoot",
+                    "name": "data",
+                    "srcRange": Object {
+                      "end": Object {
+                        "byte": 13,
+                        "column": 14,
+                        "line": 1,
+                      },
+                      "filename": "example.hcl",
+                      "start": Object {
+                        "byte": 9,
+                        "column": 10,
+                        "line": 1,
+                      },
+                    },
+                  },
+                  Object {
+                    "kind": "traverseAttr",
+                    "name": "first",
+                    "srcRange": Object {
+                      "end": Object {
+                        "byte": 19,
+                        "column": 20,
+                        "line": 1,
+                      },
+                      "filename": "example.hcl",
+                      "start": Object {
+                        "byte": 13,
+                        "column": 14,
+                        "line": 1,
+                      },
+                    },
+                  },
+                  Object {
+                    "kind": "traverseAttr",
+                    "name": "ref",
+                    "srcRange": Object {
+                      "end": Object {
+                        "byte": 23,
+                        "column": 24,
+                        "line": 1,
+                      },
+                      "filename": "example.hcl",
+                      "start": Object {
+                        "byte": 19,
+                        "column": 20,
+                        "line": 1,
+                      },
+                    },
+                  },
+                  Object {
+                    "kind": "traverseAttr",
+                    "name": "attr",
+                    "srcRange": Object {
+                      "end": Object {
+                        "byte": 28,
+                        "column": 29,
+                        "line": 1,
+                      },
+                      "filename": "example.hcl",
+                      "start": Object {
+                        "byte": 23,
+                        "column": 24,
+                        "line": 1,
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+            "closeParenRange": Object {
+              "end": Object {
+                "byte": 29,
+                "column": 30,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 28,
+                "column": 29,
+                "line": 1,
+              },
+            },
+            "expandFinal": false,
+            "kind": "functionCallExpr",
+            "name": "sort",
+            "nameRange": Object {
+              "end": Object {
+                "byte": 8,
+                "column": 9,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 4,
+                "column": 5,
+                "line": 1,
+              },
+            },
+            "openParenRange": Object {
+              "end": Object {
+                "byte": 9,
+                "column": 10,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 8,
+                "column": 9,
+                "line": 1,
+              },
+            },
+          },
+          "key": Object {
+            "kind": "scopeTraversalExpr",
+            "srcRange": Object {
+              "end": Object {
+                "byte": 41,
+                "column": 42,
+                "line": 1,
+              },
+              "filename": "example.hcl",
+              "start": Object {
+                "byte": 30,
+                "column": 31,
+                "line": 1,
+              },
+            },
+            "traversal": Array [
+              Object {
+                "kind": "traverseRoot",
+                "name": "count",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 35,
+                    "column": 36,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 30,
+                    "column": 31,
+                    "line": 1,
+                  },
+                },
+              },
+              Object {
+                "kind": "traverseAttr",
+                "name": "index",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 41,
+                    "column": 42,
+                    "line": 1,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 35,
+                    "column": 36,
+                    "line": 1,
+                  },
+                },
+              },
+            ],
+          },
+          "kind": "indexExpr",
+          "openRange": Object {
+            "end": Object {
+              "byte": 30,
+              "column": 31,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 29,
+              "column": 30,
+              "line": 1,
+            },
+          },
+          "srcRange": Object {
+            "end": Object {
+              "byte": 42,
+              "column": 43,
+              "line": 1,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 4,
+              "column": 5,
+              "line": 1,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "a",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 1,
+            "column": 2,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 42,
+            "column": 43,
+            "line": 1,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 0,
+            "column": 1,
+            "line": 1,
+          },
+        },
+      },
+    },
+    "blocks": Array [],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;
+
+exports[`should correctly parse HCL 37`] = `
+Object {
+  "ast": Object {
+    "attributes": Object {
+      "thing": Object {
+        "equalsRange": Object {
+          "end": Object {
+            "byte": 8,
+            "column": 8,
+            "line": 2,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 7,
+            "column": 7,
+            "line": 2,
+          },
+        },
+        "expr": Object {
+          "items": Array [
+            Object {
+              "keyExpr": Object {
+                "forceNonLiteral": false,
+                "kind": "objectConsKeyExpr",
+                "wrapped": Object {
+                  "kind": "templateExpr",
+                  "parts": Array [
+                    Object {
+                      "kind": "literalValueExpr",
+                      "srcRange": Object {
+                        "end": Object {
+                          "byte": 16,
+                          "column": 16,
+                          "line": 2,
+                        },
+                        "filename": "example.hcl",
+                        "start": Object {
+                          "byte": 11,
+                          "column": 11,
+                          "line": 2,
+                        },
+                      },
+                      "type": "string",
+                      "val": "hello",
+                    },
+                  ],
+                  "srcRange": Object {
+                    "end": Object {
+                      "byte": 17,
+                      "column": 17,
+                      "line": 2,
+                    },
+                    "filename": "example.hcl",
+                    "start": Object {
+                      "byte": 10,
+                      "column": 10,
+                      "line": 2,
+                    },
+                  },
+                },
+              },
+              "kind": "objectConsItem",
+              "valueExpr": Object {
+                "items": Array [
+                  Object {
+                    "keyExpr": Object {
+                      "forceNonLiteral": false,
+                      "kind": "objectConsKeyExpr",
+                      "wrapped": Object {
+                        "kind": "templateExpr",
+                        "parts": Array [
+                          Object {
+                            "kind": "literalValueExpr",
+                            "srcRange": Object {
+                              "end": Object {
+                                "byte": 27,
+                                "column": 27,
+                                "line": 2,
+                              },
+                              "filename": "example.hcl",
+                              "start": Object {
+                                "byte": 22,
+                                "column": 22,
+                                "line": 2,
+                              },
+                            },
+                            "type": "string",
+                            "val": "world",
+                          },
+                        ],
+                        "srcRange": Object {
+                          "end": Object {
+                            "byte": 28,
+                            "column": 28,
+                            "line": 2,
+                          },
+                          "filename": "example.hcl",
+                          "start": Object {
+                            "byte": 21,
+                            "column": 21,
+                            "line": 2,
+                          },
+                        },
+                      },
+                    },
+                    "kind": "objectConsItem",
+                    "valueExpr": Object {
+                      "kind": "templateExpr",
+                      "parts": Array [
+                        Object {
+                          "kind": "literalValueExpr",
+                          "srcRange": Object {
+                            "end": Object {
+                              "byte": 37,
+                              "column": 37,
+                              "line": 2,
+                            },
+                            "filename": "example.hcl",
+                            "start": Object {
+                              "byte": 32,
+                              "column": 32,
+                              "line": 2,
+                            },
+                          },
+                          "type": "string",
+                          "val": "world",
+                        },
+                      ],
+                      "srcRange": Object {
+                        "end": Object {
+                          "byte": 38,
+                          "column": 38,
+                          "line": 2,
+                        },
+                        "filename": "example.hcl",
+                        "start": Object {
+                          "byte": 31,
+                          "column": 31,
+                          "line": 2,
+                        },
+                      },
+                    },
+                  },
+                ],
+                "kind": "objectConsExpr",
+                "openRange": Object {
+                  "end": Object {
+                    "byte": 21,
+                    "column": 21,
+                    "line": 2,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 20,
+                    "column": 20,
+                    "line": 2,
+                  },
+                },
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 39,
+                    "column": 39,
+                    "line": 2,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 20,
+                    "column": 20,
+                    "line": 2,
+                  },
+                },
+              },
+            },
+          ],
+          "kind": "objectConsExpr",
+          "openRange": Object {
+            "end": Object {
+              "byte": 10,
+              "column": 10,
+              "line": 2,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 9,
+              "column": 9,
+              "line": 2,
+            },
+          },
+          "srcRange": Object {
+            "end": Object {
+              "byte": 40,
+              "column": 40,
+              "line": 2,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 9,
+              "column": 9,
+              "line": 2,
+            },
+          },
+        },
+        "kind": "attribute",
+        "name": "thing",
+        "nameRange": Object {
+          "end": Object {
+            "byte": 6,
+            "column": 6,
+            "line": 2,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 1,
+            "column": 1,
+            "line": 2,
+          },
+        },
+        "srcRange": Object {
+          "end": Object {
+            "byte": 40,
+            "column": 40,
+            "line": 2,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 1,
+            "column": 1,
+            "line": 2,
+          },
+        },
+      },
+    },
+    "blocks": Array [
+      Object {
+        "body": Object {
+          "attributes": Object {
+            "prop": Object {
+              "equalsRange": Object {
+                "end": Object {
+                  "byte": 79,
+                  "column": 9,
+                  "line": 5,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 78,
+                  "column": 8,
+                  "line": 5,
+                },
+              },
+              "expr": Object {
+                "kind": "templateExpr",
+                "parts": Array [
+                  Object {
+                    "kind": "literalValueExpr",
+                    "srcRange": Object {
+                      "end": Object {
+                        "byte": 84,
+                        "column": 14,
+                        "line": 5,
+                      },
+                      "filename": "example.hcl",
+                      "start": Object {
+                        "byte": 81,
+                        "column": 11,
+                        "line": 5,
+                      },
+                    },
+                    "type": "string",
+                    "val": "123",
+                  },
+                ],
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 85,
+                    "column": 15,
+                    "line": 5,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 80,
+                    "column": 10,
+                    "line": 5,
+                  },
+                },
+              },
+              "kind": "attribute",
+              "name": "prop",
+              "nameRange": Object {
+                "end": Object {
+                  "byte": 77,
+                  "column": 7,
+                  "line": 5,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 73,
+                  "column": 3,
+                  "line": 5,
+                },
+              },
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 85,
+                  "column": 15,
+                  "line": 5,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 73,
+                  "column": 3,
+                  "line": 5,
+                },
+              },
+            },
+            "prop2": Object {
+              "equalsRange": Object {
+                "end": Object {
+                  "byte": 95,
+                  "column": 10,
+                  "line": 6,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 94,
+                  "column": 9,
+                  "line": 6,
+                },
+              },
+              "expr": Object {
+                "kind": "literalValueExpr",
+                "srcRange": Object {
+                  "end": Object {
+                    "byte": 99,
+                    "column": 14,
+                    "line": 6,
+                  },
+                  "filename": "example.hcl",
+                  "start": Object {
+                    "byte": 96,
+                    "column": 11,
+                    "line": 6,
+                  },
+                },
+                "type": "number",
+                "val": 321,
+              },
+              "kind": "attribute",
+              "name": "prop2",
+              "nameRange": Object {
+                "end": Object {
+                  "byte": 93,
+                  "column": 8,
+                  "line": 6,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 88,
+                  "column": 3,
+                  "line": 6,
+                },
+              },
+              "srcRange": Object {
+                "end": Object {
+                  "byte": 99,
+                  "column": 14,
+                  "line": 6,
+                },
+                "filename": "example.hcl",
+                "start": Object {
+                  "byte": 88,
+                  "column": 3,
+                  "line": 6,
+                },
+              },
+            },
+          },
+          "blocks": Array [],
+          "kind": "body",
+        },
+        "closeBraceRange": Object {
+          "end": Object {
+            "byte": 101,
+            "column": 2,
+            "line": 7,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 100,
+            "column": 1,
+            "line": 7,
+          },
+        },
+        "kind": "block",
+        "labelRanges": Array [
+          Object {
+            "end": Object {
+              "byte": 60,
+              "column": 19,
+              "line": 4,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 51,
+              "column": 10,
+              "line": 4,
+            },
+          },
+          Object {
+            "end": Object {
+              "byte": 68,
+              "column": 27,
+              "line": 4,
+            },
+            "filename": "example.hcl",
+            "start": Object {
+              "byte": 61,
+              "column": 20,
+              "line": 4,
+            },
+          },
+        ],
+        "labels": Array [
+          "example",
+          "thing",
+        ],
+        "openBraceRange": Object {
+          "end": Object {
+            "byte": 70,
+            "column": 29,
+            "line": 4,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 69,
+            "column": 28,
+            "line": 4,
+          },
+        },
+        "type": "resource",
+        "typeRange": Object {
+          "end": Object {
+            "byte": 50,
+            "column": 9,
+            "line": 4,
+          },
+          "filename": "example.hcl",
+          "start": Object {
+            "byte": 42,
+            "column": 1,
+            "line": 4,
+          },
+        },
+      },
+    ],
+    "kind": "body",
+  },
+  "diagnostics": Array [],
+}
+`;

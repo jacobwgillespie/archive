@@ -1,0 +1,41 @@
+{
+  "name": "@ts-terraform/config-prettier",
+  "version": "0.4.0",
+  "description": "Prettier config for all @ts-terraform modules",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "watch": "tsc -b -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@ts-terraform/config-typescript": "^0.4.0",
+    "@types/node": "^12",
+    "@types/prettier": "^2.0.1",
+    "typescript": "^3.9.3"
+  },
+  "funding": {
+    "type": "GitHub",
+    "url": "https://github.com/sponsors/jacobwgillespie"
+  },
+  "homepage": "https://ts-terraform.dev",
+  "keywords": [
+    "ts-terraform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ts-terraform/ts-terraform.git",
+    "directory": "packages/@ts-terraform/config-typescript"
+  }
+}

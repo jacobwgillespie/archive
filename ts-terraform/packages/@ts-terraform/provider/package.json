@@ -1,0 +1,59 @@
+{
+  "name": "@ts-terraform/provider",
+  "version": "0.4.0",
+  "description": "TypeScript client for Terraform providers (via gRPC)",
+  "license": "MIT",
+  "bin": {
+    "ts-terraform-generate-provider": "./dist/bin/ts-terraform-generate-provider.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "generated",
+    "tfplugin5.proto"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "generate": "./generate-client.sh",
+    "watch": "tsc -b -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.0.4",
+    "execa": "^4.0.2",
+    "fast-case": "^1.4.0",
+    "google-auth-library": "^6.0.1",
+    "msgpack": "^1.0.3",
+    "prettier": "^2.0.5",
+    "protobufjs": "^6.9.0",
+    "schema-types": "^2.1.0",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@ts-terraform/config-typescript": "^0.4.0",
+    "@types/msgpack": "^0.0.30",
+    "@types/node": "^12",
+    "@types/prettier": "^2.0.1",
+    "typescript": "^3.9.3"
+  },
+  "funding": {
+    "type": "GitHub",
+    "url": "https://github.com/sponsors/jacobwgillespie"
+  },
+  "homepage": "https://ts-terraform.dev",
+  "keywords": [
+    "ts-terraform",
+    "terraform",
+    "terraform-providers",
+    "grpc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ts-terraform/ts-terraform.git",
+    "directory": "packages/@ts-terraform/provider"
+  }
+}

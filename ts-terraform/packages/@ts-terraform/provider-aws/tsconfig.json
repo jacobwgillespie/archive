@@ -1,0 +1,22 @@
+{
+  "extends": "@ts-terraform/config-typescript",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../provider"
+    },
+    {
+      "path": "../registry-client"
+    },
+    {
+      "path": "../config-typescript"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "devDependencies": {
+    "@monorepolint/core": "^0.4.0",
+    "@monorepolint/utils": "^0.4.0",
+    "@types/node": "^12",
+    "jest-diff": "^26.0.1",
+    "lerna": "^3.21.0",
+    "monorepolint": "^0.4.0",
+    "prettier": "^2.0.5",
+    "runtypes": "^4.2.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
+  },
+  "prettier": "./packages/@ts-terraform/config-prettier",
+  "private": true,
+  "scripts": {
+    "build": "tsc -b build-all-tsconfig.json",
+    "clean": "rm -rf ./packages/*/{dist,tsconfig.tsbuildinfo} ./packages/@ts-terraform/*/{dist,tsconfig.tsbuildinfo}",
+    "fmt": "mrl check --fix && prettier --write './**/*.{js,md,ts}'",
+    "fmt:check": "mrl check && prettier --check './**/*.{js,md,ts}'",
+    "lint": "eslint . --ext .ts",
+    "prebuild": "TSBUILD=true mrl check --fix && lerna run prebuild",
+    "watch": "yarn build -w"
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/@ts-terraform/*"
+  ]
+}

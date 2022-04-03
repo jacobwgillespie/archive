@@ -1,0 +1,49 @@
+{
+  "name": "@ts-terraform/hcl",
+  "version": "0.4.0",
+  "description": "HCL2 parser, powered by Wasm",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "prebuild": "env GOOS=js GOARCH=wasm go build -o dist/main.wasm .",
+    "watch": "tsc -b -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "globby": "^11.0.1",
+    "node-fetch": "^2.6.0",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@ts-terraform/config-typescript": "^0.4.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^12",
+    "@types/node-fetch": "^2.5.7",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.3"
+  },
+  "funding": {
+    "type": "GitHub",
+    "url": "https://github.com/sponsors/jacobwgillespie"
+  },
+  "homepage": "https://ts-terraform.dev",
+  "keywords": [
+    "ts-terraform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ts-terraform/ts-terraform.git",
+    "directory": "packages/@ts-terraform/config-typescript"
+  }
+}

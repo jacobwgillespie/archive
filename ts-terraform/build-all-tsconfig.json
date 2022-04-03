@@ -1,0 +1,26 @@
+{
+  "references": [
+    {
+      "path": "packages/@ts-terraform/config-eslint"
+    },
+    {
+      "path": "packages/@ts-terraform/config-prettier"
+    },
+    {
+      "path": "packages/@ts-terraform/hcl"
+    },
+    {
+      "path": "packages/@ts-terraform/provider"
+    },
+    {
+      "path": "packages/@ts-terraform/provider-aws"
+    },
+    {
+      "path": "packages/@ts-terraform/registry-client"
+    },
+    {
+      "path": "packages/ts-terraform"
+    }
+  ],
+  "include": []
+}
