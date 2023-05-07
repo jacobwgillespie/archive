@@ -1,0 +1,57 @@
+create table User(
+ID char(20) not null,
+first_name char(20),
+last_name char(20),
+password char(20),
+primary_physician integer,
+ethnicity char(20),
+age integer,
+sex char(1),
+primary_phone char(12),
+secondary_phone char(12),
+email char(50),
+addr_1 char(50),
+addr_2 char(50),
+city char(20),
+state char(2),
+zip char(10),
+primary key (ID));
+
+create table Physician(
+ID char(20) not null,
+first_name char(20),
+last_name char(20),
+password char(20),
+primary key(ID));
+
+create table UPAuth
+(user_ID char(20) not null,
+auth_phys_ID char(20) not null,
+primary key(user_ID, auth_phys_ID));
+
+create table Billing(
+user_ID char(20) not null,
+insurance_provider char(50),
+policy_number integer not null,
+insured_name char(50),
+primary key(user_ID, policy_number));
+
+create table Plist(
+phys_ID char(20) not null,
+patient_ID char(20) not null,
+primary key(phys_ID, patient_ID));
+
+create table Record(
+exam_date date not null,
+phys_ID char(20) not null,
+patient_ID char(20) not null,
+height decimal,
+weight decimal,
+pulse integer,
+bp_sys integer
+bp_dia integer,
+reason_code char(10),
+symptom_list char(1000),
+prescription char(1000),
+notes char(10000),
+primary key(exam_date, phys_ID, patient_ID))

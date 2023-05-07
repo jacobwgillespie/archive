@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exam_date: 2015-11-28
+  physician_id: 
+  patient_id: 
+  height: 1.5
+  weight: 1.5
+  pulse: 1
+  blood_pressure_sys: 1
+  blood_pressure_dia: 1
+  reason_code: MyString
+  symptom_list: MyText
+  prescription: MyText
+  notes: MyText
+
+two:
+  exam_date: 2015-11-28
+  physician_id: 
+  patient_id: 
+  height: 1.5
+  weight: 1.5
+  pulse: 1
+  blood_pressure_sys: 1
+  blood_pressure_dia: 1
+  reason_code: MyString
+  symptom_list: MyText
+  prescription: MyText
+  notes: MyText

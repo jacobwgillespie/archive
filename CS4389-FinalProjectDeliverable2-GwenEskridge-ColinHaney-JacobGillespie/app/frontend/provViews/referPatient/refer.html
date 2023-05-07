@@ -1,0 +1,38 @@
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#/prov/dashboard">Dashboard</a></li>
+        <li><a href="#/prov/ptList">Visits</a></li>
+        <li><a href="#/prov/visit">Create Visit</a></li>
+        <li class="active"><a href="#/prov/refer">Refer Patient</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">Referals</h1>
+      <div class="panel panel-default">
+        <div class="panel-heading">Refer which patient?</div>
+        <div class="panel-body">
+          <div class="form-group col-sm-3">
+            <label>Refer to</label>
+            <select class="form-control" ng-options="phys.firstName +' '+ phys.lastName for phys in physicians track by phys.id" ng-model="selectedPhys"></select>
+          </div>
+          <table class="table">
+            <tr>
+              <th>Patient</th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="patient in patients">
+              <td>{{patient.lastName}}, {{patient.firstName}}</td>
+              <td><button type="button" class="btn btn-primary" ng-click="authorize(patient.id)">Refer</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

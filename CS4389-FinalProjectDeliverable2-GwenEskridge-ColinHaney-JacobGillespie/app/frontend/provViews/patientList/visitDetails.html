@@ -1,0 +1,77 @@
+
+
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#/prov/dashboard">Dashboard</a></li>
+        <li class="active"><a href="#/prov/ptList">Visits</a></li>
+        <li><a href="#/prov/visit">Create Visit</a></li>
+        <li><a href="#/prov/refer">Refer Patient</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">Visit Details</h1>
+      
+      <div class="col-sm-9 well">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="row"><strong>{{patient.firstName}} {{patient.lastName}}</strong></div>
+            <div class="row"><strong>Age : </strong>{{patient.age}}</div>
+            <div class="row"><strong>Gender : </strong>{{patient.gender}}</div>
+          </div>
+
+          <div class="col-sm-3 col-sm-offset-4">
+            <div class="row"><strong>Provider : </strong>{{visit.provider}}</div>
+            <div class="row"><strong>Date : </strong>{{visit.examDate}}</div>
+          </div>
+        </div>
+        <!--Blank spacing-->
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Vital Signs</h3></div>
+            <div class="panel-body">
+              <table class="table">
+                <tr>
+                  <th>Height</th>
+                  <th>Weight</th>
+                  <th>BP</th>
+                </tr>
+                <tr>
+                  <td>{{visit.height}}</td>
+                  <td>{{visit.weight}}</td>
+                  <td>{{visit.systolic}}/{{visit.diastolic}}</td>
+                </tr>                
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <h3>Symptoms</h3>
+          <p>{{visit.symptoms}}</p>
+        </div>
+
+        <div class="row">
+          <h3>Notes</h3>
+          <p>{{visit.notes}}</p>
+        </div>
+
+        <div class="row">
+          <h3>Diagnosis and Plan</h3>
+          <p><strong>Diagnosis: </strong> {{visit.reason}}</p>
+          <p><strong>Plan: </strong> {{visit.perscription}}</p>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+

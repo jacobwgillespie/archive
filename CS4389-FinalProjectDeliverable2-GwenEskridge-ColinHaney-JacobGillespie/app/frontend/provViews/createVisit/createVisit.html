@@ -1,0 +1,115 @@
+
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#/prov/dashboard">Dashboard</a></li>
+        <li><a href="#/prov/ptList">Visits</a></li>
+        <li class="active"><a href="#/prov/visit">Create Visit</a></li>
+        <li><a href="#/prov/refer">Refer Patient</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">New Visit</h1>
+      
+      <div class="col-sm-9 well">
+      	<form>
+      		
+      		<div class="row">
+      			<div class="form-group col-sm-5">
+	      			<label class="form-label">Patient</label>
+	      			<div class="input-group">
+		      			<select class="form-control"
+		      				ng-model="selectedPatient"
+		      				ng-options="p.firstName +' '+ p.lastName for p in patients track by p.id"
+		      			>
+		      			</select>
+		      			<span class="input-group-addon">Age : {{selectedPatient.age}}</span>
+		      			<span class="input-group-addon">Gender : {{selectedPatient.gender}}</span>
+	      			</div>
+	      		</div>
+	      		<div class="form-group col-sm-2 col-sm-offset-4">
+	      			<label>Date</label>
+	      			<input type="date" class="form-control" ng-model="visit.examDate">
+	      		</div>      				
+      		</div>
+
+      		<div class="row">
+      			&nbsp;
+      		</div>
+      		<div class="">
+	      		<div class="panel panel-default">
+	      			<div class="panel-heading">
+	      				Vital Signs
+	      			</div>
+	      			<div class="panel-body">
+	      				<table class="table">
+	      					<tr>
+	      						<th>Height</th>
+	      						<th>Weight</th>
+	      						<th>BP</th>
+	      					</tr>
+	      					<tr>
+	      						<td>
+	      							<div class="form-group col-sm-5">
+	      								<input type="text" class="form-control" ng-model="visit.height">
+	      							</div>
+	      						</td>
+	      						<td>
+	      							<div class="form-group col-sm-5">
+	      								<input type="text" class="form-control" ng-model="visit.weight">
+	      							</div>
+	      						</td>
+	      						<td>
+	      							<div class="form-group col-sm-2">
+	      								<input type="text" class="form-control" ng-model="visit.systolic">
+	      							</div>
+	      							<div class="form-group col-sm-1">/</div>
+	      							<div class="form-group col-sm-2">
+	      								<input type="text" class="form-control" ng-model="visit.diastolic">
+	      							</div>
+	      						</td>
+	      					</tr>
+	      				</table>
+	      			</div>
+	      		</div>
+      		</div>
+      		<div class="row">
+      			<div class="form-group col-sm-11">
+      				<label>Symptoms</label>
+      				<textarea class="form-control" rows="3" ng-model="visit.symptoms"></textarea>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      			<div class="form-group col-sm-11">
+      				<label>Notes</label>
+      				<textarea class="form-control" rows="9" ng-model="visit.notes"></textarea>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      			<div class="form-group col-sm-11">
+      				<label>Diagnosis</label>
+      				<textarea class="form-control" rows="2" ng-model="visit.reason"></textarea>
+      			</div>
+      		</div>
+      		<div class="row">
+      			<div class="form-group col-sm-11">
+      				<label>Plan</label>
+      				<textarea class="form-control" rows="3" ng-model="visit.perscription"></textarea>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      			<div class="form-group col-sm-offset-9">
+      				<button type="submit" class="btn btn-primary" ng-click="save()">Save Visit</button>
+      			</div>
+      		</div>
+      	</form>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+json.id patient.id
+json.firstName patient.first_name
+json.lastName patient.last_name
+json.age patient.age
+json.gender patient.sex
+json.pcp patient.primary_physician.full_name
+json.ethnicity patient.ethnicity
+json.phone patient.primary_phone
+json.addr1 patient.address_1
+json.addr2 patient.address_2
+json.city patient.city
+json.state patient.state
+json.zip patient.zip

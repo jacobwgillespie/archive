@@ -1,0 +1,173 @@
+
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#/pt/dashboard">Dashboard</a></li>
+        <li class="active"><a href="#/pt/demographics">Demographics</a></li>
+        <li><a href="#/pt/visit">View Visits</a></li>
+        <li><a href="#/pt/auth">Authorize Access</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">Demographics</h1>
+      <div class="col-sm-9">
+        <div class="well">
+
+        <div class="panel-heading">
+          <h2 ng-hide="eName">{{patient.firstName}} {{patient.lastName}} 
+            <button type="button" class="btn btn-default btn-sm" ng-click="editName()"><span class="glyphicon glyphicon-pencil"></span></button>
+          </h2>
+          <div class="form-inline" ng-show="eName">
+            <div class="form-group">
+              <label>First Name</label>   
+              <input type="text" class="form-control" ng-model="patient.firstName">           
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-control" ng-model="patient.lastName">
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-default" ng-click="saveName()">
+                <span class="glyphicon glyphicon-save"></span>
+              </button>
+            </div>            
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <div class="col-sm-4">            
+            <div class="row" ng-hide="eEth">
+              <label>Ethnicity : </label>
+              {{patient.ethnicity}}
+              <button type="button" class="btn btn-default btn-xs" ng-click="editEth()"><span class="glyphicon glyphicon-pencil"></span></button>
+            </div>
+            <div class="form-inline" ng-show="eEth">
+              <div class="form-group">
+                <label>Ethnicity</label>
+                <input type="text" class="form-control" ng-model="patient.ethnicity">
+                <button type="button" class="btn btn-default " ng-click="saveEth()">
+                  <span class="glyphicon glyphicon-save"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="row" ng-hide="eGender">
+              <label>Gender : </label> 
+              {{patient.gender}}
+              <button type="button" class="btn btn-default btn-xs" ng-click="editGender()"><span class="glyphicon glyphicon-pencil"></span></button>
+            </div>
+            <div class="form-inline" ng-show="eGender">
+              <div class="form-group">
+                <label>Gender</label>
+                <input type="text" class="form-control" ng-model="patient.gender">
+                <button type="button" class="btn btn-default" ng-click="saveGender()">
+                  <span class="glyphicon glyphicon-save"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="row" ng-hide="eAge">
+              <label>Age : </label>
+              {{patient.age}}
+              <button type="button" class="btn btn-default btn-xs" ng-click="editAge()"><span class="glyphicon glyphicon-pencil"></span></button>
+            </div>
+            <div class="form-inline" ng-show="eAge">
+              <div class="form-group">
+                <label>Age</label>
+                <input type="text" class="form-control" ng-model="patient.age">
+                <button type="button" class="btn btn-default" ng-click="saveAge()">
+                  <span class="glyphicon glyphicon-save"></span>
+                </button>
+              </div>
+            </div>
+
+
+            <div class="row"><label>Primary Physician : </label> {{patient.PCP}}</div>
+          </div>
+
+          <div class="col-sm-3 col-sm-offset-1">
+            <div ng-hide="eAddr">
+              <div class="row">
+                <label>Address : </label> 
+                {{patient.addr1}}
+                <button type="button" class="btn btn-default btn-xs" ng-click="editAddr()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+              </div>
+              <div class="row"><label>&nbsp; </label>{{patient.addr2}}</div>
+              <div class="row"><label>&nbsp;</label>{{patient.city}}, {{patient.state}} {{patient.zip}}</div>
+            </div>
+            <div class="form" ng-show="eAddr">
+              <div class="form-group">
+                <label>Address 1</label>
+                <input type="text" class="form-control" ng-model="patient.addr1">
+              </div>
+              <div class="form-group">
+                <label>Address 2</label>
+                <input type="text" class="form-control" ng-model="patient.addr2">
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" ng-model="patient.city">
+              </div>
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" ng-model="patient.state">
+              </div>
+              <div class="form-group">
+                <label>Zip</label>
+                <input type="text" class="form-control" ng-model="patient.zip">
+                <button type="button" class="btn btn-default" ng-click="saveAddr()">
+                    <span class="glyphicon glyphicon-save"></span>
+                  </button>
+              </div>
+            </div>
+
+            <div class="row" ng-hide="ePhone1">
+              <label>Primary Phone : </label>
+               {{patient.phone}}
+              <button type="button" class="btn btn-default btn-xs" ng-click="editPhone1()">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+            </div>
+            <div class="form-inline" ng-show="ePhone1">
+              <div class="form-group">
+                <label>Primary Phone</label>
+                <input type="text" class="form-control" ng-model="patient.phone">
+                <button type="button" class="btn btn-default" ng-click="savePhone1()">
+                  <span class="glyphicon glyphicon-save"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="row" ng-hide="ePhone2">
+              <label>Secondary Phone : </label>
+               {{patient.phone2}}
+              <button type="button" class="btn btn-default btn-xs" ng-click="editPhone2()">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+            </div>
+            <div class="form-inline" ng-show="ePhone2">
+              <div class="form-group">
+                <label>Secondary Phone</label>
+                <input type="text" class="form-control" ng-model="patient.phone2">
+                <button type="button" class="btn btn-default" ng-click="savePhone2()">
+                  <span class="glyphicon glyphicon-save"></span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>        
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+

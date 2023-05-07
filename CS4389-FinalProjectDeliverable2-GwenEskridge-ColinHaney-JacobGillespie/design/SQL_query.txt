@@ -1,0 +1,27 @@
+//user info
+select *
+from User U, Record R
+where U.ID = <username field>
+and U.password = <password field>
+and R.patient_ID = <username field>
+
+//doctor info (authorized)
+select *
+from Physician P, UPAuth U, Record R
+where P.ID = <username field>
+and P.password = <password field>
+and U.auth_phys_ID = <username field>
+and U.user_ID = R.patient_ID
+
+//doctor info (patient)
+select *
+from Physician P, Plist Pl, Record R
+where P.ID = <username field>
+and P.password = <password field>
+and pl.phys_ID = <username field>
+and pl.patient_ID = R.patient_ID
+
+//billing info (patient search)
+select *
+from Billing B
+where B.insured_name = <name field>

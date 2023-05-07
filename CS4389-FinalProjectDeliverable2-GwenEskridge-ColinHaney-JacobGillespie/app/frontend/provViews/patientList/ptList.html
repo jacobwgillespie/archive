@@ -1,0 +1,30 @@
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#/prov/dashboard">Dashboard</a></li>
+        <li class="active"><a href="#/prov/ptList">Visits</a></li>
+        <li><a href="#/prov/visit">Create Visit</a></li>
+        <li><a href="#/prov/refer">Refer Patient</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">Current Patients</h1>
+      <div class="panel panel-default">
+        <div class="panel-heading">View visits for which patient?</div>
+        <div class="panel-body">
+          <table class="table">
+            <tr ng-repeat="patient in patients">
+              <td>{{patient.lastName}}, {{patient.firstName}}</td>
+              <td><a href="#/prov/visits/{{patient.id}}" class="btn btn-default btn-sm">View</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,66 @@
+
+
+
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#/pt/dashboard">Dashboard</a></li>
+        <li><a href="#/pt/demographics">Demographics</a></li>
+        <li><a href="#/pt/visit">View Visits</a></li>
+        <li><a href="#/pt/auth">Authorize Access</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">Dashboard</h1>
+      <div class="col-sm-9">
+        <div class="row panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Patient Information for {{patient.firstName}} {{patient.lastName}}</h2>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-3">            
+            <div class="row"><label>Ethnicity : </label> {{patient.ethnicity}}</div>
+            <div class="row"><label>Gender : </label> {{patient.gender}}</div>
+            <div class="row"><label>Age : </label> {{patient.age}}</div>
+            <div class="row"><label>Primary Physician : </label> {{patient.PCP}}</div>
+          </div>
+          <div class="col-sm-3 col-sm-offset-3">
+            <div class="row"><label>Address : </label> {{patient.addr1}}</div>
+            <div class="row"><label>&nbsp; </label>{{patient.addr2}}</div>
+            <div class="row"><label>&nbsp;</label>{{patient.city}}, {{patient.state}} {{patient.zip}}</div>
+            <div class="row"><label>Primary Phone : </label> {{patient.phone}}</div>
+          </div>
+        </div>        
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="row panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Recent Appointments (Last 90 days)</h2>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <tr>
+                <th>Date</th>
+                <th>Diagnosis</th>
+                <th>Provider</th>
+              </tr>
+              <tr ng-repeat="visit in visits | recentFilter | orderBy:'-examDate'">
+                <td><a href="#/pt/visit/{{visit.id}}">{{visit.examDate}}</a></td>
+                <td>{{visit.reason}}</td>
+                <td>{{visit.provider}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>        
+      </div>
+      
+    </div>
+  </div>
+</div>
+

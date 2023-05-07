@@ -1,0 +1,51 @@
+
+
+
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#/prov/dashboard">Dashboard</a></li>
+        <li><a href="#/prov/ptList">Patient List</a></li>
+        <li><a href="#/prov/visit">Create Visit</a></li>
+        <li><a href="#/prov/refer">Refer Patient</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      
+      <h1 class="page-header">Dashboard</h1>
+      <div class="alert alert-info alert-dismissible col-sm-9" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        Welcome Dr. {{provider.lastName}}!
+      </div>
+      <div class="col-sm-9">
+        <div class="row panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Recent Appointments (Last 90 days)</h2>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <tr>
+                <th>Date</th>
+                <th>Patient</th>
+                <th>Diagnosis</th>
+              </tr>
+              <tr ng-repeat="visit in visits | recentFilter | orderBy:'-examDate'">
+                <td><a href="#/prov/visits/{{visit.patient.lastName}}/{{visit.id}}">{{visit.examDate}}</a></td>
+                <td>{{visit.patient.firstName}} {{visit.patient.lastName}}</td>
+                <td>{{visit.reason}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>        
+      </div>
+      
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#/prov/dashboard">Dashboard</a></li>
+        <li class="active"><a href="#/prov/ptList">Visits</a></li>
+        <li><a href="#/prov/visit">Create Visit</a></li>
+        <li><a href="#/prov/refer">Refer Patient</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-2 main">
+      <h1 class="page-header">Visit List</h1>
+      <div class="panel panel-default">
+        <div class="panel-heading">Visits for {{patient.lastName}}, {{patient.firstName}}</div>
+        <div class="panel-body">
+          <table class="table">            
+            <tr>
+              <th>Date</th>
+              <th>Diagnosis</th>
+            </tr>
+            <tr ng-repeat="visit in visits"> 
+              <td>
+                <a href="#/prov/visits/{{patient.lastName}}/{{visit.id}}">{{visit.examDate}}</a>
+              </td>
+              <td>{{visit.reason}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
