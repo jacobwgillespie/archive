@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- node
+deploy:
+  provider: npm
+  email: jacobwgillespie@gmail.com
+  api_key:
+    secure: PMKWNnXiTYdsXvmg5JxcdCfb8fpF2+7+S/7iVtPIUMYNCbpIoPi3tVmQNCJp+0JvJoPGI59hyx7aj03hbBjK0m7wON3qMew9lqUikLxXvDE96TVIyZqRO88xplsB/lZD13UDGa0Q4HNhEChRNtYLZojv0Xz/Z1Q3vQUY+CP48D8z+S+EpikuPJSfQXt9Rg6302BshdOruRZcLIaX3XGwkNIjekLK1qJMNIu7u/76GXFZRJVQgh3xnJoWw8Z0DxhlJ7wjjrNKarWKMdHt7C5j2S1fHj6PN2eXfQBEsA2Xg5Y021kNrFysxPFFGVPRHWlK7l9aGB/BXvkSl8AOMcWvZV8aUcZa/RqfQAxXgpkskbr7exG7Vwe2M06DKLjKKxmbVycgkzWE0TJbEZkUOOD+5eZPCYN9HjWhIsOK7qAPrj48/WIgLMh+iJIsyFne8Kk1/dtNbBx803oO5+Y7UrynKmFBm2EOnOdX2zZqOX0/03u23wSzjM9SN/K5zNbWX8I+nUuAyLOHGP+ASePldVllVnvERy5+VEa2XGw66/XFrBC1xnfNwqAooBFGCnwrftiTQ6yU/8CyBCfz5iXuNfxHMDZ6Y8fgVxw/G6+3m0o0F05doP3dy+ySON63v2W5eH/Sj4R25WCNGumsouo1APxBgsKBxeRi0Zw9fBJe9IAV2EY=
+  on:
+    tags: true
+    repo: clu-media/clu-cli

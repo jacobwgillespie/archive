@@ -1,0 +1,17 @@
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+.env
+
+node_modules
+coverage
+dist
+
+*.mp4
+*.mkv
+*.mp3
+*.srt
+*.ass
