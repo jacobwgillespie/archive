@@ -1,0 +1,91 @@
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "slider1.jpg", class: "img-responsive" %>
+      <div class="carousel-caption">Find Your Next Date Night</div>
+    </div>
+    <div class="item">
+      <%= image_tag "slider2.jpg", class: "img-responsive" %>
+      <div class="carousel-caption">Locate Your Coffee Office</div>
+    </div>
+    <div class="item">
+      <%= image_tag "slider3.jpg", class: "img-responsive" %>
+      <div class="carousel-caption">Connect with Other Foodies</div>
+    </div>
+    <div class="item">
+      <%= image_tag "slider4.jpg", class: "img-responsive" %>
+      <div class="carousel-caption">From the Local Dive to Fine Dining</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="row">
+
+  <% @places.each do |place| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card">
+        <div class="card-content">
+          <% if place.photos.last && place.photos.last.picture.present? %>
+            <%= image_tag place.photos.last.picture, :class => "img-responsive index-thumbnail center" %>
+          <% end %>
+
+          <br/>
+          <div class="clear"></div>
+
+          <div class="text-left">
+            <h2><%= link_to place.name, place_path(place), :class =>"title pull-left" %></h2>
+            <div class="clear"></div>
+
+            <h4><%= place.address %></h5>
+            <h5><%= place.price %>&nbsp; &nbsp;
+              <%= place.foodtype %></h5>
+            <br/>
+
+            <div class="text-left">
+              <p><%= place.description %></p><br/>
+            </div>
+
+          </div>
+
+          <!-- <% if place.user.present? %>
+          <small><%= place.user.email %></small>
+          <% end %> -->
+
+          <% if place.comments.present? %>
+            <blockquote>
+              <% if place.comments.last.ux_interface_rating.present? %>
+              <b><%= place.comments.last.ux_interface_rating %></b>
+              <% end %>
+              <p></small><%= place.comments.last.message %></p>
+              <br/>
+              <h6><%= place.comments.last.user.username %></h6>
+            </blockquote>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="pages col-xs-6 col-xs-offset-3">
+  <%= will_paginate @places %>
+</div>
